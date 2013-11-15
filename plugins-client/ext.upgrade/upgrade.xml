@@ -1,0 +1,5 @@
+<a:application xmlns:a="http://ajax.org/2005/aml">
+    <a:window id="winUpgrade" center="true" height="300" width="300" icon="" skin="bk-window" buttons="close" kbclose="true" title="Upgrade to Premium!">
+        <h1>This is a place holder</h1>
+    </a:window>
+</a:application>

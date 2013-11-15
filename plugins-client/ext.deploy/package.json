@@ -1,0 +1,14 @@
+{
+    "name": "ext.deploy",
+    "version": "0.0.1",
+    "main": "deploy-ext.js",
+    "private": true,
+    "plugin": {
+        "provides": [
+            "ext.deploy"
+        ],
+        "consumes": [
+            "client-plugins"
+        ]
+    }
+}

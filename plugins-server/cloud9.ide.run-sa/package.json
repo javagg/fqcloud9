@@ -1,0 +1,15 @@
+{
+    "name": "cloud9.ide.run-sa",
+    "version": "0.0.1",
+    "main": "run-sa.js",
+    "private": true,
+    "plugin": {
+        "consumes": [
+            "ide",
+            "process-manager",
+            "run-sa",
+            "ide.ext.state",
+            "eventbus"
+        ]
+    }
+}

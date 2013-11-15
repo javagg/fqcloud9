@@ -1,0 +1,95 @@
+<a:application xmlns:a="http://ajax.org/2005/aml">
+    <a:model id="mdlAzureSitesCreateNewInstance"/>
+    <a:model id="mdlAzureSitesApps"/>
+    <a:model id="mdlAzureSitesUserState">
+        <state loaded="false"/>
+    </a:model>
+
+    <a:bar id="azureSitesLoadScreen" visible="{!apf.isTrue([mdlAzureSitesUserState::@loaded])}" height="60" margin="0 0 0 0" width="350" class="azure-sites-dark">
+            <div class="loading">Loading<div class="dots" style="width: 30px;"/></div>
+    </a:bar>
+    
+    <a:vbox id="azureSitesGetCert" class="server-frame" height="199" margin="0 0 0 0" visible="{[mdlAzureSitesUserState:://state/@hasCert] == 'false'}">
+        <a:vbox margin="20 17 18 17">
+            <a:hbox margin="0 0 10 0"><em>Step 1. </em><span margin="0 0 0 4">Download your Publish settings:</span></a:hbox>
+            <a:button caption="DOWNLOAD WINDOWS AZURE SETTINGS" onclick="open('https://windows.azure.com/download/publishprofile.aspx?client=nodejs&amp;lang=en')" skin="button-green-rounded3" skinset="gitskin" height="26"/>
+        </a:vbox>
+        <div class="hr"/>
+        <a:vbox margin="18 17 0 17">
+            <a:hbox margin="0 0 10 0"><em>Step 2. </em><span margin="0 0 0 4">Upload your settings. This can take up to a minute.</span></a:hbox>
+            <a:hbox>
+                <input type="file" onchange="this.files.length ? azureSitesUploadCertBtn.enable() : azureSitesUploadCertBtn.disable()" style="width:237px"/>
+                <a:button id="azureSitesUploadCertBtn" caption="UPLOAD" width="79" height="26" skin="button-green-rounded3" disabled="true" skinset="gitskin" onclick="require('ext/azure-sites/azure-sites').uploadCert(); this.disable();"/>
+            </a:hbox>
+        </a:vbox>
+    </a:vbox>
+    
+    <a:bar id="azureLoadScreen" visible="{[mdlAzureSitesUserState::@loaded] != 'true' &amp;&amp; [mdlAzureSitesUserState::@hasCert] == 'true' &amp;&amp; [mdlAzureSitesUserState::@error] == 'true'}" height="60" margin="0 0 0 0" width="350" class="azure-sites-dark">
+            <div class="loading"><?lm [mdlAzureSitesUserState::@errorMessage]?></div>
+    </a:bar>
+    
+    <a:vbox id="azureFirstTimeScreen" visible="{[mdlAzureSitesUserState::@firstSite] == 'true' &amp;&amp; [mdlAzureSitesUserState::@hasCert] == 'true' &amp;&amp; [mdlAzureSitesUserState::@loaded] == 'true'}" height="230" margin="0 0 0 0" padding="10 20 10 20" width="350" class="azure-sites-dark">
+        <div style="padding: 20px;">
+            <div class="azureFirstTimeScreenTitle">Create your first web site using the Windows Azure portal.</div>
+            <div class="azureFirstTimeScreenTitle">
+                <a:button caption="CLICK HERE TO OPEN PORTAL" onclick="open('https://manage.windowsazure.com')" skin="button-green-rounded3" skinset="gitskin" margin="10 0 10 0" height="26"/>
+            </div>
+            <div class="azureFirstTimeScreenTitle">
+                Please follow these steps in the portal:
+            </div>
+            <ol>
+                <li>At the bottom of the page, click on New &gt; Web Site &gt; Quick Create</li>
+                <li>Type your site name in the URL field</li>
+                <li>Click on "Create Web Site"</li>
+            </ol>
+        </div>
+    </a:vbox>
+
+    <a:vbox id="azureSitesListing" visible="{[mdlAzureSitesUserState::@hasCert] == 'true' &amp;&amp; [mdlAzureSitesUserState::@firstSite] != 'true' &amp;&amp; [mdlAzureSitesUserState::@loaded] == 'true' &amp;&amp; [mdlAzureSitesUserState::@create] != 'true'}" height="197" margin="0 0 0 0" width="350">
+        <a:vbox class="server-frame">
+            <a:hbox align="center" margin="8 17 0 17">
+                <div class="lblprjtype">Choose existing site:</div>
+                <a:filler/>
+                <a:button icon="add_icon.gif" skinset="gitskin" skin="deploy-toolbutton" onclick="apf.xmldb.setAttribute(mdlAzureSitesUserState.data, 'create', 'true')">
+                        Create new
+                </a:button>
+            </a:hbox>
+            <a:hbox class="azure-sites-signin-deploy" margin="5 0 0 0">
+                <a:list id="lstAzureSitesApps" class="heroku" flex="1" skinset="sksetAzure" skin="deploy-apps-list" height="165" model="mdlAzureSitesApps" loading-message="Loading..." empty-message="No apps available" multiselect="false" eachvalue="[@Name]" canrename="true" sort="[@Name]">
+                    <a:each match="[app]">
+                        <a:caption value="[@Name]"/>
+                    </a:each>
+                    <a:actions>
+                    </a:actions>
+                 </a:list>
+            </a:hbox>
+        </a:vbox>
+    </a:vbox>
+
+    <a:vbox id="azureSitesCreateNew" class="server-frame azure-sites-signin-deploy" height="259" margin="0 0 0 0" width="350" visible="{[mdlAzureSitesUserState::@hasCert] == 'true' &amp;&amp; [mdlAzureSitesUserState::@create] == 'true'}" validgroup="vldAzureSitesCreateInstance">
+        <div style="padding: 12px 17px 0 17px">
+            <a:hbox edge="0 0 2">
+                <a:label style="width:130px">Name:</a:label>
+                <a:textbox id="tbDeployNameAzureSites" initial-message="Max 30 characters" required="true" pattern="/^[0-9a-z]{1}[0-9a-z\-]{2,49}$/i" invalidmsg="Please provide a valid name using letters (a-z), numbers (0-9) and dashes (-)" onfocus="errorDeployName.hide()" flex="1" onblur="                     if (this.getValue() != '')                         lblDeployTargetUrlAzureSites.setAttribute('caption', 'http://' + this.getValue() + '.azurewebsites.net')                   "/>
+            </a:hbox>
+
+            <a:hbox edge="0 0 7">
+                <a:label style="width:130px"/>
+                <a:label id="lblDeployTargetUrlAzureSites" flex="1">http://sitename.azurewebsites.net</a:label>
+            </a:hbox>
+        </div>
+    </a:vbox>
+
+    <a:hbox id="azureSitesBottomButtons" padding="10" edge="9 10 11" align="center" pack="end">
+        <a:button visible="{[mdlAzureSitesUserState::@hasCert] == 'true'}" skin="btn-default-simple" onclick="require('ext/azure-sites/azure-sites').clearCert();">
+            Clear cert
+        </a:button>
+        <a:filler/>
+        <a:button id="btnCloseAddDeployAzureSites" skin="btn-default-simple" margin="3 0 0" onclick="                 apf.xmldb.setAttribute(mdlAzureSitesUserState.data, 'create', 'false');                 if (!azureSitesCreateNew.visible) {                     mwDeployTarget.hide();                 }             ">
+            CANCEL
+        </a:button>
+        <a:button id="btnAddDeployAzureSites" skin="btn-default-css3" class="btn-green" caption="CREATE" enabled="{(!azureFirstTimeScreen.visible and azureSitesListing.visible and lstAzureSitesApps.selected) || (azureSitesCreateNew.visible)}" visible="{!azureFirstTimeScreen.visible}" onclick="             if (azureSitesCreateNew.visible) {                 if (!vldAzureSitesCreateInstance.validate()) {                     return false;                 }                  require('ext/azure-sites/azure-sites').createDeploy(                     tbDeployNameAzureSites.getValue()                 );             }             else {                 require('ext/azure-sites/azure-sites').createDeploy(                     lstAzureSitesApps.selected.getAttribute('Name')                 );             }             apf.xmldb.setAttribute(mdlAzureSitesUserState.data, 'create', 'false');         "/>
+        <a:button id="btnRetryAzureSitesListing" width="97" height="26" skin="button-green-rounded3" skinset="gitskin" caption="I'M DONE" enabled="{azureFirstTimeScreen.visible}" visible="{azureFirstTimeScreen.visible}" onclick="             apf.xmldb.setAttribute(mdlAzureSitesUserState.data, 'loaded', 'false');         "/>
+
+    </a:hbox>
+</a:application>

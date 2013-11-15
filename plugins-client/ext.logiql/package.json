@@ -1,0 +1,14 @@
+{
+    "name": "ext.logiql",
+    "version": "0.0.1",
+    "main": "logiql-ext.js",
+    "private": true,
+    "plugin": {
+        "provides": [
+            "ext.logiql"
+        ],
+        "consumes": [
+            "client-plugins"
+        ]
+    }
+}

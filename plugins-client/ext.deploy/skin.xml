@@ -1,0 +1,1831 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<a:skin xmlns:a="http://ajax.org/2005/aml">
+    <a:button name="deploy-toolbutton">
+        <a:style><![CDATA[
+            .deploy-toolbutton {
+                display: block;
+                height: 17px;
+                cursor: default;
+                padding: 2px 8px 0 8px;
+                margin-top: 2px;
+                line-height: 13px;
+                text-decoration: none;
+                color: #e8e8e8;
+            }
+
+            .deploy-toolbuttonOver, .deploy-toolbuttonDown {
+                cursor: default;
+                border-radius: 4px 4px 0px 0px;
+                -moz-border-radius: 4px 4px 0px 0px;
+                -webkit-border-bottom-right-radius: 0px;
+                -webkit-border-bottom-left-radius: 0px;
+                background: -webkit-gradient(linear,left bottom,left top,color-stop(0, rgb(51,124,188)),color-stop(1, rgb(64,145,216)));
+                background: -moz-linear-gradient(center bottom,rgb(51,124,188) 0%,rgb(64,145,216) 100%);
+                color : #ffffff;
+            }
+
+            .deploy-toolbuttonDisabled, .deploy-toolbuttonDisabled {
+                background : none;
+                color : #bebebe;
+            }
+
+            .deploy-toolbutton {
+                display: block;
+                height: 21px;
+                cursor: default;
+                margin: 2px 1px 0 1px;
+                text-decoration: none;
+                color: #111111;
+                text-align: center;
+                padding: 0 4px 0 0;
+                line-height: 13px;
+                border: 1px solid transparent;
+            }
+
+            .deploy-toolbutton div {
+                float: left;
+                margin: 0;
+                height: 16px;
+                padding: 3px 4px 0 8px;
+                border: 0;
+            }
+
+            .deploy-toolbuttonOver {
+                border: 1px solid #b3b3b3;
+                -webkit-box-shadow: 0px 1px 0px #ffffff;
+                -moz-box-shadow: 0px 1px 0px #ffffff;
+                box-shadow: 0px 1px 0px #ffffff;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                border-radius: 4px;
+                background: -webkit-gradient(linear,left bottom,left top,color-stop(0, rgb(246,246,246)),color-stop(1, rgb(253,253,253)));
+                background: -moz-linear-gradient(center bottom,rgb(246,246,246) 0%,rgb(253,253,253) 100%);
+            }
+
+            .deploy-toolbuttonDown {
+                border: 1px solid #b3b3b3;
+                -webkit-box-shadow: 0px 1px 0px #ffffff;
+                -moz-box-shadow: 0px 1px 0px #ffffff;
+                box-shadow: 0px 1px 0px #ffffff;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                border-radius: 4px;
+                background: -webkit-gradient(linear,left bottom,left top,color-stop(0, rgb(239,241,244)),color-stop(1, rgb(224,226,229)));
+                background: -moz-linear-gradient(center bottom,rgb(239,241,244) 0%,rgb(224,226,229) 100%);
+            }
+
+            .deploy-toolbuttonChecked {
+                border: 1px solid #b3b3b3;
+                -webkit-box-shadow: 0px 1px 0px #ffffff;
+                -moz-box-shadow: 0px 1px 0px #ffffff;
+                box-shadow: 0px 1px 0px #ffffff;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                border-radius: 4px;
+                background: -webkit-gradient(linear,left bottom,left top,color-stop(0, rgb(224,226,229)),color-stop(1, rgb(250,252,255)));
+                background: -moz-linear-gradient(center bottom,rgb(224,226,229) 0%,rgb(250,252,255) 100%);
+            }
+
+            .deploy-toolbuttonDisabled, .deploy-toolbuttonDisabled div {
+                background: none;
+                color: #a6a6a6;
+            }
+
+            .deploy-toolbuttonIcon div {
+                padding-left : 4px;
+            }
+
+            .deploy-toolbuttonEmpty div {
+                padding: 4px 0 0 7px;
+            }
+
+            .deploy-toolbuttonIcon span {
+                display: block;
+                float:left;
+                width: 16px;
+                height: 16px;
+                margin: -1px 4px 0 0;
+            }
+
+            .deploy-toolbuttonIcon.deploy-toolbuttonOver span {
+                background-position: 0 -16px;
+            }
+            .deploy-toolbuttonIcon.deploy-toolbuttonDown span {
+                background-position: 0 -32px;
+            }
+
+            .deploy-toolbuttonEmpty span {
+                margin: -2px 3px 0 0;
+            }
+        ]]></a:style>
+
+        <a:presentation>
+            <a:main caption="div/text()" label="div/text()" background="div/span" icon="div/span">
+                <div class="deploy-toolbutton"><div><span> </span>-</div></div>
+            </a:main>
+        </a:presentation>
+    </a:button>
+    
+    <a:button name="open-dir-btn">
+        <a:style><![CDATA[
+            .open-dir-btn {
+                position    : relative;
+                overflow    : hidden;
+                width:25px;
+                padding     : 0;
+                font-family : Arial;
+                font-size   : 10px;
+                font-weight : bold;
+                color       : #444444;
+                cursor      : default;
+
+                border:1px solid #1c1c1c;
+                background : #393939 no-repeat 0 50%;
+                background : -webkit-gradient(linear, left top, left bottom, from(#393939), color-stop(1, #333333));
+                background : -moz-linear-gradient(center bottom, #333333 0%, #393939 100%) repeat scroll 0 0 transparent;
+
+                -moz-border-radius    : 5px;
+                -webkit-border-radius : 5px;
+                border-radius         : 5px;
+
+                -moz-box-shadow       : 0px 1px 0px rgba(255, 255, 255, 0.1) inset, 0px 1px 0px 0px rgba(255, 255, 255, 0.15);
+                -webkit-box-shadow    : 0px 1px 0px rgba(255, 255, 255, 0.5) inset, 0px 1px 0px 0px rgba(255, 255, 255, 0.15);
+                box-shadow            : 0px 1px 0px rgba(255, 255, 255, 0.35) inset, 0px 1px 0px 0px rgba(255, 255, 255, 0.15);
+            }
+
+            .open-dir-btn SPAN {
+                height:21px;
+                display:block;
+                position:relative;
+                background-position: 4px 4px;
+                background-repeat:no-repeat;
+            }
+        ]]></a:style>
+
+         <a:presentation>
+            <a:main caption="span/text()" background="span" icon="span">
+                <div class="open-dir-btn">
+                    <span>-</span>
+                </div>
+            </a:main>
+        </a:presentation>
+    </a:button>
+    <a:button name="deploy_src_button">
+        <a:style><![CDATA[
+            .deploy_src_button {
+                width    : 15px;
+                height   : 16px;
+                position : relative;
+                overflow : hidden;
+            }
+
+            .deploy_src_button SPAN {
+                width    : 15px;
+                height   : 16px;
+                position : relative;
+                overflow : hidden;
+                display    : block;
+                background-repeat:no-repeat;
+                background-position: 0 0;
+            }
+
+            .deploy_src_button.add_server SPAN {
+                background-image : url(images/deploy_icon_plus.png);
+            }
+
+            .deploy_src_button.remove_server SPAN {
+                background-image : url(images/deploy_icon_minus.png);
+            }
+
+            .deploy_src_buttonOver SPAN {
+                background-position : 0 -32px;
+            }
+
+            .deploy_src_buttonDown SPAN {
+                background-position : 0 0;
+            }
+
+            .deploy_src_buttonDisabled SPAN {
+                background-position : 0 -16px;
+            }
+        ]]></a:style>
+
+        <a:presentation>
+            <a:main caption="span/text()" background="span" icon="span">
+                <div class="deploy_src_button">
+                    <span>-</span>
+                </div>
+            </a:main>
+        </a:presentation>
+    </a:button>
+
+    <a:button name="text-button">
+        <a:style><![CDATA[
+            .text-button {
+                height             : 26px;
+                margin             : 0;
+                overflow           : hidden;
+                position           : relative;
+                cursor             : default;
+                -moz-user-select   : none;
+                -khtml-user-select : none;
+                user-select        : none;
+                width              : auto;
+                line-height        : 13px;
+                text-shadow        : rgba(255, 255, 255, 1) 0px 1px 0px;
+                font-family        : Arial;
+                font-size          : 11px;
+                font-weight        : bold;
+                color              : #404040;
+                white-space        : nowrap;
+                text-overflow      : ellipsis;
+                text-align         : center;
+            }
+
+            .text-button SPAN {
+                padding : 7px 0;
+                display : block;
+            }
+
+            .text-buttonDown {
+                color : #101010;
+            }
+        ]]></a:style>
+
+        <a:presentation>
+            <a:main caption="span/text()" background="span" icon="span">
+                <div class="text-button">
+                    <span>-</span>
+                </div>
+            </a:main>
+        </a:presentation>
+    </a:button>
+
+    <a:button name="button-green-rounded3">
+        <a:style><![CDATA[
+            .button-continue3 {
+                height                : 19px;
+                padding               : 6px 0 0 0;
+                margin                : 0;
+                overflow              : hidden;
+                position              : relative;
+                cursor                : default;
+                -moz-user-select      : none;
+                -khtml-user-select    : none;
+                user-select           : none;
+                width                 : auto;
+                border                : 1px solid #1d6e26;
+                -moz-border-radius    : 5px;
+                -webkit-border-radius : 5px;
+                -border-radius        : 5px;
+                background            : #e6e6e6 no-repeat 0 50%;
+                background            : -webkit-gradient(linear, left top, left bottom, from(#19b941), color-stop(1, #218c3b));
+                background            : -moz-linear-gradient(center bottom, #218c3b 0%, #19b941 70%) repeat scroll 0 0 transparent;
+                -moz-box-shadow       : 0px 1px 0px rgba(255, 255, 255, 0.5) inset;
+                -webkit-box-shadow    : 0px 1px 0px rgba(255, 255, 255, 0.5) inset;
+                box-shadow            : 0px 1px 0px rgba(255, 255, 255, 0.5) inset;
+                line-height           : 13px;
+                text-shadow           : rgba(34, 143, 61, 1) 0px 1px 0px;
+                font-family           : Arial;
+                font-size             : 12px;
+                font-weight           : bold;
+                color                 : white;
+                white-space           : nowrap;
+                text-overflow         : ellipsis;
+                text-align            : center;
+            }
+
+            .button-continue3Down {
+                background            : -webkit-gradient(linear, left top, left bottom, from(#218c3b), color-stop(1, #19b941));
+                background            : -moz-linear-gradient(center bottom, #19b941 0%, #218c3b 70%) repeat scroll 0 0 transparent;
+            }
+
+            .button-continue3Disabled, .button-continue3Disabled.deploy.grey {
+                border-color: #adadad;
+                color       : #d2d2d2;
+                text-shadow : #fff 0px 1px 0px;
+                background            : -webkit-gradient(linear, left top, left bottom, from(#fafafa), color-stop(1, #e6e6e6));
+                background            : -moz-linear-gradient(center bottom, #e6e6e6 0%, #fafafa 70%) repeat scroll 0 0 transparent;
+            }
+
+            .button-continue3 SPAN {
+                position   : relative;
+                overflow   : hidden;
+                display    : block;
+                height     : 19px;
+                text-align : center;
+            }
+            
+            .button-continue3.deploy {
+                border: 0;
+            }
+
+            /*.vbox > DIV > .button-continue3 {
+                height:26px;
+            }*/
+            
+            .button-continue3.deploy.grey {
+                border: 1px solid #ADADAD;
+                background: #E6E6E6 no-repeat 0 50%;
+                background: -webkit-gradient(linear, left top, left bottom, from(#CCC), color-stop(1, #999));
+                background: -moz-linear-gradient(center bottom, #999 0%, #ccc 70%) repeat scroll 0 0 transparent;
+                -moz-box-shadow: 0px 1px 0px #ccc inset, 0px 1px 0px 0px rgba(0, 0, 0, 0.4);
+                -webkit-box-shadow: 0px 1px 0px #ccc inset, 0px 1px 0px 0px rgba(0, 0, 0, 0.4);
+                text-shadow: #ADADAD 0px 1px 0px;
+            }
+
+            .button-continue3Down.deploy.grey {
+                background            : -webkit-gradient(linear, left top, left bottom, from(#999), color-stop(1, #ccc));
+                background            : -moz-linear-gradient(center bottom, #ccc 0%, #999 70%) repeat scroll 0 0 transparent;
+            }            
+        ]]></a:style>
+        <a:style condition="apf.isChrome || apf.isSafari"><![CDATA[
+            .button-continue3 {
+                height  : 18px;
+                padding : 6px 0 0 0;
+            }
+
+            .vbox > .button-continue3 {
+                height : 26px;
+            }
+        ]]></a:style>
+
+         <a:presentation>
+            <a:main caption="span/text()" background="span" icon="span">
+                <div class="button-continue3">
+                    <span>-</span>
+                </div>
+            </a:main>
+        </a:presentation>
+    </a:button>
+
+    <a:divider name="deploy-divider">
+        <a:style><![CDATA[
+            .deploy-divider {
+                position      : relative;
+                height        : 0;
+                border-top    : 1px solid rgba(0,0,0,.6);
+                border-bottom : 1px solid rgba(64,64,64,.6);
+            }
+        ]]></a:style>
+
+        <a:presentation>
+            <a:main>
+                <div class="deploy-divider"> </div>
+            </a:main>
+        </a:presentation>
+    </a:divider>
+
+    <a:divider name="deploy-wn-divider">
+        <a:style><![CDATA[
+            .deploy-wn-divider {
+                height           : 2px;
+                border-top       : 1px solid white;
+                border-bottom    : 1px solid #bbc3cb;
+                position         : relative;
+                overflow         : hidden
+            }
+
+            .deploy-wn-divider .deploy-wn-body {
+                height        : 0;
+                position      : relative;
+                border-top    : 1px solid #e6e8e9;
+                border-bottom : 1px solid #e7e8eb;
+            }
+        ]]></a:style>
+
+        <a:presentation>
+            <a:main>
+                <div class="deploy-wn-divider">
+                    <div class="deploy-wn-body"/>
+                </div>
+            </a:main>
+        </a:presentation>
+    </a:divider>
+
+    <a:list name="deploy-servers-list">
+        <a:style><![CDATA[
+            .deploy-servers-list {
+                position : relative;
+                overflow : hidden;
+                cursor   : default;
+            }
+
+            .deploy-servers-list .ds-item {
+                position    : relative;
+                overflow    : hidden;
+                font-family : Arial;
+                font-size   : 12px;
+                font-weight:bold;
+                line-height:15px;
+                color       : #3d444d;
+                height:24px;
+                padding:9px 10px 0 10px;
+                border-top:1px solid #fafdff;
+                border-bottom : 1px solid #c6c6c6;
+                background    : #fafdff no-repeat 0 50%;
+                background    : -webkit-gradient(linear, left top, left bottom, from(#fafdff), color-stop(1, #f4f8fa));
+                background    : -moz-linear-gradient(center bottom, #f4f8fa 0%, #fafdff 70%) repeat scroll 0 0 transparent;
+            }
+
+            .deploy-servers-list .ds-item.selected {
+                color:white;
+                background    : #fafdff no-repeat 0 50%;
+                background    : -webkit-gradient(linear, left top, left bottom, from(#5b9edc), color-stop(1, #1e78c2));
+                background    : -moz-linear-gradient(center bottom, #1e78c2 0%, #5b9edc 70%) repeat scroll 0 0 transparent;
+                border-top-color:#0d77d8;
+                border-bottom-color:#1e77c1;
+            }
+        ]]></a:style>
+
+        <a:presentation>
+            <a:main container=".">
+                <div class="deploy-servers-list">
+                </div>
+            </a:main>
+            <a:item class="." caption="text()" check="div[1]" icon="div[1]" select=".">
+                <div class="ds-item">-<div class="icon"/></div>
+            </a:item>
+            <a:dragindicator>
+                <div class="dragds-item"><span><u>-</u></span></div>
+            </a:dragindicator>
+            <a:loading>
+                <div class="loading">Loading...</div>
+            </a:loading>
+            <a:empty caption=".">
+                <div class="message">-</div>
+            </a:empty>
+        </a:presentation>
+    </a:list>
+    
+    <a:tree name="deploy-servers-tree">
+        <a:style><![CDATA[
+            .deploy-servers-tree {
+                position   : relative;
+                overflow   : hidden;
+            }
+
+            .deploy-servers-tree .empty {
+                height: 28px;
+                width: 202px;
+                background: url(images/tip-create_deploy_server.png) no-repeat 7px 3px
+            }
+
+            .deploy-servers-tree .item {
+                position      : relative;
+                overflow      : hidden;
+                border-top    : 1px solid white;
+                border-bottom : 1px solid #b2b2b2;
+                height        : 23px;
+                padding       : 3px 0 0;
+                filter        : progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#eff1f4', endColorstr='#eff1f4');
+                -ms-filter    : "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#eff1f4', endColorstr='#e6e8eb')";
+                background    : -webkit-gradient(linear, left top, left bottom, from(#eff1f4), color-stop(1, #e6e8eb));
+                background    : -moz-linear-gradient(center bottom, #e6e8eb 0%, #eff1f4 100%) repeat scroll 0 0 transparent;
+                cursor        : default;
+            }
+
+            .deploy-servers-tree .corporate .pointer {
+                width      : 16px;
+                height     : 14px;
+                background : url(images/suitcase.png) no-repeat 0 0;
+                top        : 2px;
+                margin-right : 6px;
+                position   : relative;
+                display    : inline-block;
+            }
+
+            .deploy-servers-tree .item .openclose {
+                position   : relative;
+                overflow   : hidden;
+                display    : inline-block;
+                width      : 9px;
+                height     : 10px;
+                top        : 1px;
+                left       : 1px;
+                background : url(images/open_close.png) no-repeat 0 -10px;
+                margin     : 4px 5px 0;
+                cursor     : default;
+            }
+            
+            .deploy-servers-tree .item .spinner {
+                display:none;
+            }
+
+            .deploy-servers-tree .item .status {
+                display : none;
+            }
+
+            .deploy-servers-tree .minlast .openclose,
+            .deploy-servers-tree .min .openclose {
+                background-position: 0 0;
+                left: 0;
+                top: 2px;
+            }
+
+            .deploy-servers-tree .item .name {
+                color       : #5d6774;
+                font-size   : 11px;
+                font-family : Arial;
+                font-weight : bold;
+                position    : absolute;
+                display     : inline-block;
+                margin-top  : 4px;
+                text-shadow : rgba(255, 255, 255, 1) 0px 1px 0px;
+            }
+
+            .deploy-servers-tree > .item .name {
+                text-transform: uppercase;
+                display: inline;
+            }
+            
+            .deploy-servers-tree .root.corporate.item .name {
+                color: #906a44;
+            }
+            
+            .deploy-servers-tree .item .users,
+            .deploy-servers-tree .item .favorite {
+                display : none;
+            }
+            
+            .deploy-servers-tree .item .addprojectbtn {
+                position    : absolute;
+                right       : 0;
+                top         : 0;
+                height      : 23px;
+                padding-top : 3px;
+                filter      : progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#eff1f4', endColorstr='#eff1f4');
+                -ms-filter  : "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#eff1f4', endColorstr='#e6e8eb')";
+                background  : -webkit-gradient(linear, left top, left bottom, from(#eff1f4), color-stop(1, #e6e8eb));
+                background  : -moz-linear-gradient(center bottom, #e6e8eb 0%, #eff1f4 100%) repeat scroll 0 0 transparent;
+            }
+            
+            .add-new-button {
+                border-left : 1px solid #f5f6f8;
+                height      : 20px;
+                width       : 25px;
+                cursor      : default;
+                display     : block;
+            }
+            .add-new-button SPAN {
+                border-left : 1px solid #cfd3d6;
+                height      : 100%;
+                display     : block;
+                position    : relative;
+                background  : url(icons/plus.png) no-repeat 0 0;
+            }
+            .add-new-button:hover.active SPAN,
+            .add-new-button.active SPAN {
+                background-position: 0 -40px;
+            }
+            .add-new-button:hover SPAN {
+                background-position: 0 -20px;
+            }
+            
+            .deploy-servers-tree BLOCKQUOTE {
+                padding  : 0;
+                margin   : 0;
+                position : relative;
+                overflow : hidden;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .item {
+                height           : 43px;
+                position         : relative;
+                overflow         : hidden;
+                background-color : #d1dee8;
+                line-height      : 8px;
+                filter           : progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ffffff', endColorstr='#f5f5f5');
+                -ms-filter       : "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ffffff', endColorstr='#f5f5f5')";
+                background       : -webkit-gradient(linear, left top, left bottom, from(#ffffff), color-stop(1, #f5f5f5));
+                background       : -moz-linear-gradient(center bottom, #f5f5f5 0%, #ffffff 100%) repeat scroll 0 0 transparent;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .hover {
+                background-color : #d1dee8;
+                filter           : progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ffffff', endColorstr='#f8f8f8');
+                -ms-filter       : "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ffffff', endColorstr='#f8f8f8')";
+                background       : -webkit-gradient(linear, left top, left bottom, from(#ffffff), color-stop(1, #f8f8f8));
+                background       : -moz-linear-gradient(center bottom, #f8f8f8 0%, #ffffff 100%) repeat scroll 0 0 transparent;
+            }
+        
+            .deploy-servers-tree BLOCKQUOTE .item.inprogress {
+                background-color : #eff1f4;
+                filter           : progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#eff1f4', endColorstr='#e6e8eb');
+                -ms-filter       : "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#eff1f4', endColorstr='#e6e8eb')";
+                background       : -webkit-gradient(linear, left top, left bottom, from(#eff1f4), color-stop(1, #e6e8eb));
+                background       : -moz-linear-gradient(center bottom, #e6e8eb 0%, #eff1f4 100%) repeat scroll 0 0 transparent;
+                border-bottom-color : #bac2ca;
+            }
+            
+            .deploy-servers-tree BLOCKQUOTE .item.selected.inprogress {
+                border-top-color : white;
+            }
+            
+            .deploy-servers-tree BLOCKQUOTE .item.inprogress .spinner {
+                display    : block;
+                position   : absolute;
+                top        : 13px;
+                right      : 8px;
+                background : url(images/spinner_cloning_in_progress.gif) no-repeat 0 0;
+                width      : 21px;
+                height     : 21px;
+            }
+            
+            .deploy-servers-tree BLOCKQUOTE .item.inprogress .arrow {
+                display: none;
+            }
+            
+            .deploy-servers-tree BLOCKQUOTE .item.inprogress .name {
+                color       : #aeaeae;
+                text-shadow : white 0px 1px 0px;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .item .users,
+            .deploy-servers-tree BLOCKQUOTE .item .favorite {
+                display : block;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .item .openclose {
+                display:none;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .item .name {
+                font-family : Arial;
+                color       : #3d444d;
+                font-weight : bold;
+                font-size   : 12px;
+                position    : relative;
+                overflow    : hidden;
+                margin      : 6px 0 0 9px;
+                height      : 14px;
+                line-height : 14px;
+                text-shadow : none;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .item .name.notagline {
+                margin-top: 14px;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .item .status {
+                position:relative;
+                overflow:hidden;
+                font-family:Trebuchet MS;
+                font-size:11px;
+                line-height:11px;
+                color:#8c939c;
+                height:12px;
+                padding-left:12px;
+                margin:0 0 0 8px;
+                display:block;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .item .status .lighter {
+                width:9px;
+                height:9px;
+                background:url(images/online-offline.png) no-repeat 0 0;
+                position:absolute;
+                top:2px;
+                left:0;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .item.online .status {
+                color : #5d9901;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .item.online .status .lighter {
+                background-position: 0 -9px;
+
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .item .users {
+                font-family : Trebuchet MS;
+                color       : #8c939c;
+                font-size   : 11px;
+                position    : relative;
+                overflow    : hidden;
+                margin      : 0 30px 0 9px;
+                height      : 14px;
+                line-height : 14px;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .item .users SPAN {
+                color : #5d9901;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .item .pointer {
+                width      : 10px;
+                height     : 16px;
+                background : url(images/project-list-pointer.png) no-repeat 0 -48px;
+                position   : absolute;
+                top        : 14px;
+                right      : 6px;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .last .pointer {
+                top : 14px;
+            }
+            
+            .deploy-servers-tree BLOCKQUOTE .item .arrow {
+                width: 10px;
+                height: 16px;
+                position: absolute;
+                right: 6px;
+                top: 15px;
+                background: url(images/project-arrow.png) 0px 0px no-repeat;
+            }
+            
+            .deploy-servers-tree BLOCKQUOTE .item.selected .arrow {
+                background-position: -26px 0;
+            }
+            
+            /*.deploy-servers-tree BLOCKQUOTE.corporate .item.selected .arrow {
+                background-position: -14px 0;
+            }*/
+
+            .deploy-servers-tree BLOCKQUOTE .item .openprjbtn {
+                padding            : 0;
+                margin             : 0;
+                overflow           : hidden;
+                position           : relative;
+                cursor             : pointer;
+                -moz-user-select   : none;
+                -khtml-user-select : none;
+                user-select        : none;
+                width              : auto;
+                
+                line-height   : 11px;
+                font-family   : Arial;
+                font-size     : 11px;
+                font-weight   : bold;
+                color         : white;
+                white-space   : nowrap;
+                text-overflow : ellipsis;
+                text-align:center;
+                text-shadow   : rgba(34, 143, 61, 1) 0px 1px 0px;
+
+                cursor: default;
+                text-decoration: none;
+
+                position   : absolute;
+                top: 10px;
+                right: 10px;
+
+                display: none;
+                height: 23px;
+            }
+            .deploy-servers-tree BLOCKQUOTE .item .openprjbtn span {
+                display: block;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .item .openprjbtn .greenbtn-left {
+                background: url(images/green-btn-small.png) no-repeat 0 0;
+                width: 11px;
+                height: 23px;
+                position            : absolute;
+                top                 : 0;
+                left                : 0;
+            }
+            .deploy-servers-tree BLOCKQUOTE .item .openprjbtn .greenbtn-middle {
+                background: url(images/green-btn-small.png) repeat-x 0 -23px;
+                position            : relative;
+                margin: 0 11px;
+                height: 17px;
+                padding: 6px 2px 0;
+            }
+            .deploy-servers-tree BLOCKQUOTE .item .openprjbtn .greenbtn-right {
+                background: url(images/green-btn-small.png) no-repeat 0 -46px;
+                width: 11px;
+                height: 23px;
+                position:absolute;
+                top:0;
+                right:0;
+            }
+            
+            .deploy-servers-tree BLOCKQUOTE .item .project_loading {
+                background: url(images/colorbox/loading.gif) no-repeat 0 0;
+                height: 32px;
+                width: 32px;
+                margin: 0;
+                padding: 0;
+                -moz-user-select   : none;
+                -khtml-user-select : none;
+                user-select        : none;
+                position: absolute;
+                top: 6px;
+                right: 10px;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .item .openprjbtn span.forkicon {
+                background-image: url(images/forkit-green.png);
+                background-position: 0 -2px;
+                background-repeat: no-repeat;
+                padding-left: 23px;
+                display: block;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .item.hover .openprjbtn,
+            .deploy-servers-tree BLOCKQUOTE .item.selected .openprjbtn {
+                display: block;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .item.selected .openprjbtn .greenbtn-left {
+                background-position: 0 0;
+            }
+            .deploy-servers-tree BLOCKQUOTE .item.selected .openprjbtn .greenbtn-middle {
+                background-position: 0 -23px;
+            }
+            .deploy-servers-tree BLOCKQUOTE .item.selected .openprjbtn .greenbtn-right {
+                background-position: 0 -46px;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .item .openprjbtn:hover .greenbtn-left {
+                background-position: 0 -69px;
+            }
+            .deploy-servers-tree BLOCKQUOTE .item .openprjbtn:hover .greenbtn-middle {
+                background-position: 0 -92px;
+            }
+            .deploy-servers-tree BLOCKQUOTE .item .openprjbtn:hover .greenbtn-right {
+                background-position: 0 -115px;
+            }
+            
+            .deploy-servers-tree BLOCKQUOTE .item.selected .openprjbtn:active .greenbtn-left,
+            .deploy-servers-tree BLOCKQUOTE .item .openprjbtn:active .greenbtn-left {
+                background-position: 0 -138px;
+            }
+            .deploy-servers-tree BLOCKQUOTE .item.selected .openprjbtn:active .greenbtn-middle,
+            .deploy-servers-tree BLOCKQUOTE .item .openprjbtn:active .greenbtn-middle {
+                background-position: 0 -161px;
+            }
+            .deploy-servers-tree BLOCKQUOTE .item.selected .openprjbtn:active .greenbtn-right,
+            .deploy-servers-tree BLOCKQUOTE .item .openprjbtn:active .greenbtn-right {
+                background-position: 0 -184px;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE.corporate .item.selected .openprjbtn {
+                
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .item .favorite {
+                width      : 17px;
+                height     : 18px;
+                background : url(images/star.png) no-repeat 0 0;
+                position   : absolute;
+                top        : 13px;
+                right      : 24px;
+                display    : none;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .hover .favorite {
+                display : block;
+                cursor  : default;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .selected.hover .favorite {
+                background : url(images/star.png) no-repeat 0 -36px;
+            }
+
+            /*.deploy-servers-tree BLOCKQUOTE.corporate .hover .favorite {
+                background : url(images/star.png) no-repeat 0 -72px;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE.corporate .selected.hover .favorite {
+                background : url(images/star.png) no-repeat 0 -108px;
+            }*/
+
+            .deploy-servers-tree BLOCKQUOTE .item .active {
+                display             : block;
+                background-position : 0 -18px;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .selected.item .active {
+                display             : block;
+                background-position : 0 -54px;
+            }
+
+            /*.deploy-servers-tree BLOCKQUOTE.corporate .item .active {
+                display             : block;
+                background-position : 0 -90px;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE.corporate .selected.item .active {
+                display             : block;
+                background-position : 0 -126px;
+            }*/
+
+
+            .deploy-servers-tree BLOCKQUOTE .selected {
+                filter        : progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#5b9fdc', endColorstr='#1f79c2');
+                -ms-filter    : "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#5b9fdc', endColorstr='#1f79c2')";
+                background    : -webkit-gradient(linear, left top, left bottom, from(#5b9fdc), color-stop(1, #1f79c2));
+                background    : -moz-linear-gradient(center bottom, #1f79c2 0%, #5b9fdc 100%) repeat scroll 0 0 transparent;
+                border-top    : 1px solid #0c76d7;
+                border-bottom : 1px solid #1e78c2;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .selected .name {
+                font-family : Arial;
+                color       : white;
+                font-weight : bold;
+                font-size   : 12px;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .selected .users {
+                font-family : Trebuchet MS;
+                color       : white;
+                font-size   : 11px;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .selected.inprogress .users {
+                color: #8C939C;
+            }
+            
+            .deploy-servers-tree BLOCKQUOTE .selected .users SPAN {
+                
+            }
+            
+            .deploy-servers-tree BLOCKQUOTE .selected .pointer {
+                width      : 10px;
+                height     : 16px;
+                background : url(images/project-list-pointer.png) no-repeat 0 -32px;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .item.selected .status {
+                color : white;
+            }
+
+            /*.deploy-servers-tree BLOCKQUOTE.corporate .item {
+                filter     : progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#e8f5ff', endColorstr='#d1dee8');
+                -ms-filter : "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#e8f5ff', endColorstr='#d1dee8')";
+                background : -webkit-gradient(linear, left top, left bottom, from(#e8f5ff), color-stop(1, #d1dee8));
+                background : -moz-linear-gradient(center bottom, #d1dee8 0%, #e8f5ff 100%) repeat scroll 0 0 transparent;
+                border-top : 1px solid #e8f5ff;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE.corporate .hover {
+                filter     : progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#eff8ff', endColorstr='#dfe9f0');
+                -ms-filter : "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#eff8ff', endColorstr='#dfe9f0')";
+                background : -webkit-gradient(linear, left top, left bottom, from(#eff8ff), color-stop(1, #dfe9f0));
+                background : -moz-linear-gradient(center bottom, #dfe9f0 0%, #eff8ff 100%) repeat scroll 0 0 transparent;
+                border-top : 1px solid #eff8ff;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE.corporate .selected {
+                filter        : progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#8c9caa', endColorstr='#5d7283');
+                -ms-filter    : "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#8c9caa', endColorstr='#5d7283')";
+                background    : -webkit-gradient(linear, left top, left bottom, from(#8c9caa), color-stop(1, #5d7283));
+                background    : -moz-linear-gradient(center bottom, #5d7283 0%, #8c9caa 100%) repeat scroll 0 0 transparent;
+                border-top    : 1px solid #5b738a;
+                border-bottom : 1px solid #5d7283;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE.corporate .item .pointer {
+                background-position : 0 -16px;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE.corporate .selected .pointer {
+                background-position: 0 0;
+            }*/
+
+            .deploy-servers-tree BLOCKQUOTE .itemcontainer {
+                height: 100%;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .itemcontainer.cloning {
+                background-color : #eff1f4;
+                filter           : progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#eff1f4', endColorstr='#e6e8eb');
+                -ms-filter       : "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#eff1f4', endColorstr='#e6e8eb')";
+                background       : -webkit-gradient(linear, left top, left bottom, from(#eff1f4), color-stop(1, #e6e8eb));
+                background       : -moz-linear-gradient(center bottom, #e6e8eb 0%, #eff1f4 100%) repeat scroll 0 0 transparent;
+                border-bottom-color : #bac2ca;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .item.selected .itemcontainer.cloning {
+                border-top-color : white;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .itemcontainer.cloning .spinner {
+                display    : block;
+                position   : absolute;
+                top        : 12px;
+                right      : 4px;
+                background : url(images/spinner_cloning_in_progress.gif) no-repeat 0 0;
+                width      : 21px;
+                height     : 21px;
+            }
+
+            .deploy-servers-tree BLOCKQUOTE .itemcontainer.cloning .name,
+            .deploy-servers-tree BLOCKQUOTE .itemcontainer.cloning .users,
+            .deploy-servers-tree blockquote .itemcontainer.cloning .users SPAN {
+                color       : #aeaeae;
+                text-shadow : white 0px 1px 0px;
+            }
+        ]]></a:style>
+        <a:style condition="apf.isWebkit"><![CDATA[
+            .deploy-servers-tree BLOCKQUOTE .item .openprjbtn span.greenbtn-middle {
+                height: 18px;
+                padding-top: 5px;
+            } 
+        ]]></a:style>
+
+        <a:presentation>
+            <a:main container="." startclosed="false">
+                <div class="deploy-servers-tree">
+
+                </div>
+            </a:main>
+            <a:item class="." caption="." icon="." openclose="div" select="." container="following-sibling::blockquote">
+                <div class="item">
+
+                </div>
+                <blockquote> </blockquote>
+            </a:item>
+            <a:dragindicator>
+                <div class="dragtree">
+                    <span> </span>
+                    <label>
+                        <u>-</u>
+                    </label>
+                </div>
+            </a:dragindicator>
+            <a:loading>
+                <div class="loading">
+                    <span> </span>
+                    <label>Loading...</label>
+                </div>
+            </a:loading>
+            <a:empty caption=".">
+                <div class="message"/>
+            </a:empty>
+        </a:presentation>
+    </a:tree>
+    
+    <a:label name="lbl-adddeploy">
+        <a:style><![CDATA[
+            .lbl-adddeploy {
+                color         : #5d6774;
+                font-size     : 14px;
+                font-family   : Arial;
+                position      : relative;
+                white-space   : nowrap;
+                text-overflow : ellipsis;
+                text-shadow   : #fafafa 0px 1px 0px;
+                background    : url(images/green_arrow.png) no-repeat top right;
+                height        : 14px;
+                padding-right : 27px;
+                padding-top   : 18px;
+                text-align    : right;
+                font-weight   : bold;
+                margin        : 2px 2px 0 0;
+            }
+        ]]></a:style>
+
+        <a:presentation>
+            <a:main caption="." for="@for">
+                <div class="lbl-adddeploy"> </div>
+            </a:main>
+        </a:presentation>
+    </a:label>
+
+    <a:label name="bold-white-label">
+        <a:style><![CDATA[
+            .bold-white-label {
+                color         : white;
+                font-size     : 12px;
+                line-height   : 14px;
+                font-family   : Arial;
+                position      : relative;
+                height        : 14px;
+                padding       : 2px 0 0 0;
+                font-weight   : bold;
+                white-space   : nowrap;
+                text-overflow : ellipsis;
+            }
+        ]]></a:style>
+
+        <a:presentation>
+            <a:main caption="div" for="@for">
+                <div class="bold-white-label">
+                    <div> </div>
+                </div>
+            </a:main>
+        </a:presentation>
+    </a:label>
+
+    <a:label name="deploy-label">
+        <a:style><![CDATA[
+            .deploy-label {
+                color         : #b1b1b1;
+                font-size     : 11px;
+                line-height   : 13px;
+                font-family   : Arial;
+                position      : relative;
+                padding       : 1px 0;
+                text-overflow : ellipsis;
+                text-shadow   : #1c1c1c 0px 1px 0px;
+            }
+
+            .deploy-label.deploy-bold {
+                word-wrap   : break-word;
+                font-weight : bold;
+                padding-right: 10px;
+            }
+            
+            .deploy-label.deploy-url {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+            
+            .deploy-label.deploy-url:hover {
+                color: #a1a1a1;
+            }
+            
+            .deploy-label.red {
+                color: #F39090;
+            }
+        ]]></a:style>
+
+        <a:presentation>
+            <a:main caption="div" for="@for">
+                <div class="deploy-label">
+                    <div> </div>
+                </div>
+            </a:main>
+        </a:presentation>
+    </a:label>
+
+    <a:modalwindow name="mw-createprj">
+        <a:style><![CDATA[
+            .mw-createprj {
+                position              : relative;
+                overflow              : hidden;
+                -moz-box-shadow       : 0px 2px 8px 0px rgba(0, 0, 0, 0.5);
+                -webkit-box-shadow    : 0px 2px 8px 0px rgba(0, 0, 0, 0.5);
+                box-shadow            : 0px 2px 8px 0px rgba(0, 0, 0, 0.5);
+                -moz-border-radius    : 8px;
+                -webkit-border-radius : 8px;
+                border-radius         : 8px;
+            }
+
+            .mw-createprj .mw_title {
+                border-bottom         : 1px solid #cccccc;
+                text-align            : center;
+                height                : 25px;
+                padding               : 6px 0 0 0;
+                background            : #f5f7fa no-repeat 0 50%;
+                background            : -webkit-gradient(linear, left top, left bottom, from(#f5f7fa), color-stop(1, #ebedf0));
+                background            : -moz-linear-gradient(center bottom, #ebedf0 0%, #f5f7fa 100%) repeat scroll 0 0 transparent;
+                -moz-border-radius    : 8px 8px 0 0;
+                -webkit-border-radius : 8px 8px 0 0;
+                border-radius         : 8px 8px 0 0;
+                -moz-box-shadow       : 0px 1px 0px rgba(255, 255, 255, 0.7) inset;
+                -webkit-box-shadow    : 0px 1px 0px rgba(255, 255, 255, 0.7) inset;
+                box-shadow            : 0px 1px 0px rgba(255, 255, 255, 0.7) inset;
+                position              : relative;
+                overflow              : hidden;
+                font-family           : Arial;
+                font-size             : 15px;
+                color                 : #505050;
+                font-weight           : bold;
+                text-shadow           : rgba(255, 255, 255, 1) 0px 1px 0px;
+                cursor                : default;
+            }
+
+            .mw-createprj .mw_container {
+                position              : absolute;
+                /*overflow              : hidden;*/
+                background-color      : #fcfdfe;
+                top                   : 32px;
+                left                  : 0;
+                right                 : 0;
+                bottom                : 0;
+                -moz-border-radius    : 0 0 8px 8px;
+                -webkit-border-radius : 0 0 8px 8px;
+                border-radius         : 0 0 8px 8px;
+            }
+        ]]></a:style>
+
+        <a:presentation>
+            <a:main collapsed-height="26" minheight="100" minwidth="150" container="div[2]" drag="div[1]" title="div[1]/text()" icon="div[1]/div[1]" buttons="div[1]/div[2]">
+                <div class="mw-createprj">
+                    <div class="mw_title">-<div class="mw_icon"/><div class="mw_buttons"/></div>
+                    <div class="mw_container"> </div>
+                </div>
+            </a:main>
+            <a:button>
+                <div> </div>
+            </a:button>
+        </a:presentation>
+    </a:modalwindow>
+
+    <a:bar name="bar-black">
+        <a:style><![CDATA[
+            .barBlack {
+                position : relative;
+                color: #ffffff;
+            }
+
+            .barBlack .middle {
+                padding: 7px 0 0;
+                margin: 0 10px;
+                position: relative;
+                height: 37px;
+                background: url(images/blackbar_bg.png) repeat-x 0 -44px;
+            }
+
+            .barBlack .left {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 10px;
+                height: 44px;
+                background: url(images/blackbar_bg.png) no-repeat 0 0;
+            }
+
+            .barBlack .right {
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 10px;
+                height: 44px;
+                background: url(images/blackbar_bg.png) no-repeat 0 -88px;
+            }
+        ]]></a:style>
+
+        <a:presentation>
+            <a:main container="div">
+                <div class="barBlack">
+                    <div class="middle"/>
+                    <div class="left"/>
+                    <div class="right"/>
+                </div>
+            </a:main>
+        </a:presentation>
+    </a:bar>
+
+    <a:textbox name="deploy-textbox">
+        <a:style><![CDATA[
+            .deploy-textbox {
+                position           : relative;
+                overflow           : hidden;
+                border             : 1px solid #afafaf;
+                height             : 23px;
+                background-color   : white;
+                -moz-box-shadow    : 0px 1px 6px 0 rgba(175, 175, 175, 0.5) inset;
+                -webkit-box-shadow : 0px 1px 6px 0 rgba(175, 175, 175, 0.5) inset;
+                box-shadow         : 0px 1px 6px 0 rgba(175, 175, 175, 0.5) inset;
+            }
+
+            .deploy-textbox .dt-fix {
+                position:relative;
+                padding:0 4px;
+            }
+
+            .deploy-textbox INPUT {
+                border : 0;
+                width            : 100%;
+                padding          : 0;
+                overflow         : hidden;
+                background-color : transparent;
+                margin           : 0 0 0 0;
+                font-family      : Arial;
+                font-size        : 12px;
+                color            : #202020;
+                outline          : none;
+                resize           : none;
+                position         : relative;
+                height           : 14px;
+                margin           : 5px 0 0 0;
+            }
+        ]]></a:style>
+        <a:presentation>
+            <a:main input="div[1]/input">
+                <div class="deploy-textbox">
+                    <div class="dt-fix">
+                        <input type="text"/>
+                    </div>
+                </div>
+            </a:main>
+        </a:presentation>
+    </a:textbox>
+
+    <a:textbox name="url-textbox">
+        <a:style><![CDATA[
+            .url-textbox {
+                position              : relative;
+                overflow              : hidden;
+                height                : 28px;
+                -moz-border-radius    : 4px;
+                -webkit-border-radius : 4px;
+                border-radius         : 4px;
+                background-color      : #f7ffec;
+                -moz-box-shadow       : 0px 1px 0 rgba(255, 255, 255, 1) inset, 0px 3px 12px rgba(200, 200, 200, 0.8) inset, 0px 1px 0px 0px rgba(255, 255, 255, 0.75);
+                -webkit-box-shadow    : 0px 1px 0 rgba(255, 255, 255, 1) inset, 0px 3px 12px rgba(200, 200, 200, 0.8) inset, 0px 1px 0px 0px rgba(255, 255, 255, 0.75);
+                box-shadow            : 0px 1px 0 rgba(255, 255, 255, 1) inset, 0px 3px 12px rgba(200, 200, 200, 0.8) inset, 0px 1px 0px 0px rgba(255, 255, 255, 0.75);
+            }
+
+            .url-textbox .txt_dsb_fix {
+                position         : relative;
+                overflow         : hidden;
+                height           : 24px;
+                margin           : 0 9px;
+                background-color : transparent;
+            }
+
+            .url-textbox .txt_dsb_fix INPUT {
+                border           : 0;
+                position         : relative;
+                overflow         : hidden;
+                display          : block;
+                width            : 100%;
+                height           : 24px;
+                background-color : transparent;
+                font-family      : Arial;
+                font-size        : 13px;
+                line-height      : 15px;
+                color            : #333333;
+                outline          : none;
+                margin           : 2px 0;
+                text-shadow      : rgba(255, 255, 255, 1) 0px 1px 0px;
+            }
+
+            .url-textbox.url-textboxInitial .txt_dsb_fix input {
+                color            : #a9b09f;
+            }
+            
+            .url-textbox.url-textboxDisabled {
+                background-color: #f3f8fa;
+            }
+            
+            .url-textbox.url-textboxDisabled .txt_dsb_fix input {
+                text-shadow     : #ffffff 0px 1px 0px;
+                color: #6e6e6e;
+            }
+
+            .url-textbox .txt_dsb_fix .close {
+                display : none;
+            }
+
+            .vbox > DIV > .url-textbox {
+                height:26px;
+            }
+
+            .url-textbox .initialfix {
+                display: none;
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                color : #cccccc;
+                margin-top: 6px;
+                background-color      : white;
+            }
+
+            .url-textbox.txt_dsbInitial .initialfix.initFxEnabled {
+                display: block;
+            }
+
+            .url-textbox.txt_dsbError {
+                border: 1px solid red;
+            }
+        ]]></a:style>
+        <a:style condition="apf.isChrome || apf.isSafari"><![CDATA[
+            .url-textbox .txt_dsb_fix {
+                margin : 0 8px;
+            }
+        ]]></a:style>
+
+        <a:presentation>
+            <a:main input="div/input" initialfix="div/div[2]" button="div/div[1]">
+                <div class="url-textbox">
+                    <div class="txt_dsb_fix">
+                        <input type="text"/>
+                        <div class="close"> </div>
+                        <div class="initialfix"> </div>
+                    </div>
+                </div>
+            </a:main>
+            <a:container>
+                <div class="hp_tbxautoc"> </div>
+            </a:container>
+            <a:item caption=".">
+                <div>-</div>
+            </a:item>
+        </a:presentation>
+    </a:textbox>
+
+    <a:radiobutton name="db-radiobutton_blackdot">
+        <a:style><![CDATA[
+            .db-radiobutton_blackdot {
+                position   : relative;
+                overflow  : hidden;
+            }
+
+            .db-radiobutton_blackdot .radio {
+                position:absolute;
+                top:0;
+                left:0;
+                width:20px;
+                height:20px;
+                background:url(images/radiobutton_blackdot.png) no-repeat 0 0;
+                cursor:default;
+            }
+
+            .db-radiobutton_blackdot.lightbg .radio {
+                background-position: 0 -80px;
+            }
+
+            .db-radiobutton_blackdot .rbcaption {
+                position:relative;
+                overflow:hidden;
+                height:17px;
+                padding:3px 0 0 0;
+                display:block;
+                margin-left:28px;
+                font-family:Arial;
+                font-size:12px;
+                color:#ffffff;
+                cursor: default;
+            }
+
+            .db-radiobutton_blackdot.ramopt {
+                margin: 6px 0;
+            }
+
+            .db-radiobutton_blackdot.ramopt .rbcaption {
+                width: 121px;
+            }
+
+            .db-radiobutton_blackdot .rbcaption a {
+                display:block;
+                font-family:Arial;
+                font-size:12px;
+                text-align: left;
+                /*width: 30px;*/
+            }
+
+            .db-radiobutton_blackdot .rbcaption span {
+                font-size: 10px;
+            }
+            .db-radiobutton_blackdot.ramopt .rbcaption .ram {
+                font-size: 12px;
+                display:inline-block;
+                width:56px;
+                color: #505050;
+            }
+            
+            .db-radiobutton_blackdot.ramopt .rbcaption .price {
+                color: #afafaf;
+                font-size: 12px;
+            }
+
+            .db-radiobutton_blackdot .rbcaption span {
+                font-size: 10px;
+            }
+
+            .db-radiobutton_blackdot.lightbg .rbcaption {
+                color: #505050;
+            }
+
+            .db-radiobutton_blackdotSelected .radio {
+                background-position: 0 -20px;
+            }
+            
+            .db-radiobutton_blackdotDisabled .radio {
+                background-position: 0 -40px;
+            }
+            .db-radiobutton_blackdotDisabled .rbcaption {
+                color: #9a9a9a;
+            }
+            .db-radiobutton_blackdotDisabled.db-radiobutton_blackdotSelected .radio {
+                background-position: 0 -60px;
+            }
+            .db-radiobutton_blackdotDisabled.db-radiobutton_blackdotSelected .rbcaption {
+                color: #9a9a9a;
+            }
+
+
+            .db-radiobutton_blackdotSelected.lightbg .radio {
+                background-position: 0 -100px;
+            }
+
+            .db-radiobutton_blackdotDisabled.lightbg .radio {
+                background-position: 0 -120px;
+            }
+            .db-radiobutton_blackdotDisabled.lightbg .rbcaption {
+                color: #9a9a9a;
+            }
+            .db-radiobutton_blackdotDisabled.db-radiobutton_blackdotSelected.lightbg .rbcaption {
+                background-position: 0 -140px;
+            }
+            .db-radiobutton_blackdotDisabled.db-radiobutton_blackdotSelected.lightbg .rbcaption {
+                color: #9a9a9a;
+            }
+
+            .rbAccessSpecify.db-radiobutton_blackdotDisabled .rbcaption a,
+            .rbAccessSpecify.db-radiobutton_blackdotDisabled .rbcaption {
+                color: #fc6b6b;
+            }
+        ]]></a:style>
+
+        <a:presentation>
+            <a:main label="span">
+                <div class="db-radiobutton_blackdot">
+                    <div class="radio"> </div>
+                    <span class="rbcaption">-</span>
+                </div>
+            </a:main>
+        </a:presentation>
+    </a:radiobutton>
+
+    <a:dropdown name="deploy-dropdown">
+        <a:style><![CDATA[
+            .deploy-dropdown {
+                position              : relative;
+                overflow              : hidden;
+                height                : 21px;
+                cursor                : default;
+                border                : 1px solid #1c1c1c;
+                -moz-border-radius    : 5px;
+                -webkit-border-radius : 5px;
+                border-radius         : 5px;
+                background            : #404040 no-repeat 0 50%;
+                filter                : progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#3e3e3e', endColorstr='#393939');
+                -ms-filter            : "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#3e3e3e', endColorstr='#393939')";
+                background            : -webkit-gradient(linear, left top, left bottom, from(#3e3e3e), color-stop(1, #393939));
+                background            : -moz-linear-gradient(center bottom, #393939 0%, #3e3e3e 70%) repeat scroll 0 0 transparent;
+                -moz-box-shadow       : 0 1px 0 0 rgba(255, 255, 255, 0.1) inset, 0px 1px 0px 0px rgba(255, 255, 255, 0.07);
+                -webkit-box-shadow    : 0 1px 0 0 rgba(255, 255, 255, 0.1) inset, 0px 1px 0px 0px rgba(255, 255, 255, 0.07);
+                box-shadow            : 0 1px 0 0 rgba(255, 255, 255, 0.1) inset, 0px 1px 0px 0px rgba(255, 255, 255, 0.07);
+            }
+
+            .deploy-dropdown .label {
+                font-family : Arial;
+                font-size   : 12px;
+                line-height : 15px;
+                color       : #eeeeee;
+                position    : relative;
+                display     : block;
+                height      : 15px;
+                margin      : 1px 21px 3px 6px;
+                text-shadow : #303030 0px 1px 0px;
+            }
+
+            .deploy-dropdown .button {
+                width:16px;
+                height:16px;
+                position:absolute;
+                top:3px;
+                right:2px;
+                background:url(images/deploy-dropdown-bird.png) no-repeat 4px 7px;
+            }
+
+            .deploy-optionList {
+                padding: 0;
+                z-index: 10000;
+                position: absolute;
+                overflow:visible;
+
+                font-family   : Tahoma;
+                font-size     : 11px;
+                line-height   : 14px;
+                color         : #f1f1f1;
+                cursor:default;
+
+                display : none;
+                border:1px solid rgba(255, 255, 255, 0.1);
+
+                -moz-box-shadow    : 0px 3px 15px 0px rgba(0, 0, 0, 0.65);
+                -webkit-box-shadow : 0px 3px 15px 0px rgba(0, 0, 0, 0.65);
+                box-shadow         : 0px 3px 15px 0px rgba(0, 0, 0, 0.65);
+
+                filter             : progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#1c1c1c', endColorstr='#262626');
+                -ms-filter         : "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#1c1c1c', endColorstr='#262626')";
+                background         : -webkit-gradient(linear, left top, left bottom, from(#1c1c1c), color-stop(0.9, #262626));
+                background         :-moz-linear-gradient(center bottom, #262626 0%, #1c1c1c 20%) repeat scroll 0 0 transparent;
+            }
+
+            .deploy-optionList .item {
+                padding: 3px 16px 5px 23px;
+                white-space: nowrap;
+                cursor : default;
+                z-index:1100000;
+                display:block;
+                height:12px;
+            }
+
+            .deploy-optionList .item:hover {
+                background-color : #292929;
+            }
+         ]]></a:style>
+         <a:style condition="apf.isSafari || apf.isChrome"><![CDATA[
+
+         ]]></a:style>
+
+        <a:presentation>
+            <a:main label="div[2]/text()" button="." width-diff="-1" item-height="20">
+                <div class="deploy-dropdown">
+                    <div class="button"> </div>
+                    <div class="label">-</div>
+                </div>
+            </a:main>
+            <a:container contents=".">
+                <div class="deploy-optionList">
+                </div>
+            </a:container>
+            <a:item class="." caption="text()" select="." inherit="true">
+                <span class="item">-</span>
+            </a:item>
+            <a:empty caption=".">
+                <div class="empty">-</div>
+            </a:empty>
+        </a:presentation>
+    </a:dropdown>
+
+    <a:dropdown name="c9-dropdown">
+        <a:style><![CDATA[
+            .c9-dropdown {
+                position              : relative;
+                overflow              : visible;
+                height                : 22px;
+                border                : 1px solid #dadada;
+                border-bottom         : 1px solid #b1b2b4;
+                -moz-border-radius    : 3px;
+                -webkit-border-radius : 3px;
+                border-radius         : 3px;
+                cursor                : default;
+                background            : #fefefe no-repeat 0 50%;
+                background            : -webkit-gradient(linear, left top, left bottom, from(#fefefe), color-stop(1, #e1e1e1));
+                background            : -moz-linear-gradient(center bottom, #e1e1e1 0%, #fefefe 70%) repeat scroll 0 0 transparent;
+
+                -moz-box-shadow       : 1px -1px 0 0px rgba(255, 255, 255, 1) inset, 0px 1px 0px 0px rgba(0, 0, 0, 0.1);
+                -webkit-box-shadow    : 1px -1px 0 0px rgba(255, 255, 255, 1) inset, 0px 1px 0px 0px rgba(0, 0, 0, 0.1);
+                box-shadow            : 1px -1px 0 0px rgba(255, 255, 255, 1) inset, 0px 1px 0px 0px rgba(0, 0, 0, 0.1);
+            }
+
+            .c9-dropdown .c9-ddlabel {
+                font-family : Arial;
+                font-size   : 12px;
+                color       : #333333;
+                position    : relative;
+                display     : block;
+                height      : 14px;
+                margin      : 3px 21px 0 8px;
+            }
+
+            .c9-dropdown .c9-ddbutton {
+                width              : 16px;
+                height             : 16px;
+                border-left        : 1px solid #b9b9b9;
+                position           : absolute;
+                top                : 3px;
+                right              : 2px;
+                background         : url(images/dd-arrow.png) no-repeat 4px 6px;
+                -moz-box-shadow    : 1px 0px 0 0px rgba(255, 255, 255, 1) inset;
+                -webkit-box-shadow : 1px 0px 0 0px rgba(255, 255, 255, 1) inset;
+                box-shadow         : 1px 0px 0 0px rgba(255, 255, 255, 1) inset;
+            }
+
+            .c9dd-optionList {
+                display               : none;
+                background-color      : white;
+                margin-top            : 1px;
+                padding               : 5px 0 5px 0;
+                overflow              : visible;
+                position              : absolute;
+                -moz-border-radius    : 3px;
+                -webkit-border-radius : 3px;
+                border-radius         : 3px;
+                -moz-box-shadow       : 1px 1px 4px 1px rgba(0, 0, 0, 0.2);
+                -webkit-box-shadow    : 1px 1px 4px 1px rgba(0, 0, 0, 0.2);
+                box-shadow            : 1px 1px 4px 1px rgba(0, 0, 0, 0.2);
+                width                 : 181px;
+            }
+
+            .c9dd-optionList .c9-item {
+                font-size   : 12px;
+                font-family : Arial;
+                line-height : 13px;
+                color       : #333333;
+                height      : 16px;
+                padding     : 3px 0 0 10px;
+                position    : relative;
+                display     : block;
+                overflow    : hidden;
+                cursor      : default;
+            }
+
+            .c9dd-optionList .c9-item:hover {
+                background : #419dd6 no-repeat 0 50%;
+                background : -webkit-gradient(linear, left top, left bottom, from(#7ec9f4), color-stop(1, #419dd6));
+                background :-moz-linear-gradient(center bottom, #419dd6 0%, #7ec9f4 100%) repeat scroll 0 0 transparent;
+                color:white;
+            }
+
+            .c9dd-optionList .c9-item.selected {
+                font-weight : bold;
+                background  : none;
+                color       : #333333;
+            }
+
+            .c9dd-optionList .c9-item.selected.hover {
+                color: #666666;
+            }
+
+            .c9dd-optionList .c9-list-text {
+                height      : 23px;
+                padding     : 8px 10px 0 10px;
+                position    : absolute;
+                bottom      : 0;
+                left        : 0;
+                right       : 0;
+                font-family : Arial;
+                font-size   : 11px;
+                line-height : 13px;
+                color       : #bbbbbb;
+                text-align  : center;
+            }
+          ]]></a:style>
+          <a:style condition="apf.isSafari || apf.isChrome"><![CDATA[
+            .c9-dropdown .c9-ddlabel {
+                height : 15px;
+                margin : 4px 21px 0 5px;
+            }
+         ]]></a:style>
+
+        <a:presentation>
+            <a:main label="div[2]/text()" button="." width-diff="-1" item-height="20">
+                <div class="c9-dropdown">
+                    <div class="c9-ddbutton"> </div>
+                    <div class="c9-ddlabel">-</div>
+                </div>
+            </a:main>
+            <a:container contents=".">
+                <div class="c9dd-optionList">
+                </div>
+            </a:container>
+            <a:item class="." caption="text()" select="." inherit="true">
+                <span class="c9-item">-</span>
+            </a:item>
+            <a:empty caption=".">
+                <div class="empty">-</div>
+            </a:empty>
+        </a:presentation>
+    </a:dropdown>
+
+    <a:menu name="deploy-mnu">
+        <a:style><![CDATA[
+            .deploy-mnu {
+                margin   : 0;
+                z-index  : 10000;
+                position : absolute;
+                overflow : visible;
+                display  : none;
+                width    : 400px;
+            }
+
+            .deploy-mnu .container {
+                position : absolute;
+                /* fallback (Older Opera) */
+                background: #272727;
+                /* Mozilla: */
+                background-image: url(images/noise_pattern_transparent.png), -moz-linear-gradient(top, #2f2f2f, #202020);
+                /* Chrome, Safari:*/
+                background-image: url(images/noise_pattern_transparent.png), -webkit-gradient(linear, left top, left bottom, from(#2f2f2f), to(#202020));
+                -moz-border-radius    : 9px;
+                -webkit-border-radius : 9px;
+                border-radius         : 9px;
+                -moz-box-shadow       : 0 1px 5px rgba(0,0,0,0.7), inset 0 1px 0px rgba(255,255,255,0.18);
+                -webkit-box-shadow    : 0 1px 5px rgba(0,0,0,0.7), inset 0 1px 0px rgba(255,255,255,0.21);
+                box-shadow            : 0 1px 5px rgba(0,0,0,0.7), inset 0 1px 0px rgba(255,255,255,0.18);
+                border: 1px solid #000000;
+            }
+            
+            .deploy-mnu .arrow {
+                position : absolute;
+                width: 14px;
+                height: 23px;
+                top: 36px;
+                left: -13px;
+                z-index: 10001;
+                background: url(images/flyout_arrows.png) no-repeat 0 -19px;
+            }
+        ]]></a:style>
+
+        <a:presentation>
+            <a:main container="div[2]">
+                <div class="deploy-mnu">
+                    <div class="arrow"> </div>
+                    <div class="container"> </div>
+                </div>
+            </a:main>
+            <a:item caption="text()" icon="div" hotkey="div" inherit="true">
+                <div class="menu-item">-<div class="icon"/></div>
+            </a:item>
+            <a:divider inherit="true">
+                <div class="menu-divider"/>
+            </a:divider>
+        </a:presentation>
+    </a:menu>
+</a:skin>

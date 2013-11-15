@@ -1,0 +1,12 @@
+.heroku-brand {
+    color: #808080;
+    font-size: 11px;
+}
+
+.heroku-signin-deploy {
+    height: 160px;
+}
+
+.heroku-signin-deploy .label {
+    font-size: 12px;
+}

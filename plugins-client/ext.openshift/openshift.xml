@@ -1,0 +1,127 @@
+<a:application xmlns:a="http://ajax.org/2005/aml">
+
+    <a:skin id="sksetOpenshift" src="{require('core/ide').staticPrefix + '/ext/openshift/skin.xml'}" media-path="{require('core/ide').staticPrefix + '/ext/openshift/style/images/'}" icon-path="{require('core/ide').staticPrefix + '/ext/openshift/style/icons/'}"/>
+
+    <a:model id="mdlOpenshiftApps"/>
+    <a:model id="mdlOpenshiftAccount"/>
+    <a:model id="mdlOpenshiftCartridges"/>
+
+    <a:model id="mdlOpenshiftUserState">
+        <state value="init" initmsg="Initializing OpenShift plugin ..."/>
+    </a:model>
+    
+    <div id="openshiftCheckSignin" visible="{[mdlOpenshiftUserState:://state/@value] == 'init'}" class="server-frame openshift-signin-deploy" height="199" margin="0 0 0 0" width="350">
+        <a:vbox pack="center" align="center" padding="19" edge="18 0 0 16" height="175">
+            <div>
+                <a:img src="{require('core/ide').staticPrefix + '/dashboard/style/images/beta_label.png'}" alt="Beta" margin="0 0 4"/>
+                <a:img src="{require('core/ide').staticPrefix + '/ext/openshift/style/images/openshift-logo_black.png'}" alt="Openshift logo"/>
+                <div class="openshift-brand" edge="4 0 0 0">
+                    Openshift.com
+                </div>
+            </div>
+            <div><?lm [mdlOpenshiftUserState:://state/@initmsg] ?></div>
+        </a:vbox>
+    </div>
+    
+    <div id="openshiftSigninForm" visible="{[mdlOpenshiftUserState:://state/@value] == 'signin'}" class="server-frame openshift-signin-deploy" height="199" margin="0 0 0 0" width="350">
+        <div margin="17" validgroup="vgOpenshiftAccount">
+            <a:vbox edge="8" height="175">
+                <a:label margin="0 0 2">Username:</a:label>
+                <a:textbox id="openshiftSigninEmail" tabindex="1" required="true" datatype="a:email" invalidmsg="Invalid Entry; Please enter a correct email address"/>
+
+                <a:label margin="8 0 2">Password:</a:label>
+                <a:secret id="openshiftSigninPass" tabindex="2" pattern="/(\S)+/" required="true" invalidmsg="Password is required"/>
+                <a:hbox align="start" pack="end" flex="1" width="100%" edge="8 0 0">
+                    <a:button id="openshiftSigninSubmit" width="100" height="26" tabindex="3" default="2" skin="button-green-rounded3" skinset="gitskin" onclick="                           if (vgOpenshiftAccount.validate()) {                               require('ext/openshift/openshift').signin(                                 openshiftSigninEmail.getValue(),                                 openshiftSigninPass.getValue()                               );                           }">
+                        Sign-in
+                    </a:button>
+                </a:hbox>
+                
+                <div margin="71 0 0 0">Need an account? <a href="https://openshift.redhat.com/app/account/new" target="_blank">Create One</a></div>
+            </a:vbox>
+        </div>
+    </div>
+    
+    <div visible="{[mdlOpenshiftUserState:://state/@value] == 'namespace'}" class="server-frame openshift-signin-deploy" height="199" margin="0 0 0 0" width="350">
+        <div margin="17" validgroup="vgOpenshiftNamespace">
+            <a:vbox edge="8" height="175">
+                <div margin="10 0">
+                    You don't have configured a namespace yet. You will not be able to create applications without first creating a namespace.
+                </div>
+                <a:label margin="0 0 2">Namespace:</a:label>
+                <a:textbox id="openshiftNS" tabindex="1" required="true" pattern="/^[0-9a-z]{1}[0-9a-z-]{2,49}$/i" invalidmsg="Please provide a valid name using letters (a-z), numbers (0-9) and dashes (-)"/>
+
+                <div margin="10 0 15 0">
+                    Your namespace is unique to your account and is the suffix of the public URLs we assign to your applications.
+                </div>
+                
+                <a:hbox align="start" pack="end" flex="1" width="100%" edge="8 0 0">
+                    <a:button width="100" height="26" tabindex="3" default="2" skin="button-green-rounded3" skinset="gitskin" onclick="                           if (vgOpenshiftNamespace.validate()) {                               this.disable();                               require('ext/openshift/openshift').createNamespace(openshiftNS.value.trim(), function() {                                   this.enable();                               });                           }">
+                        Create
+                    </a:button>
+                </a:hbox>
+            </a:vbox>
+        </div>
+    </div>
+
+    <a:vbox id="openshiftListing" class="server-frame" visible="{[mdlOpenshiftUserState:://state/@value] == 'list'}" height="199" margin="0 0 0 0" width="350">
+        <a:hbox align="center" margin="8 17 0 17">
+            <div class="lblprjtype">Your Openshift apps:</div>
+            <a:filler/>
+            <a:button id="btnOpenshiftAddNewApp" icon="add_icon.gif" skinset="gitskin" skin="deploy-toolbutton" onclick="require('ext/openshift/openshift').addApp()">
+                    Create new
+            </a:button>
+            <!--<a:button-->
+            <!--    skin="c9-toolbarbutton2"-->
+            <!--    icon="delete_icon.png"-->
+            <!--    onclick="require('ext/openshift/openshift').removeApp()" />-->
+            <!--<a:button-->
+            <!--    id="btnOpenshiftAddNewApp"-->
+            <!--    icon="refresh.png"-->
+            <!--    skinset="gitskin"-->
+            <!--    skin="c9-toolbarbutton2"-->
+            <!--    onclick="require('ext/openshift/openshift').initOpenshift()" />-->
+        </a:hbox>
+        <a:hbox class="openshift-signin-deploy" edge="8 0" padding="4">
+            <a:list id="lstOpenshiftApps" class="openshift" flex="1" skinset="sksetOpenshift" skin="deploy-apps-list" height="144" model="mdlOpenshiftApps" empty-message="No Openshift apps available" multiselect="false" autoselect="true" eachvalue="[@name]" canrename="false" sort="[@name]">
+                <a:each match="[app]">
+                    <a:caption value="[@caption]"/>
+                </a:each>
+                <a:actions>
+                    <a:add/>
+                </a:actions>
+             </a:list>
+
+            <a:scrollbar for="lstOpenshiftApps" skin="sbios" margin="0" width="11" overflow="auto"/>
+        </a:hbox>
+    </a:vbox>
+    
+    <a:vbox id="openshiftCreateNew" class="server-frame azure-signin-deploy" height="199" margin="0 0 0 0" width="350" visible="{[mdlOpenshiftUserState:://state/@value] == 'create'}" validgroup="vgOpenshiftCreateInstance">
+        <div style="padding: 12px 17px 0 17px">
+            <a:hbox edge="0 0 2">
+                <a:label style="width:130px">Name:</a:label>
+                <a:textbox id="tbDeployNameOpenshift" initial-message="Max 30 characters" required="true" realtime="true" pattern="/^[0-9a-z]{1}[0-9a-z-]{2,49}$/i" invalidmsg="Please provide a valid name using letters (a-z), numbers (0-9) and dashes (-)" flex="1"/>
+            </a:hbox>
+
+            <a:hbox edge="8 0 2">
+                <a:label style="width:130px">Application type:</a:label>
+                <a:dropdown id="ddlOpenshiftGear" model="mdlOpenshiftCartridges" each="[cartridge]" caption="[@desc]" value="[@id]" autoselect="true" flex="1"/>
+            </a:hbox>        
+           
+        </div>
+    </a:vbox>    
+
+    <a:hbox padding="10" edge="10 10 11" align="center" pack="end">
+        <a:button id="btnDisconnectOpenshift" skin="btn-default-simple" margin="3 0 0" visible="{[mdlOpenshiftUserState:://state/@value] == 'create' || [mdlOpenshiftUserState:://state/@value] == 'list'}" onclick="require('ext/openshift/openshift').signout();">
+            Sign out from Openshift
+        </a:button>
+        <a:filler/>
+        <a:button id="btnCloseAddDeployOpenshift" skin="btn-default-simple" margin="3 0 0" visible="{[mdlOpenshiftUserState:://state/@value] == 'create'}" onclick="require('ext/openshift/openshift').setState('list');">
+            BACK
+        </a:button>
+        <a:button id="btnCloseAddDeployOpenshift" skin="btn-default-simple" margin="3 0 0" visible="{[mdlOpenshiftUserState:://state/@value] != 'create'}" onclick="mwDeployTarget.hide();">
+            CANCEL
+        </a:button>
+        <a:button id="btnAddDeployOpenshift" skin="btn-default-css3" class="btn-green" caption="ADD" visible="{[mdlOpenshiftUserState:://state/@value] == 'create' || [mdlOpenshiftUserState:://state/@value] == 'list'}" onclick="             var os = require('ext/openshift/openshift');             var state = mdlOpenshiftUserState.data.selectSingleNode('//state/@value').nodeValue;             if (state == 'create') {                 if (vgOpenshiftCreateInstance.validate()) {                     os.createGear(tbDeployNameOpenshift.value.trim(), ddlOpenshiftGear.selected.getAttribute('id'));                 }             } else if (state == 'list') {                 os.createDeploy(lstOpenshiftApps.selected.getAttribute('caption'));             }         "/>
+    </a:hbox>
+</a:application>

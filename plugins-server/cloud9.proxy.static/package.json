@@ -1,0 +1,10 @@
+{
+    "name": "cloud9.proxy.static",
+    "version": "0.0.1",
+    "main": "static-patch.js",
+    "private": true,
+    "plugin": {
+        "provides": ["proxy.static"],
+        "consumes": ["static", "client.cloud9"]
+    }
+}

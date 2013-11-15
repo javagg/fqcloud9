@@ -1,0 +1,1586 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<a:skin xmlns:a="http://ajax.org/2005/aml">
+    <a:button name="collaboratorbutton">
+        <a:style><![CDATA[
+            .collaboratorbutton {
+                display: block;
+                height: 17px;
+                float: left;
+                cursor: default;
+                padding: 1px;
+                margin-top: 2px;
+                line-height: 13px;
+                -moz-user-select: -moz-none;
+                -khtml-user-select: none;
+                -webkit-user-select: none;
+                -o-user-select: none;
+                user-select: none;
+            }
+
+            .collaboratorbutton span {
+                width: 17px;
+                height: 17px;
+                display: inline-block;
+            }
+
+            .collaboratorbuttonOver span {
+                background-position: 0px -20px;
+            }
+
+            .collaboratorbuttonDown span {
+                background-position: 0px -40px;
+            }
+
+            .collaboratorbuttonDisabled span {
+                background-position: 0px -60px;
+            }
+
+            .collaboratorbutton.remove_collaborator span {
+                background-image: url('images/remove_collaborator.png');
+            }
+
+            .collaboratorbutton.add_collaborator span {
+                background-image: url('images/add_collaborator.png');
+            }
+
+            .collaboratorbutton.edit_collaborator span {
+                background-image: url('images/edit_collaborator.png');
+            }
+
+            .collaboratorbutton.chat_collaborator span {
+                background-image: url('images/chat_collaborator.png');
+            }
+
+            .collaboratorbutton.share_project span {
+                background-image: url('images/share-icon.png');
+            }
+
+            .collaboratorbutton.share_project {
+                height: 19px;
+            }
+
+            .collaboratorbutton.share_project span {
+                width: 26px;
+                height: 19px;
+            }
+        ]]></a:style>
+        <a:presentation>
+            <a:main caption="div/text()" label="div/text()" background="div/span" icon="div/span">
+                <div class="collaboratorbutton">
+                    <div>
+                        <span> </span>
+                    </div>
+                </div>
+            </a:main>
+        </a:presentation>
+    </a:button>
+    <a:modalwindow name="todowin">
+        <a:style><![CDATA[
+            .todowin_container{
+                z-index                         : 101;
+                padding                         : 3px;
+                -moz-border-radius              : 5px;
+                -webkit-border-radius           : 5px;
+                -webkit-border-top-right-radius : 0px;
+                -moz-border-radius-topright     : 0px;
+                background: #333 url('images/dockPanelSpeckledBG.png') repeat;
+                -moz-user-select: -moz-none;
+                -khtml-user-select: none;
+                -webkit-user-select: none;
+                -o-user-select: none;
+                user-select: none;
+            }
+
+            .todowin{
+                position              : relative;
+                padding               : 20px 0 0 0;
+                border   : 1px solid #8c8c8c;
+            }
+
+            .todowin .todowinhead{
+                height           : 22px;
+                line-height      : 22px;
+                margin           : -20px 0 0px 0;
+                background       : #333;
+                background       : -moz-linear-gradient(top, #e3e3e3, #d4d4d4 );
+                background-image : -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e3e3e3), to(#d4d4d4));
+                color            : #202020;
+                border-bottom    : 1px solid #8c8c8c;
+                font-family      : Trebuchet MS;
+                font-size        : 10pt;
+            }
+
+            .todowin .todowinhead .title {
+                display          : inline-block;
+                background       : #f6f6f6;
+                background       : -moz-linear-gradient(top, #eee, #f6f6f6 );
+                background-image : -webkit-gradient(linear, 0% 0%, 0% 100%, from(#eee), to(#f6f6f6));
+                padding          : 0 5px 0 13px;
+                height           : 24px;
+                line-height      : 24px;
+                border-right     : 1px solid #8c8c8c;
+            }
+
+            .todowin .toolbar.collaborateBottomBar {
+                border-top: 1px solid #8c8c8c;
+                position: absolute;
+            }
+
+            .todowin .toolbar {
+                background    : #f6f6f6;
+                border-bottom : 1px solid #b2b2b2;
+            }
+
+            .todowin .toolbar .subbar {
+                background    : #f6f6f6;
+                border-bottom : 1px solid #b2b2b2;
+            }
+
+            .todowin .toolbar .subbar .toolbarbutton div{
+                color: #fff;
+            }
+
+            .todowinActive .todowinhead{
+                background : #25a8e7 url(images/sectionheadactive.gif);
+                color      : white;
+            }
+
+            .todowin .vbox {
+                /*border-top : 1px solid #505153;*/
+            }
+
+            .todowin .chat_bg {
+                background: #f8f8f8;
+                width: 100%;
+            }
+
+            .todowin .dockwin {
+                overflow: hidden;
+                padding: 0px;
+            }
+
+            .todowin .dockwin .docktitle {
+                display: none;
+            }
+
+            .todowin .dockwin .dockcontent {
+                top: 1px;
+            }
+
+            .todowin .todowincontainer{
+                width      : 100%;
+                height     : 100%;
+                background : #fff;
+            }
+
+            .todowinCurrent .todowinhead{
+                /*border-bottom : 2px solid #c3c3c3;
+                padding-bottom  : 2px;
+                z-index         : 10;
+                position        : relative;*/
+            }
+
+            /*.todowin .todowinhead div{
+                float      : right;
+                width      : 14px;
+                height     : 14px;
+                margin     : -1px 3px 0 0;
+                border     : 1px solid transparent;
+                background : no-repeat 2px 2px;
+            }
+
+            .todowin .todowinhead div.hover{
+                border : 1px solid white;
+            }
+            .todowin .todowinhead .max{
+                background-image: url(images/cmswin_max.gif);
+            }
+            .todowinMax .todowinhead .max{
+                background-image: url(images/cmswin_restore.gif);
+            }
+            .todowin .todowinhead div.down{
+                background-color : white;
+            }*/
+
+            .todowin .todowinhead .close {
+                margin-left: 5px;
+            }
+
+            .todowin .todowinhead .close a {
+                display    : inline-block;
+                width      : 14px;
+                height     : 14px;
+                position   : relative;
+                top        : 3px;
+                background : url(images/close_tab_btn.png) 0px 0px no-repeat;
+            }
+
+            .todowin .todowinhead .close a:hover {
+                background-position: -14px 0px;
+            }
+
+            .todowin .todowincontainer .list{
+                background: transparent;
+                border: none;
+            }
+
+            .todowin .todowincontainer .dockcontent > div {
+                margin-left: 5px;
+            }
+
+            .todowin .todowincontainer .dockcontent .dropdown {
+                left: 5px;
+            }
+
+            .todowin .todolist {
+            }
+
+            .hbox.clist_container {
+                background : #F4F8FA url(images/panel_bg_noisepattern.png) 0 0 repeat;
+                overflow   : hidden;
+            }
+
+            .hbox.hboxchatinput {
+                left: 0;
+                bottom: 0;
+                border-top       : 1px solid #dde2e7;
+                background: #feffff; /* Old browsers */
+                background: -moz-linear-gradient(top,  #feffff 0%, #edf0f3 50%, #f5f7f9 51%, #eceff2 100%, #eceff2 100%); /* FF3.6+ */
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#feffff), color-stop(50%,#edf0f3), color-stop(51%,#f5f7f9), color-stop(100%,#eceff2), color-stop(100%,#eceff2)); /* Chrome,Safari4+ */
+                background: -webkit-linear-gradient(top,  #feffff 0%,#edf0f3 50%,#f5f7f9 51%,#eceff2 100%,#eceff2 100%); /* Chrome10+,Safari5.1+ */
+                background: -o-linear-gradient(top,  #feffff 0%,#edf0f3 50%,#f5f7f9 51%,#eceff2 100%,#eceff2 100%); /* Opera 11.10+ */
+                background: -ms-linear-gradient(top,  #feffff 0%,#edf0f3 50%,#f5f7f9 51%,#eceff2 100%,#eceff2 100%); /* IE10+ */
+                background: linear-gradient(top,  #feffff 0%,#edf0f3 50%,#f5f7f9 51%,#eceff2 100%,#eceff2 100%); /* W3C */
+                -webkit-border-radius: 0 0 4px 4px;
+                -moz-border-radius: 0 0 4px 4px;
+                border-radius: 0 0 4px 4px;
+            }
+
+            .hbox.hboxchatinput .ta {
+                overflow              : auto;
+                overflow-x            : hidden;
+                padding               : 4px 5px;
+                border                : none;
+                -webkit-border-radius : 4px;
+                -moz-border-radius    : 4px;
+            }
+
+            .taDisabled {
+                background: #eee;
+            }
+
+            .hbox.hboxchatinput .tb_textbox .sbtb_middle {
+                height : auto;
+                padding: 0px 20px 0 5px;
+                -webkit-border-radius : 4px;
+                -moz-border-radius    : 4px;
+                border-radius: 4px;
+                border: 1px solid #A0A0A0;
+            }
+            .hbox.hboxchatinput .tb_textboxDisabled .sbtb_middle {
+                background-image: linear-gradient(bottom, #F0F0F0 0%, #EFEFEF 100%);
+                background-image: -o-linear-gradient(bottom, #F0F0F0 0%, #EFEFEF 100%);
+                background-image: -moz-linear-gradient(bottom, #F0F0F0 0%, #EFEFEF 100%);
+                background-image: -webkit-linear-gradient(bottom, #F0F0F0 0%, #EFEFEF 100%);
+                background-image: -ms-linear-gradient(bottom, #F0F0F0 0%, #EFEFEF 100%);
+            }
+
+            .hbox.hboxchatinput .tb_textbox .sbtb_middle input {
+                height      : 24px;
+                line-height : 18px;
+                padding: 2px 0;
+            }
+
+            .hbox .chat_text .collaborator_color {
+                display: block;
+                float: left;
+                width: 6px;
+                height: 6px;
+                margin: 2px 5px 0 0;
+                border: 1px solid #3b3b3b;
+            }
+
+            .hbox.hboxchatinput .tb_textboxDisabled .sbtb_middle input {
+                color: #8b8b8c;
+                text-shadow : #c0c0c2 0px 1px 0px;
+            }
+
+            .chat_history_overview {
+                padding-bottom : 8px;
+                border-bottom  : 1px dashed #dbdbdb;
+                margin-bottom  : 3px;
+            }
+
+            .chat_history_overview img {
+                float   : left;
+                padding : 3px 3px 0 0;
+            }
+
+            .tb_private_chat {
+                background : #f6f6f6;
+                border-bottom : 1px solid #b1b1b1;
+            }
+
+            .hbox .chat_text {
+                font-family: "Helvetica Web", Helvetica, Arial, sans-serif;
+                overflow: hidden;
+                word-wrap: break-word;
+                padding: 0 0 10px 0;
+                background: transparent;
+                font-size: 12px;
+                -moz-user-select: text;
+                -khtml-user-select: text;
+                -webkit-user-select: text;
+                -o-user-select: text;
+                user-select: text;
+            }
+
+            .hbox .chat_text .chat_message_block {
+                position: relative;
+                padding : 10px 8px 4px 8px;
+            }
+
+            .hbox .chat_text .chat_message_block.same_user {
+                padding-top : 1px;
+            }
+
+            .chat_message_block.me {
+                /*background-color: #f5f5f5;*/
+            }
+
+            .chat_message_block .chat_header {
+                padding-bottom: 5px;
+                color: #b8b8b8;
+                font-size: 10px;
+            }
+
+            .chat_message_block.me .chat_header {
+                /*color: #318ab3;*/
+            }
+
+            .chat_message_block .chat_msg_timestamp {
+                float: right;
+                color: #b8b8b8;
+                font-size: 10px;
+                padding: 0;
+                cursor: default;
+            }
+
+            .chat_message_block .emoji {
+                font-family: "Apple Color Emoji";
+            }
+
+            .chat_message_block .chat_message {
+                color: #303030;
+            }
+
+            .chat_message_block .chat_msg_timestamp.cmt_divider {
+                color: #d6d6d6;
+                font-weight: normal;
+            }
+
+            .chat_message_block .chat_msg_timestamp.cmt_divider:hover {
+                color: #42464a;
+            }
+
+            .collab_output_container {
+                background : #fafcfe url(images/noise_pattern_transparent-2.png);
+                -webkit-box-shadow:  0px 3px 4px 0px #dde2e7 inset;
+                -moz-box-shadow:  0px 3px 4px 0px #dde2e7 inset;
+                box-shadow:  0px 1px 3px 0px #dde2e7 inset;
+                border: 1px solid #fff;
+                border-top: none;
+                -moz-user-select: -moz-none;
+                -khtml-user-select: none;
+                -webkit-user-select: none;
+                -o-user-select: none;
+                user-select: none;
+            }
+
+            .dockButton .dock_icon_image.dii_primary.collab_dockbtn_single {
+                border: 1px solid #414242;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                border-radius: 4px;
+                width: 25px;
+                height: 25px;
+                top: 7px;
+                left: 5px;
+            }
+        ]]></a:style>
+        <a:style condition="apf.isGecko"><![CDATA[
+            .hbox.hboxchatinput .tb_textbox .sbtb_middle input {
+                padding: 3px 20px 2px 0;
+            }
+        ]]></a:style>
+        <a:presentation>
+            <a:main collapsed-height="20" min-width="150" min-height="80" container="div[1]/div[2]" drag="div[1]/div[1]" title="div[1]/div[1]/div[1]/text()">
+                <div class="todowin_container">
+                    <div class="todowin">
+                        <div class="todowinhead">
+                            <div class="title">-
+                                <span class="close">
+                                    <a href="#" class="close_link" rel="0" onclick="require('ext/collaborate/collaborate').closeWindow(event, this)"/>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="todowincontainer"/>
+                    </div>
+                </div>
+            </a:main>
+            <a:button>
+                <div> </div>
+            </a:button>
+        </a:presentation>
+    </a:modalwindow>
+    <a:modalwindow name="dockextwin">
+        <a:style><![CDATA[
+            .dockextwin_container{
+                z-index                         : 101;
+                padding                         : 3px;
+                -moz-border-radius              : 5px;
+                -webkit-border-radius           : 5px;
+                -webkit-border-top-right-radius : 0px;
+                -moz-border-radius-topright     : 0px;
+                background: #333 url('images/dockPanelSpeckledBG.png') repeat;
+                -moz-user-select: -moz-none;
+                -khtml-user-select: none;
+                -webkit-user-select: none;
+                -o-user-select: none;
+                user-select: none;
+            }
+
+            .dockextwin{
+                position : relative;
+                padding  : 20px 0 0 0;
+                border   : 1px solid #8c8c8c;
+            }
+
+            .dockextwin .dockextwinhead{
+                height           : 22px;
+                line-height      : 22px;
+                margin           : -20px 0 0px 0;
+                background       : #333;
+                background       : -moz-linear-gradient(top, #e3e3e3, #d4d4d4 );
+                background-image : -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e3e3e3), to(#d4d4d4));
+                color            : #202020;
+                border-bottom    : 1px solid #8c8c8c;
+                font-family      : Trebuchet MS;
+                font-size        : 10pt;
+            }
+
+            .dockextwin .dockextwinhead .title {
+                display          : inline-block;
+                background       : #f6f6f6;
+                background       : -moz-linear-gradient(top, #eee, #f6f6f6 );
+                background-image : -webkit-gradient(linear, 0% 0%, 0% 100%, from(#eee), to(#f6f6f6));
+                padding          : 0 5px 0 13px;
+                height           : 24px;
+                line-height      : 24px;
+                border-right     : 1px solid #8c8c8c;
+            }
+
+            .toolbar.collaborateBottomBar {
+                border-top: 1px solid #8c8c8c;
+                -webkit-border-radius: 0 0 4px 4px;
+                -moz-border-radius: 0 0 4px 4px;
+                border-radius: 0 0 4px 4px;
+            }
+
+            .toolbar.collaborateBottomBar .subbar {
+                -webkit-border-radius: 0 0 4px 4px;
+                -moz-border-radius: 0 0 4px 4px;
+                border-radius: 0 0 4px 4px;
+            }
+
+            .dockextwin .toolbar {
+                background    : #f6f6f6;
+                border-bottom : 1px solid #b2b2b2;
+            }
+
+            .dockextwin .toolbar .subbar {
+                background    : #f6f6f6;
+                border-bottom : 1px solid #b2b2b2;
+            }
+
+            .dockextwin .toolbar .subbar .toolbarbutton div{
+                color: #fff;
+            }
+
+            .dockextwinActive .dockextwinhead{
+                background : #25a8e7 url(images/sectionheadactive.gif);
+                color      : white;
+            }
+
+            .dockextwin .chat_bg {
+                background: #f8f8f8;
+            }
+
+            .dockextwin .dockwin {
+                overflow: hidden;
+                padding: 0px;
+            }
+
+            .dockextwin .dockwin .docktitle {
+                display: none;
+            }
+
+            .dockextwin .dockwin .dockcontent {
+                top: 1px;
+            }
+
+            .dockextwin .dockextwincontainer{
+                width      : 100%;
+                height     : 100%;
+                background : #fff;
+            }
+
+            .dockextwinCurrent .dockextwinhead{
+                /*border-bottom : 2px solid #c3c3c3;
+                padding-bottom  : 2px;
+                z-index         : 10;
+                position        : relative;*/
+            }
+
+            .dockextwin .dockextwinhead .close {
+                margin-left: 5px;
+            }
+
+            .dockextwin .dockextwinhead .close a {
+                display    : inline-block;
+                width      : 14px;
+                height     : 14px;
+                position   : relative;
+                top        : 3px;
+                background : url(images/close_tab_btn.png) 0px 0px no-repeat;
+            }
+
+            .dockextwin .dockextwinhead .close a:hover {
+                background-position: -14px 0px;
+            }
+
+            .dockextwin .dockextwincontainer .list{
+                background: transparent;
+                border: none;
+            }
+
+            .dockextwin .dockextwincontainer .dockcontent > div {
+                margin-left: 5px;
+            }
+
+            .dockextwin .dockextwincontainer .dockcontent .dropdown {
+                left: 5px;
+            }
+
+            .todowin .todolist {
+            }
+        ]]></a:style>
+        <a:presentation>
+            <a:main collapsed-height="20" min-width="150" min-height="80" container="div[1]/div[2]" drag="div[1]/div[1]" title="div[1]/div[1]/div[1]/text()">
+                <div class="dockextwin_container">
+                    <div class="dockextwin">
+                        <div class="dockextwinhead">
+                            <div class="title">-
+                                <span class="close">
+                                    <a href="#" class="close_link" rel="0" onclick="require('ext/collaborate/collaborate').closeWindow(event, this)"/>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="dockextwincontainer"/>
+                    </div>
+                </div>
+            </a:main>
+            <a:button>
+                <div> </div>
+            </a:button>
+        </a:presentation>
+    </a:modalwindow>
+
+    <a:list name="lstCollaboratorsRoom">
+        <a:style><![CDATA[
+            .collaboratorlistroom {
+                background: #fafcfe url(images/collab-panel-header.png) repeat-x 0 bottom;
+                overflow: hidden;
+                -moz-user-select: -moz-none;
+                -khtml-user-select: none;
+                -webkit-user-select: none;
+                -o-user-select: none;
+                user-select: none;
+                border: none;
+                padding-bottom: 3px;
+                height: 34px;
+            }
+
+            .collaboratorlistroom .list-item {
+               position: relative;
+               float: left;
+               width: 25px;
+               height: 25px;
+               padding: 1px;
+               margin: 3px 0px 0px 4px;
+               background: #414242;
+               cursor: default;
+               border: none;
+               border-bottom: 1px solid #fff;
+            }
+
+            .collaboratorlistroom .list-item span {
+                display: inline-block;
+                position: absolute;
+                top: 1px;
+                right: 1px;
+                width: 25px;
+                height: 25px;
+                overflow: hidden;
+            }
+
+            .collaboratorlistroom .list-item span.gravatar-image {
+
+            }
+
+            .collaboratorlistroom .list-item .collaborator_color {
+                display       : inline-block;
+                width         : 13px;
+                height        : 10px;
+                margin        : 0 6px;
+            }
+
+            .collaboratorlistroom .list-item.selected {
+
+            }
+            .collaboratorlistroom .lst-content {
+                padding-bottom: 3px;
+                overflow: auto;
+                display: block;
+                float: left;
+            }
+            
+            .single-chat .lst-content {
+                float: none;
+            }
+            
+            .empty-list .lst-content {
+                padding-bottom: 3px;
+                display: none;
+            }
+            
+            .collaboratorlistroom .message {
+                vertical-align: middle;
+                text-align: center;
+                font-family: "Lucida Grande", Verdana;
+                font-size: 8pt;
+                color: #b5b5b5;
+                text-shadow: #ffffff 0px 1px 0px;
+                margin-bottom: -3px;
+            }
+
+            .collaboratorlistroom .message-content {
+                height: 24px;
+                padding-top: 12px;
+                background-image: linear-gradient(bottom, #ECEFF2 0%, #FAFCFE 100%);
+                background-image: -o-linear-gradient(bottom, #ECEFF2 0%, #FAFCFE 100%);
+                background-image: -moz-linear-gradient(bottom, #ECEFF2 0%, #FAFCFE 100%);
+                background-image: -webkit-linear-gradient(bottom, #ECEFF2 0%, #FAFCFE 100%);
+                background-image: -ms-linear-gradient(bottom, #ECEFF2 0%, #FAFCFE 100%);
+                border-bottom: 1px solid #FAFAFA;
+            }
+
+            .collaboratorlistroom .message-share-project {
+                vertical-align: middle;
+                text-align: center;
+                font-family: "Lucida Grande", Verdana;
+                font-size: 8pt;
+                color: #b5b5b5;
+                text-shadow: #ffffff 0px 1px 0px;
+                color: #2c302b;
+                font-size: 12px;
+                border-top: 1px solid #b1b8a9;
+                border-bottom: 1px solid #b1b8a9;
+                background-color: #f2f8eb;
+                padding: 18px 15px 20px;
+                position: relative;
+                overflow: hidden;
+                clear: both;
+                height: 65px;
+                display: none;
+            }
+            
+            .lst-group-chat .message-share-project {
+                display: none;
+            }
+            
+            .collaboratorlistroom .message-share-project a {
+                color: #308501;
+                text-decoration: none;
+                font-size: 12px;
+                padding: 10px 0;
+                display :block;
+            }
+
+            .collaboratorlistroom .message-share-project a:hover {
+                text-decoration: underline;
+            }
+            
+            .empty-list .message-share-project {
+                display: block;
+            }
+            
+            .add-more-members {
+                width: 27px;
+                height: 27px;
+                background: url(images/add_member.png) no-repeat 0 0;
+                display: inline-block;
+                position: relative;
+                margin-top: -22px;
+                top: 19px;
+                left: 4px;
+                overflow: hidden;
+            }
+            
+            .empty-list .add-more-members,
+            .single-chat .add-more-members {
+                display: none;
+            }
+            
+            .add-more-members:hover {
+                background-position: 0 -27px;
+            }
+            
+            .add-more-members:active {
+                background-position: 0 -54px;
+            }
+            
+            .extra.message {
+                display: none;
+            }
+            
+            .empty-list .extra.message {
+                display: block;
+                padding-bottom: 2px;
+            }
+        ]]></a:style>
+        <a:style condition="apf.isSafari || apf.isChrome"><![CDATA[
+            .collaboratorlistroom .message-share-project {
+                height: auto;
+            }
+        ]]></a:style>
+        <a:presentation>
+            <a:main container="div[1]">
+                <div class="collaboratorlistroom">
+                    <div class="lst-content"> </div>
+                    <div class="extra message  empty">
+                        <div class="message-content">Oops! Looks like it’s just you and me, kid.</div>
+                    </div>
+                    <a id="add-more-members" class="add-more-members" href="" onclick="require('ext/collaborate/collaborate').setShareUrl(this);" target="_new"/>
+                    <div id="share-project-container" class="message-share-project">
+                        Let anyone know you are available here now, by sending them the project URL:
+                        <a id="email-project-url2" href="" onclick="require('ext/collaborate/collaborate').setShareUrl(this)" target="_new">Mail them the URL</a>
+                        or copy the url from the address bar
+                    </div>
+                </div>
+            </a:main>
+            <a:item class="." caption="span[2]" image="span[2]" select=".">
+                <div class="list-item">
+                    <span class="default-image"/>
+                    <span class="gravatar-image"/>
+                </div>
+            </a:item>
+            <a:dragindicator>
+                <div class="draglist"><span/></div>
+            </a:dragindicator>
+            <a:loading>
+                <div class="loading"/>
+            </a:loading>
+            <a:empty caption="div">
+                <div class="message">
+                    <div class="message-content"> </div>
+                </div>
+            </a:empty>
+        </a:presentation>
+    </a:list>
+    <a:button name="btn-collab-send">
+        <a:style><![CDATA[
+            .btn-collab-send {
+                overflow: hidden;
+                cursor: default;
+                position: absolute;
+                right: 8px;
+                width: 20px;
+                height: 24px;
+                background: url(images/btn_send.png) no-repeat 3px 5px;
+                -moz-user-select: -moz-none;
+                -khtml-user-select: none;
+                -webkit-user-select: none;
+                -o-user-select: none;
+                user-select: none;
+            }
+
+            .btn-collab-sendOver {}
+
+            .btn-collab-sendDown {}
+
+            .btn-collab-sendDisabled {
+                display: none;
+            }
+
+            .btn-collab-send span {
+                display: none;
+            }
+        ]]></a:style>
+
+         <a:presentation>
+            <a:main caption="span/text()" background="span" icon="span">
+                <div class="btn-collab-send">
+                    <span>-</span>
+                </div>
+            </a:main>
+        </a:presentation>
+    </a:button>
+    <a:menu name="permissionsmenu">
+        <a:style><![CDATA[
+            .permissionsmenu {
+                margin: -1px 0 0 0;
+                padding: 0;
+                z-index: 10000;
+                position: absolute;
+                overflow:visible;
+
+                font-family   : Tahoma, Arial;
+                font-size     : 11px;
+                line-height   : 14px;
+                color         : #f1f1f1;
+                cursor:default;
+
+                display : none;
+                /*border:1px solid rgba(255, 255, 255, 0.1);
+
+                -moz-box-shadow    : 0px 3px 15px 0px rgba(0, 0, 0, 0.65);
+                -webkit-box-shadow : 0px 3px 15px 0px rgba(0, 0, 0, 0.65);
+                box-shadow         : 0px 3px 15px 0px rgba(0, 0, 0, 0.65);*/
+
+                /*background-color   : #1c1c1c;
+                filter             : progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#1c1c1c', endColorstr='#262626');
+                -ms-filter         : "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#1c1c1c', endColorstr='#262626')";
+                background         : -webkit-gradient(linear, left top, left bottom, from(#1c1c1c), color-stop(0.9, #262626));
+                background         :-moz-linear-gradient(center bottom, #262626 0%, #1c1c1c 20%) repeat scroll 0 0 transparent;*/
+
+                background-color   : #1c1c1c;
+                border             : 1px solid #000101;
+                -webkit-border-radius: 8px;
+                -moz-border-radius: 8px;
+                border-radius: 8px;
+                -moz-box-shadow    : 0px 1px 0px rgba(255, 255, 255, 0.3) inset, 0px 1px 0px 0px rgba(255, 255, 255, 0.5);
+                -webkit-box-shadow : 0px 1px 0px rgba(255, 255, 255, 0.3) inset, 0px 1px 0px 0px rgba(255, 255, 255, 0.5);
+                box-shadow         : 0px 1px 0px rgba(255, 255, 255, 0.3) inset, 0px 1px 0px 0px rgba(255, 255, 255, 0.5);
+                -moz-user-select: -moz-none;
+                -khtml-user-select: none;
+                -webkit-user-select: none;
+                -o-user-select: none;
+                user-select: none;
+            }
+
+            .permissionsmenu blockquote {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                border: 0;
+            }
+
+            .permissionsmenu div{
+                cursor : default;
+                z-index:1100000;
+            }
+            .permissionsmenu>div{
+                height: 13px;
+            }
+            .permissionsmenu div.hover {
+                background-color : #393939;
+            }
+
+            .permissionsmenu div.menu_divider{
+                overflow: visible;
+                padding: 0;
+                font-size: 1px;
+
+                margin:0 3px;
+                border-top:1px solid #000000;
+                border-bottom:1px solid #313131;
+            }
+
+            .permissionsmenu>div.menu_divider{
+                height: 0;
+            }
+
+            .permissionsmenu div span{
+                margin-top: 0px;
+                z-index: 10;
+            }
+
+            .permissionsmenu div.submenu span{
+                background: url(images/submenu_arrow.gif) no-repeat right -15px;
+                width: 4px;
+                height: 7px;
+                display: block;
+                position: absolute;
+                right: 8px;
+                margin: 4px 0 0 0;
+                z-index: 10;
+            }
+
+            .permissionsmenu div.hover span{
+                background-position : right -15px;
+            }
+
+            .permissionsmenu div.disabled{
+                color: gray;
+                /*text-shadow : rgba(255, 255, 255, .71) 1px 1px 1px;*/
+            }
+            .permissionsmenu div.disabled span{
+                display : none;
+            }
+
+            .permissionsmenu u{
+                width: 16px;
+                height: 16px;
+                position: absolute;
+                left: 3px;
+                margin-top : -1px;
+            }
+            .permissionsmenu .icon {
+                position : absolute;
+                width: 25px;
+                height: 14px;
+                top: -13px;
+                right: 22px;
+                z-index: 10001;
+                background: url(images/flyout_arrows.png) no-repeat -19px 0;
+            }
+        ]]></a:style>
+        <a:presentation>
+            <a:main container="blockquote" overlay="strong">
+                <blockquote class="permissionsmenu">
+                    <div class="icon"/>
+                    <blockquote>
+
+                    </blockquote>
+                </blockquote>
+            </a:main>
+            <a:item caption="text()" icon="u" hotkey="span" inherit="true">
+                <div><span> </span><u> </u>-</div>
+            </a:item>
+            <a:divider inherit="true">
+                <div class="menu_divider"/>
+            </a:divider>
+        </a:presentation>
+    </a:menu>
+    <a:button name="permissions-button">
+        <a:style><![CDATA[
+            .permissions-button {
+                height             : 22px;
+                padding            : 2px 10px;
+                margin             : 0;
+                overflow           : visible;
+                position           : relative;
+                cursor             : pointer;
+                -webkit-border-radius: 8px;
+                -moz-border-radius: 8px;
+                border-radius: 8px;
+                -moz-user-select: -moz-none;
+                -khtml-user-select: none;
+                -webkit-user-select: none;
+                -o-user-select: none;
+                user-select: none;
+            }
+            .permissions-buttonOver {
+                background: #333;
+            }
+            .permissions-button SPAN {
+                font-family:Arial;
+                font-size:11px;
+                line-height:11px;
+                font-weight:bold;
+                color:white;
+                position:relative;
+                height:16px;
+                padding:5px 0 0 0;
+                margin:1px 0 0 0;
+                position:relative;
+                display:block;
+                text-align:left;
+            }
+        ]]></a:style>
+        <a:style condition="apf.isSafari || apf.isChrome"><![CDATA[
+            .hbox > .permissions-button {
+                height:26px;
+            }
+
+            .permissions-button SPAN {
+                height  : 17px;
+                padding : 4px 0 0 0;
+            }
+        ]]></a:style>
+        <a:style condition="apf.isIE"><![CDATA[
+            .permissions-button {
+                height  : 21px;
+                padding : 1px 0 0 23px;
+            }
+        ]]></a:style>
+
+         <a:presentation>
+            <a:main caption="span/text()" background="." icon="div">
+                <div class="permissions-button">
+                    <span>-</span>
+                </div>
+            </a:main>
+        </a:presentation>
+    </a:button>
+    <a:list name="members-list">
+        <a:style><![CDATA[
+            .members-list {
+                position : relative;
+                overflow : auto;
+                max-height: 200px;
+                -moz-user-select: -moz-none;
+                -khtml-user-select: none;
+                -webkit-user-select: none;
+                -o-user-select: none;
+                user-select: none;
+            }
+
+            .members-list .item {
+                cursor: default;
+                position    : relative;
+                height:20px;
+                padding:6px 0 0 10px;
+                overflow:hidden;
+                font-size:12px;
+                font-family:Arial;
+                font-weight:bold;
+                color:#303030;
+            }
+
+            .members-list .item .icon {
+                width:22px;
+                height:23px;
+                background:url(images/member-plus-button.png) no-repeat 0 0;
+                position:absolute;
+                overflow:hidden;
+                top:2px;
+                right:9px;
+            }
+
+            .members-list .hover {
+                background-color:#eef6f0;
+            }
+
+            .members-list .hover .icon {
+                background-position:0 -23px;
+            }
+
+            .members-list .added {
+                color:#bfbfbf;
+            }
+
+            .members-list .added .icon {
+                background-position:0 -46px;
+            }
+
+            .members-list .empty {
+                padding:0 5px;
+                color: #303030;
+            }
+        ]]></a:style>
+
+        <a:presentation>
+            <a:main container=".">
+                <div class="members-list">
+                </div>
+            </a:main>
+            <a:item class="." caption="text()" check="div[1]" icon="." select=".">
+                <div class="item">-<div class="icon"/></div>
+            </a:item>
+            <a:dragindicator>
+                <div class="dragcredits-list"><span><u>-</u></span></div>
+            </a:dragindicator>
+            <a:loading>
+                <div class="loading">Loading...</div>
+            </a:loading>
+            <a:empty caption=".">
+                <div class="message">-</div>
+            </a:empty>
+        </a:presentation>
+    </a:list>
+    <a:tree name="collaborators-tree">
+        <a:style><![CDATA[
+            .collaborators-tree {
+                position: relative;
+                overflow: hidden;
+                background-image: url(images/noise_pattern_transparent-2.png);
+                -moz-user-select: -moz-none;
+                -khtml-user-select: none;
+                -webkit-user-select: none;
+                -o-user-select: none;
+                user-select: none;
+            }
+
+            .collaborators-tree .empty {
+                color: #303030;
+                padding: 5px;
+            }
+
+            .collaborators-tree .item {
+                position      : relative;
+                overflow      : hidden;
+                border-top    : 1px solid #b2b2b2;
+                /*height        : 21px;*/
+                line-height   : 21px;
+                padding       : 0;
+                filter        : progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#fafafa', endColorstr='#f1f2f4');
+                -ms-filter    : "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#fafafa', endColorstr='#f1f2f4')";
+                background    : -webkit-gradient(linear, left top, left bottom, from(#fafafa), color-stop(1, #f1f2f4));
+                background    : -moz-linear-gradient(center bottom, #fafafa 0%, #f1f2f4 100%) repeat scroll 0 0 transparent;
+                cursor        : default;
+                font-size     : 11px;
+                font-weight   : bold;
+                color         : #303030;
+            }
+
+            .collaborators-tree .item.root {
+                -moz-box-shadow    : 0px 1px 0px rgba(255, 255, 255, 1) inset;
+                -webkit-box-shadow : 0px 1px 0px rgba(255, 255, 255, 1) inset;
+                box-shadow         : 0px 1px 0px rgba(255, 255, 255, 1) inset;
+                color         : #909090;
+                text-shadow   : #ffffff 0px 1px 0px;
+            }
+
+            /*.collaborators-tree .item .txt_subuser {
+                padding: 6px 0 5px 0;
+                margin: 0 5px 0 15px;
+                border-top: 1px dashed #aaa;
+                line-height: 12px;
+                color: #6BA968;
+            }
+
+            .collaborators-tree .item.selected .txt_subuser {
+                color: #fff;
+                border-top: 1px dotted #eee;
+            }*/
+
+            .collaborators-tree .item a.txt_subuser {
+                -moz-border-radius    : 4px;
+                -webkit-border-radius : 4px;
+                cursor  : default;
+                padding : 1px 3px;
+                margin-left: 4px;
+                color   : #474747;
+                text-shadow     : rgba(255, 255, 255 0.71) 0px 1px 0px;
+                text-decoration : none;
+            }
+
+            .collaborators-tree .item a.txt_subuser.cancel {
+                filter        : progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#fafafa', endColorstr='#e6e6e6');
+                -ms-filter    : "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#fafafa', endColorstr='#e6e6e6')";
+                background    : -webkit-gradient(linear, left top, left bottom, from(#fafafa), color-stop(1, #e6e6e6));
+                background    : -moz-linear-gradient(center bottom, #fafafa 0%, #e6e6e6 100%) repeat scroll 0 0 transparent;
+                border        : 1px solid #b3b3b3;
+                color   : #474747;
+            }
+
+            .collaborators-tree .item a.txt_subuser.cancel:hover {
+                filter        : progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#fdfdfd', endColorstr='#f6f6f6');
+                -ms-filter    : "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#fdfdfd', endColorstr='#f6f6f6')";
+                background    : -webkit-gradient(linear, left top, left bottom, from(#fdfdfd), color-stop(1, #f6f6f6));
+                background    : -moz-linear-gradient(center bottom, #fdfdfd 0%, #f6f6f6 100%) repeat scroll 0 0 transparent;
+            }
+
+            .collaborators-tree .item a.txt_subuser.ok {
+                filter        : progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#c8eaa2', endColorstr='#a9d473');
+                -ms-filter    : "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#c8eaa2', endColorstr='#a9d473')";
+                background    : -webkit-gradient(linear, left top, left bottom, from(#c8eaa2), color-stop(1, #a9d473));
+                background    : -moz-linear-gradient(center bottom, #c8eaa2 0%, #a9d473 100%) repeat scroll 0 0 transparent;
+                border        : 1px solid #8ba968;
+                color : #4D8110;
+            }
+
+            .collaborators-tree .item a.txt_subuser.ok:hover {
+                filter        : progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#d6efb9', endColorstr='#bedf96');
+                -ms-filter    : "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#d6efb9', endColorstr='#bedf96')";
+                background    : -webkit-gradient(linear, left top, left bottom, from(#d6efb9), color-stop(1, #bedf96));
+                background    : -moz-linear-gradient(center bottom, #d6efb9 0%, #bedf96 100%) repeat scroll 0 0 transparent;
+            }
+
+            .collaborators-tree .item.min, .collaborators-tree .item.last,
+                .collaborators-tree .item.minlast, .collaborators-tree .item.pluslast {
+                border-bottom : 1px solid #b2b2b2;
+            }
+
+            .collaborators-tree BLOCKQUOTE .item.last {
+                border-bottom : none;
+            }
+
+            .collaborators-tree .collaborator_color {
+                display: block;
+                float: left;
+                width: 9px;
+                height: 9px;
+                margin: 7px 6px 0 0;
+                border: 1px solid #3b3b3b;
+            }
+
+            .collaborators-tree .item .openclose {
+                position   : relative;
+                overflow   : hidden;
+                display    : inline-block;
+                width      : 9px;
+                height     : 10px;
+                top        : 2px;
+                left       : 1px;
+                background : url(images/open_close.png) no-repeat 0 -10px;
+                margin     : 0 6px 0 4px;
+                cursor     : default;
+            }
+
+            .collaborators-tree .item .status {
+                display : none;
+            }
+
+            .collaborators-tree .minlast .openclose,
+            .collaborators-tree .min .openclose {
+                background-position: 0 0;
+                left: 0;
+                top: 3px;
+            }
+
+            .collaborators-tree .item .name {
+                color       : #5d6774;
+                font-size   : 11px;
+                font-family : Arial;
+                font-weight : bold;
+                position    : relative;
+                display     : inline-block;
+                margin-top  : 4px;
+                text-shadow : rgba(255, 255, 255, 1) 0px 1px 0px;
+            }
+
+            .collaborators-tree .item .users,
+            .collaborators-tree .item .favorite {
+                display : none;
+            }
+
+            .collaborators-tree BLOCKQUOTE {
+                padding  : 0;
+                margin   : 0;
+                position : relative;
+                overflow : hidden;
+            }
+
+            .collaborators-tree BLOCKQUOTE .item {
+                /*height           : 24px;*/
+                position         : relative;
+                overflow         : hidden;
+                background-color : #d1dee8;
+                line-height      : 24px;
+                padding-left     : 10px;
+                background       : none;
+                border           : none;
+                font-weight      : 100;
+            }
+
+            .collaborators-tree BLOCKQUOTE .item .users,
+            .collaborators-tree BLOCKQUOTE .item .favorite {
+                display : block;
+            }
+
+            .collaborators-tree BLOCKQUOTE .item .openclose {
+                display:none;
+            }
+
+            .collaborators-tree BLOCKQUOTE .item .name {
+                font-family : Arial;
+                color       : #3d444d;
+                font-weight : bold;
+                font-size   : 12px;
+                position    : relative;
+                overflow    : hidden;
+                margin      : 8px 0 0 9px;
+                height      : 14px;
+                line-height : 14px;
+                text-shadow : none;
+            }
+
+            .collaborators-tree BLOCKQUOTE .item .name.notagline {
+                margin-top: 15px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .item .status {
+                display    : block;
+                float      : left;
+                width      : 8px;
+                height     : 10px;
+                margin     : 7px 6px 0 0;
+                background : url(images/collab-led-states.png) -7px -5px no-repeat;
+            }
+
+            .collaborators-tree BLOCKQUOTE .item.online .status {
+                background-position: -7px -5px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .item.selected.online .status {
+                background-position: -7px -24px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .item.offline .status {
+                background-position: -25px -5px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .item.selected.offline .status {
+                background-position: -25px -24px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .item.idle .status {
+                background-position: -43px -5px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .item.selected.idle .status {
+                background-position: -43px -24px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .item .users {
+                font-family : Trebuchet MS;
+                color       : #8c939c;
+                font-size   : 11px;
+                position    : relative;
+                overflow    : hidden;
+                margin      : 0 0 0 9px;
+                height      : 14px;
+                line-height : 14px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .item .users SPAN {
+                color : #5d9901;
+            }
+
+            .collaborators-tree BLOCKQUOTE .item .pointer {
+                width      : 10px;
+                height     : 16px;
+                background : url(images/project-list-pointer.png) no-repeat 0 -48px;
+                position   : absolute;
+                top        : 14px;
+                right      : 6px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .last .pointer {
+                top : 14px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .item .active {
+                display             : block;
+                background-position : 0 -18px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .selected.item .active {
+                display             : block;
+                background-position : 0 -54px;
+            }
+
+            .collaborators-tree BLOCKQUOTE.corporate .item .active {
+                display             : block;
+                background-position : 0 -90px;
+            }
+
+            .collaborators-tree BLOCKQUOTE.corporate .selected.item .active {
+                display             : block;
+                background-position : 0 -126px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .selected {
+                filter        : progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#5b9fdc', endColorstr='#1f79c2');
+                -ms-filter    : "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#5b9fdc', endColorstr='#1f79c2')";
+                background    : -webkit-gradient(linear, left top, left bottom, from(#5b9fdc), color-stop(1, #1f79c2));
+                background    : -moz-linear-gradient(center bottom, #1f79c2 0%, #5b9fdc 100%) repeat scroll 0 0 transparent;
+                /*border-top    : 1px solid #0c76d7;
+                border-bottom : 1px solid #1e78c2;*/
+                color         : #fff;
+            }
+
+            .collaborators-tree BLOCKQUOTE .selected .name {
+                font-family : Arial;
+                color       : white;
+                font-weight : bold;
+                font-size   : 12px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .selected .users {
+                font-family : Trebuchet MS;
+                color       : white;
+                font-size   : 11px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .selected .users SPAN {
+                color : white;
+            }
+
+            .collaborators-tree BLOCKQUOTE .selected .pointer {
+                width      : 10px;
+                height     : 16px;
+                background : url(images/project-list-pointer.png) no-repeat 0 -32px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .item .clickarea {
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                height: 16px;
+                width: 30px;
+            }
+
+
+            .collaborators-tree BLOCKQUOTE .item.selected .status {
+                color : white;
+            }
+
+            .collaborators-tree BLOCKQUOTE .item .collaborator_permissions {
+                position   : absolute;
+                top        : 5px;
+                right      : 20px;
+                background : url(images/collaborator_permissions_sprite.png) 0 0 no-repeat;
+                height     : 12px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .item .clickarea .collaborator_permissions {
+                right: 15px;
+                top: 0px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .item .collaborator_permissions.r {
+                width: 11px;
+                background-position: 0px 1px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .item .collaborator_permissions.rw {
+                width: 19px;
+                background-position: 0px -12px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .hover .clickarea .collaborator_permissions.r {
+                width: 11px;
+                background-position: 0px -25px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .hover .clickarea .collaborator_permissions.rw {
+                width: 19px;
+                background-position: 0px -38px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .hover .clickarea .collaborator_permissions.r {
+                width: 11px;
+                background-position: 0px -51px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .hover .clickarea .collaborator_permissions.rw {
+                width: 19px;
+                background-position: 0px -64px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .selected .collaborator_permissions.r {
+                width: 11px;
+                background-position: -22px 1px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .selected .collaborator_permissions.rw {
+                width: 19px;
+                background-position: -22px -12px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .selected.hover .clickarea .collaborator_permissions.r {
+                width: 11px;
+                background-position: -22px -25px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .selected.hover .clickarea .collaborator_permissions.rw {
+                width: 19px;
+                background-position: -22px -38px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .selected.down .clickarea .collaborator_permissions.r {
+                width: 11px;
+                background-position: -22px -51px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .selected.down .clickarea .collaborator_permissions.rw {
+                width: 19px;
+                background-position: -22px -64px;
+            }
+
+            .collabUserNoticeBar {
+                border-top: 1px solid #ccc;
+            }
+
+            .collabUserNoticeBarText {
+                padding: 4px 0 7px 0;
+                font-weight: bold;
+                color: #333;
+                background: #eee;
+                text-align: center;
+            }
+
+            .collaborators-tree .message.empty {
+                font-weight: bold;
+            }
+
+            .collaborator_permissions_menu {
+                position: absolute;
+                top: -3px;
+                right: 4px;
+                height: 18px;
+                width: 15px;
+                background: url(images/tree_option_arrows.png) 0 0 no-repeat;
+            }
+
+            .clickarea .collaborator_permissions_menu {
+                right: 0px;
+            }
+
+            .collaborators-tree BLOCKQUOTE .selected .collaborator_permissions_menu {
+                background-position: -13px 0px;
+            }
+        ]]></a:style>
+        <a:style condition="apf.isWebkit"><![CDATA[
+            .collaborators-tree BLOCKQUOTE .item .openprjbtn span.greenbtn-middle {
+                height: 18px;
+                padding-top: 5px;
+            }
+        ]]></a:style>
+
+        <a:presentation>
+            <a:main container="." startclosed="false">
+                <div class="collaborators-tree">
+
+                </div>
+            </a:main>
+            <a:item class="." caption="." icon="." openclose="." select="." container="following-sibling::blockquote">
+                <div class="item">
+
+                </div>
+                <blockquote> </blockquote>
+            </a:item>
+            <a:dragindicator>
+                <div class="dragtree">
+                    <span> </span>
+                    <label>
+                        <u>-</u>
+                    </label>
+                </div>
+            </a:dragindicator>
+            <a:loading>
+                <div class="loading">
+                    <span> </span>
+                    <label>Loading...</label>
+                </div>
+            </a:loading>
+            <a:empty caption=".">
+                <div class="message"/>
+            </a:empty>
+        </a:presentation>
+    </a:tree>
+</a:skin>

@@ -1,0 +1,79 @@
+<?xml version='1.0'?>
+<a:skin xmlns:a="http://ajax.org/2005/aml" xmlns="http://www.w3.org/1999/xhtml">
+    <!--<a:button name="btn_icon_only1">-->
+        <!--<a:style><![CDATA[-->
+        <!--.btn_icon_only {-->
+            <!--overflow           : hidden;-->
+            <!--cursor             : default;-->
+            <!--position           : relative;-->
+            <!--height             : 21px;-->
+            <!--width              : 22px;-->
+            <!---moz-user-select: -moz-none;-->
+            <!---khtml-user-select : none;-->
+            <!---webkit-user-select: none;-->
+            <!---o-user-select: none;-->
+            <!--user-select        : none;-->
+        <!--}-->
+
+        <!--.btn_icon_onlyDown.tabmenubtn {-->
+            <!--z-index : 10000000;-->
+        <!--}-->
+
+        <!--.dim22-22.btn_icon_only {-->
+            <!--width: 22px;-->
+            <!--height: 22px;-->
+        <!--}-->
+
+        <!--.dim14-14.btn_icon_only {-->
+            <!--width: 14px;-->
+            <!--height: 14px;-->
+        <!--}-->
+
+        <!--.dim8x8.btn_icon_only {-->
+            <!--width: 8px;-->
+            <!--height: 8px;-->
+        <!--}-->
+
+        <!--.btn_icon_onlyOver {-->
+            <!--background-position: 0 -23px;-->
+        <!--}-->
+
+        <!--.dim22-22.btn_icon_onlyOver {-->
+            <!--background-position: 0 -22px;-->
+        <!--}-->
+
+        <!--.dim14-14.btn_icon_onlyOver {-->
+            <!--background-position: 0 -14px;-->
+        <!--}-->
+
+        <!--.dim8x8.btn_icon_onlyOver {-->
+            <!--background-position: 0 -8px;-->
+        <!--}-->
+
+        <!--.btn_icon_onlyDown {-->
+            <!--background-position: 0 -46px;-->
+        <!--}-->
+
+        <!--.dim22-22.btn_icon_onlyDown {-->
+            <!--background-position: 0 -44px;-->
+        <!--}-->
+
+        <!--.dim14-14.btn_icon_onlyDown {-->
+            <!--background-position: 0 -28px;-->
+        <!--}-->
+
+        <!--.dim8x8.btn_icon_onlyDown {-->
+            <!--background-position: 0 -16px;-->
+        <!--}-->
+
+        <!--.btn_icon_only.btnDisabled {-->
+            <!--cursor: default;-->
+        <!--}-->
+    <!--]]></a:style>-->
+        <!--<a:presentation>-->
+            <!--<a:main caption="." label="." background="." icon=".">-->
+                <!--<div class="btn_icon_only"> </div>-->
+            <!--</a:main>-->
+        <!--</a:presentation>-->
+    <!--</a:button>-->
+</a:skin>

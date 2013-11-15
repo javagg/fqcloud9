@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Location node provided by our package because centos 6 don't have node
+ME=`readlink "$0" || echo "$0"`
+C9_HOME=$(cd "`dirname $ME`/../" && pwd)
+NODECMD="$C9_HOME"/node/bin/node
+
+# Don't use exec
+$NODECMD $C9_HOME/server.js $*
+

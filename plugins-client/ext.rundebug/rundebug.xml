@@ -1,0 +1,13 @@
+<a:application xmlns:a="http://ajax.org/2005/aml">
+    <a:window id="winRundebug"
+              skin      = "fm-window"
+              title     = "Run &amp; Debug"
+              flex      = "1"
+              minwidth  = "240"
+              modal     = "false"
+              model     = "{require('ext/rundebug/rundebug').model}"
+              optimize  = "true">
+        <a:button skin="header-btn" class="panel-settings" />
+
+    </a:window>
+</a:application>

@@ -1,0 +1,14 @@
+{
+    "name": "ext.azure",
+    "version": "0.0.1",
+    "main": "azure-ext.js",
+    "private": true,
+    "plugin": {
+        "provides": [
+            "ext.azure"
+        ],
+        "consumes": [
+            "client-plugins"
+        ]
+    }
+}

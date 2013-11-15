@@ -1,0 +1,20 @@
+.title-help{
+    position: absolute;
+    top: -24px;
+    right: 30px;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+}
+
+.lftp-warning{
+    display: block;
+    box-sizing: border-box;
+    -webkit-box-flex: 1;
+    margin: 5px 10px 0 20px;
+    color: #ccc;
+}
+
+.lftp-help{
+    width: auto;
+    line-height: 17px;
+}

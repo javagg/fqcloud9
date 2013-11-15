@@ -1,0 +1,14 @@
+{
+    "name": "ext.readonly",
+    "version": "0.0.1",
+    "main": "readonly-ext.js",
+    "private": true,
+    "plugin": {
+        "provides": [
+            "ext.readonly"
+        ],
+        "consumes": [
+            "client-plugins"
+        ]
+    }
+}

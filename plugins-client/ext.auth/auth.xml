@@ -1,0 +1,138 @@
+<a:application xmlns:a="http://ajax.org/2005/aml">
+    <a:auth id="auth" login="{require('ext/auth/auth').login(username, password)}" logout="{require('ext/auth/auth').signout()}" fail-state="stFail" error-state="stError" login-state="stIdle" logout-state="stSignedOut" waiting-state="stSigningIn" authreq-state="stAuthReq"/>
+
+    <a:state id="stCloning" active="false"/>
+
+    <a:state-group>
+        <a:state id="stFail"/>
+        <a:state id="stError"/>
+        <a:state id="stSignedOut" winLogin.visible="true"/>
+        <a:state id="stSigningIn"/>
+        <a:state id="stSignedIn" onactivate="winLogin.hide();require('ext/auth/auth').signedIn()"/>
+        <a:state id="stIdle" onactivate="require('ext/auth/auth').idle()"/>
+        <a:state id="stAuthReq"/>
+        <!-- State for google client signed in? -->
+    </a:state-group>
+
+    <a:rpc id="comm" protocol="rest">
+        <a:method name="auth" url="{apf.config.baseurl+'/auth'}" http-method="POST" content-type="application/json"/>
+        <a:method name="search" url="{apf.config.baseurl+'/api/search'}" http-method="GET" content-type="application/json"/>
+        <a:method name="org" url="{apf.config.baseurl+'/api/org'}" http-method="POST" content-type="application/json"/>
+        <a:method name="project" url="{apf.config.baseurl+'/api/project'}" http-method="POST" content-type="application/json"/>
+        <a:method name="deploy" url="{window.location.pathname + '/api/deploy'}" http-method="POST" content-type="application/json"/>
+    </a:rpc>
+
+    <a:window id="winLogin" mode="login" icon="" title=" " buttons="close" skin="bk-win-noisebg" skinset2="authskin" center="true" modal="true" draggable="false" width="400" margin2="0 0 0 -130" height="122" onshow="         apf.n(this, './/a:secret|.//a:textbox').attr('value', '');         pgPass.set(this.getAttribute('mode') == 'gainaccess' ? 1 : 0);          if (self.tbUserInviteLogin) {             var creds = auth.getCredentials();             tbUserInviteLogin.setValue(creds[0]);             tbPassInviteLogin.setValue(creds[1]);         }       ">
+        <a:pages id="pgPass" style="overflow:hidden;padding-top:105px;" activepage="{winLogin.getAttribute('mode')}" anchors="0 5 0 5">
+            <a:page id="login">
+                <a:hbox padding="5" edge="0 15 0 15" validgroup="vgInviteLogin">
+                    <a:textbox id="tbUserInviteLogin" datatype2="a:email" initial-message="Username or email" invalidmsg="Invalid E-mail address; Enter your e-mail address to log in" required="true" skin="auth-tb" skinset="authskin" width="150"/>
+                    <a:secret id="tbPassInviteLogin" class="padlock" minlength="3" width="125" skin="auth-tb" skinset="authskin" maxlength="20" initial-message="Password" invalidmsg="Invalid Password; Enter your password" required="true"/>
+                    <a:button skin="button-colorless" class="dark blue" default="4" width="75" height="26" onclick="                         var app = require('ext/auth/auth');                         if (vgInviteLogin.validate()) {                             if (winLogin.getAttribute('mode') == 'gainaccess') {                                 app.inviteInfo   = winLogin.inviteInfo;                                 app.redirectPage = winLogin.inviteInfo[0];                             }                             else {                                 var creds = auth.getCredentials();                                 if (tbUserInviteLogin.value != creds[0] &amp;&amp; 1 == 10)                                     app.Account.signout();                             }                              app.login(tbUserInviteLogin.value, tbPassInviteLogin.value, true)                         }                     ">Sign in</a:button>
+                </a:hbox>
+<!--                <a:hbox pack="end" edge="0 18 5 10" padding="10" align="start">
+                    <a style="cursor:pointer;white-space:nowrap;" flex="1" margin="3 0 0 5"
+                      onclick = "pgPass.set(0);"
+                      visible = "{winLogin.getAttribute('mode') == 'gainaccess'}">
+                        Not a member yet? Subscribe now!
+                    </a>
+                    <a:label id="winPwStatus" flex="1" margin="3 0 0 5"
+                      visible = "{winLogin.getAttribute('mode') != 'gainaccess'}" />
+
+                </a:hbox>-->
+                <a:divider skin="c9-divider-hor" margin="13 0 20"/>
+<!--                <a:button skin="github-button" icon="github-kitty.png" width="215" margin="14 0 0 60" onclick="require('ext/auth/auth').signin('github');apf.stopEvent(event);">Or sign in with GitHub instead</a:button>-->
+                <div class="signin_options">
+                    <span>Or just sign in instantly with:</span>
+                    <a href="javascript:void(0)" class="c9-button bitbucket-signin" onclick="require('ext/auth/auth').signin('bitbucket');apf.stopEvent(event);"/>
+                    <a href="javascript:void(0)" class="c9-button github-signin" onclick="require('ext/auth/auth').signin('github');apf.stopEvent(event);"/>
+                </div>
+            </a:page>
+            <a:page id="forgetpassword">
+
+            </a:page>
+            <a:page id="gainaccess" render="runtime" trans-in="{winLogin.getAttribute('mode') == 'gainaccess' ? 'push-right' : ''}" trans-out="{winLogin.getAttribute('mode') == 'gainaccess' ? 'push-right' : ''}">
+                <a:vbox padding="10" edge="15 20 15 20" validgroup="vgNewPerson">
+                    <a:vbox id="vboxa" visible="true" validgroup="vgRegister" padding="5 0">
+                        <a:textbox id="tbRgFirstName" value="" skin="auth-tb" skinset="authskin" initial-message="First name"/>
+                        <a:textbox id="tbRgLastName" value="" skin="auth-tb" skinset="authskin" initial-message="Last name"/>
+                        <a:textbox id="tbRgEmail" required="true" value="" skin="auth-tb" skinset="authskin" initial-message="Email"/>
+                        <a:textbox id="tbRgUsername" required="true" value="" skin="auth-tb" skinset="authskin" initial-message="Username"/>
+                        <a:secret id="tbRgPassword" type="password" required="true" invalidmsg="Password is required to sign up" value="" skin="auth-tb" skinset="authskin" initial-message="Password"/>
+                        <a:secret id="tbRgPassword2" type="password" required="true" checkequal="tbRgPassword" invalidmsg="Password does not match" value="" skin="auth-tb" skinset="authskin" initial-message="Confirm password"/>
+                        <a:hbox pack="end">
+                            <a:button id="btnRgSubmit" skin="btn-blue-noise" onclick="                                 if (vgRegister.validate()) {                                     this.disable();                                     require('ext/auth/auth').register();                                 }                               ">Register</a:button>
+                        </a:hbox>
+                    </a:vbox>
+                </a:vbox>
+                <a:divider skin="hordivider"/>
+                <a:hbox pack="end" edge="10 10 5 10" padding="10" align="start">
+                    <a style="cursor:pointer;" flex="1" margin="3 0 0 5" onclick="pgPass.set(1);">I am already a member</a>
+                    <!--a:button class="ui-btn-green" onclick="require('ext/auth/auth').create.person();" default="4">Set password</a:button-->
+                </a:hbox>
+            </a:page>
+        </a:pages>
+    </a:window>
+
+    <a:window id="winModalEmail" title="Oh, one more thing..." icon="" center="true" render="runtime" width="297" draggable="false" skin="bk-window" class="relative nofooter" height="335">
+        <a:bar skin="basic" id="barSignIn" validgroup="vgEmailSet" margin="15 0 0 0">
+
+            <a:label margin="8 20 0 20">Your email address</a:label>
+            <a:textbox id="tbEmailSet" margin="1 18 0 18" required="true" tabindex="1" skin="dashboard-textbox" onclick="this.focus()" datatype="a:email" initial-message="Email..." invalidmsg="You need a valid email"/>
+
+            <a:hbox edge="12 18 0 18" align="center" pack="end">
+                <a:button id="btnEmailSet" skin="button-green-rounded" width="160" tabindex="2" default="3" onclick="if (vgEmailSet.validate()) {                       require('ext/auth/auth').setEmail(tbEmailSet.getValue())                   }">LETS GET STARTED</a:button>
+            </a:hbox>
+
+            <div class="signin_divider" style="margin:14px 20px 5px 19px;"/>
+            <div id="divEmailSetHeader" style="color: #1c4560; font-weight: bold;padding: 10px 20px 0 20px;">Why do we need this?</div>
+            <div id="divEmailSetText" style="color: #1c4560; padding: 10px 20px;line-height: 16px;">In order for us to send you notifications of your projects we need your email address. Unfortunately your email address isn't provided by the service you selected. Please enter it to continue.</div>
+            <a:label id="lblEmailSetError" style="color: red;" margin="10 20 0 20"/>
+
+        </a:bar>
+    </a:window>
+
+    <a:window id="winSuggestSign" icon="" title=" " buttons="close" skin="bk-win-noisebg" center="true" width="340" modal="false" height="140">
+        <a:vbox align="center" class="needsignin">
+            <div class="green-label">You need to be signed in to edit projects.</div>
+            <a:hbox align="center" edge="10 0 10 0">
+                <a:button skin="button-colorless" class="dark blue" onclick="winSuggestSign.hide();winLogin.show()" margin="0 10" width="95">sign in</a:button>
+                <span>or</span>
+                <a href="http://c9.io/site/pricing/" target="_blank" class="nodecor-link">
+                    <a:button skin="button-colorless" class="dark orange" onclick="" margin="0 10" width="95">sign up</a:button>
+                </a>
+            </a:hbox>
+            <div class="rights-change">
+                If you don’t own this project you can <br/>
+                request editing rights to project admins.
+            </div>
+        </a:vbox>
+    </a:window>
+
+    <a:bar id="barAuth" visible="false">
+        <a:hbox id="view-mode-box-not-loggedin" visible="false" height="55" class="view-mode-box" align="center" edge="0 10">
+            <a href="http://c9.io" class="c9-logo-view-mode"/>
+            <a:filler/>
+            <a:hbox align="center">
+                <span class="yellow-label">You are in Guest mode <span class="blue-label">(no editing)</span></span>
+                <a href="http://c9.io/site/pricing/" target="_blank" class="nodecor-link">
+                    <a:button skin="button-colorless" class="dark" onclick="" margin="0 10" width="65">Sign up</a:button>
+                </a>
+                <span>or</span>
+                <a:button skin="button-colorless" class="dark green" onclick="                     require('core/ide').addEventListener('login', function() { location.reload(); });                     winLogin.show();                 " margin="0 10" width="115">Sign in to edit</a:button>
+            </a:hbox>
+        </a:hbox>
+        <a:hbox id="view-mode-box-readonly" visible="false" height="35" class="view-mode-box" align="center" edge="0 10">
+            <span class="blue-label">This project you are viewing is owned by <span id="lblPrjUser" class="yellow-label"/></span>
+            <a:filler/>
+            <a:hbox align="center">
+                <span class="blue-label">Need edit-rights? Simply
+                    <a href="javascript:require('ext/collaborate/collaborate').showGroupChat()" class="green-label">chat</a> with the project owner!</span>
+            </a:hbox>
+            <a:filler/>
+            <a href="javascript:void(0)" class="white-label nodecor-link" onclick="                   self['view-mode-box-readonly'].hide();                   self['view-mode-box-readonly'].noshow=true;                   apf.setStyleClass(vbMain.$ext, '', ['readonly']);                   vbMain.$ext.style.position = '';                   vbMain.$ext.style.top = '0';                   vbMain.$ext.style.left = '0';                   vbMain.$ext.style.right = '0';                   vbMain.$ext.style.bottom = '0';                   vbMain.$ext.style.height = apf.getWindowHeight() + 'px';               ">
+                Hide this!
+            </a>
+        </a:hbox>
+    </a:bar>
+</a:application>

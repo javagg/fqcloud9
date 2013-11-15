@@ -1,0 +1,14 @@
+{
+    "name": "ext.terminal",
+    "version": "0.0.1",
+    "main": "terminal-ext.js",
+    "private": true,
+    "plugin": {
+        "provides": [
+            "ext.terminal"
+        ],
+        "consumes": [
+            "client-plugins"
+        ]
+    }
+}

@@ -1,0 +1,6 @@
+<a:application xmlns:a="http://ajax.org/2005/aml">
+    <a:page id="pgTerminal1" caption="Terminal1" name="terminal1">
+        <a:button id="newTerminal1" skin="btn_icon_only" icon="console_settings.png" margin="2 2 0 0" class="newTerminal1Btn" />
+        <div id="terminalWindow1"></div>
+    </a:page>
+</a:application>

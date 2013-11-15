@@ -1,0 +1,241 @@
+<a:application xmlns:a="http://ajax.org/2005/aml">
+    <a:model id="mdlServers"/>
+    <a:model id="mdlProducts"/>
+    <a:model id="mdlBranches"/>
+
+    <a:modalwindow id="winDeploy" skinset="gitskin" flex="1" skin="fm-window" title="Deploy" modal="false" visible="true" buttons="close" optimize="true">
+        <a:button id="btnAddDeploy" class="c9-header-plus c9-header-divider" top="-31" skin="header-btn" right="0" disabled="false" onclick="mwDeployTarget.show();"/>
+        <a:button id="btnRemoveDeploy" class="c9-header-minus c9-header-divider" top="-31" skin="header-btn" right="30" disabled="{!trDeploy.selected || trDeploy.selected.tagName != 'server' || trDeploy.selected.getAttribute('busy') == 'true' || !!trDeploy.selected.getAttribute('disposedate')}" onclick="             if (trDeploy.selected.getAttribute('type') == 'nodejs')                 winConfirmDelDeploy.show();             else                 winConfirmDelFreeDeploy.show();           "/>
+        <a:hbox anchors="0 0 0 0">
+            <a:tree id="trDeploy" flex="1" class="treeprojects" model="mdlServers" skin="deploy-servers-tree" opencloseaction="onmousedown" startcollapsed="false" reselectable="true" autoselect="false" empty-message=" " onafterselect="                 if (this.selected &amp;&amp; this.selected.tagName != 'group')                     require('ext/deploy/deploy').displayDeployInfo();                 ">
+                <a:each match="[group|server]">
+                    <a:caption><?lm <div class="openclose"></div>
+                        <div class="spinner"></div>
+                        if (tagName() == 'group' && [@type] == 'org') {
+                            <div class="pointer"></div>
+                        }
+                        <div class="name">
+                            [@name|@type]
+                        </div>
+                        <div class="users">{
+                            if([@disposedate]) {
+                                'Dispose date: ' [@disposedate]
+                            }
+                            else {
+                                if([@busy] == 'false') {
+                                    'Active'
+                                }
+                                else if([@message]) {
+                                    [@message]
+                                }
+                                else {
+                                    'Retrieving status'
+                                }
+                            }
+                        }</div>
+                    ?></a:caption>
+                    <a:css match="{[@busy] == 'true'}" value="inprogress"/>
+                </a:each>
+            </a:tree>
+            <a:scrollbar for="trDeploy" id="sbtrDeploy" skin="sbios" margin="5 0 2 0" width="10" overflow="auto" class="deploy-sb"/>
+        </a:hbox>
+        <a:label id="lblAddDeploy" skin="lbl-adddeploy" skinset="gitskin" visible="{!winDeploy.visible}">Add a deploy target here</a:label>
+    </a:modalwindow>
+
+    <!-- CREATE DEPLOY TARGET WINDOW-->
+    <a:modalwindow id="mwDeployTarget" class="win-deploy-target relative" skin="bk-window" title="Add a deploy target" visible="false" onshow="require('ext/deploy/deploy').onWindowShow(this)" width="350" kbclose="true" buttons="close" modal="true" center="true">
+        <a:errorbox id="errorDeployName" top="18" left="73">This name is already used. Please enter a different name</a:errorbox>
+
+        <a:vbox class="prj_creation_blackgb" height="65" align="start">
+            <a:bar skin="bar-black" margin="10 11 10 11" skinset="gitskin">
+                <a:hbox align="center" padding="10" width="309">
+                    <a:label skin="bold-white-label" width="100" skinset="gitskin">Select a service</a:label>
+            <a:dropdown id="ddServerType" margin="3 0 0" skin="c9-dropdown" class="remove-bottom-text" skinset="gitskin" model="mdlProducts" each="[vendor]" eachvalue="[@id]" caption="[@caption]" sort="[@caption]" default="openshift" flex="1"/>
+                </a:hbox>
+            </a:bar>
+        </a:vbox>
+
+        <!-- HEROKU -->
+        <a:vbox id="hboxHeroku" render="runtime" prerender="true" visible="{ddServerType.value == 'heroku'}" width="100%"/>
+
+        <!-- OPENSHIFT -->
+        <a:vbox id="hboxOpenshift" render="runtime" prerender="true" visible="{ddServerType.value == 'openshift'}" width="100%"/>
+
+        <!-- CloudFoundry -->
+        <a:vbox id="hboxCloudFoundry" render="runtime" prerender="true" visible="{ddServerType.value == 'cloudfoundry'}" width="100%"/>
+
+        <!-- Azure -->
+        <a:vbox id="hboxAzure" render="runtime" prerender="true" visible="{ddServerType.value == 'azure'}" width="100%"/>
+
+        <!-- Azure Sites -->
+        <a:vbox id="hboxAzureSites" visible="{ddServerType.value == 'azure-sites'}" width="100%"/>
+        
+        <a:errorbox id="errServiceSignin" top="216" left="33"><?lm <div>Sign in error: Email or password are incorrect</div>
+        ?></a:errorbox>
+
+    </a:modalwindow>
+
+    <a:menu id="mnuDeploy" skin="deploy-mnu" model="{trDeploy.selected}" skinset="gitskin">
+        <!-- Heroku Table -->
+        <a:table columns="75, *" edge="9 10 0 10" padding="0" class="deploy-table" visible="{[@type] == 'heroku'}">
+            <a:label skin="deploy-label" skinset="gitskin" class="deploy-bold">Name:</a:label>
+            <a:label skin="deploy-label" skinset="gitskin" caption="[@name]"/>
+
+            <a:label skin="deploy-label" skinset="gitskin" class="deploy-bold">Created:</a:label>
+            <a:label skin="deploy-label" skinset="gitskin" caption="{var date = [@since].split('/');new Date(date[2], date[1] - 1, date[0]).toString('MMM. d \'yy')}"/>
+
+            <a:label skin="deploy-label" skinset="gitskin" class="deploy-bold">Server type:</a:label>
+            <a:label skin="deploy-label" skinset="gitskin" caption="[../@name]"/>
+
+            <a:label skin="deploy-label" skinset="gitskin" class="deploy-bold">App:</a:label>
+            <a:label skin="deploy-label" skinset="gitskin" caption="[@appName]"/>
+
+            <a:label skin="deploy-label" skinset="gitskin" class="deploy-bold">Heroku url:</a:label>
+            <a:label skin="deploy-label" skinset="gitskin" caption="[@appUrl]" class="deploy-url" onclick="window.open(trDeploy.selected.getAttribute('appUrl'));"/>
+
+            <a:label skin="deploy-label" skinset="gitskin" class="deploy-bold">Branch:</a:label>
+            <a:label skin="deploy-label" skinset="gitskin" caption="master"/>
+        </a:table>
+        
+        <!-- Openshift Table -->
+        <a:table columns="100, *" edge="9 10 0 10" padding="0" class="deploy-table" visible="{[@type] == 'openshift'}">
+            <a:label skin="deploy-label" skinset="gitskin" class="deploy-bold">Name:</a:label>
+            <a:label skin="deploy-label" skinset="gitskin" caption="[@name]"/>
+
+            <a:label skin="deploy-label" skinset="gitskin" class="deploy-bold">Created:</a:label>
+            <a:label skin="deploy-label" skinset="gitskin" caption="{var date = [@since].split('/');new Date(date[2], date[1] - 1, date[0]).toString('MMM. d \'yy')}"/>
+
+            <a:label skin="deploy-label" skinset="gitskin" class="deploy-bold">Server type:</a:label>
+            <a:label skin="deploy-label" skinset="gitskin" caption="[../@name]"/>
+
+            <a:label skin="deploy-label" skinset="gitskin" class="deploy-bold">App:</a:label>
+            <a:label skin="deploy-label" skinset="gitskin" caption="[@appName]"/>
+
+            <a:label skin="deploy-label" skinset="gitskin" class="deploy-bold">Openshift url:</a:label>
+            <a:label skin="deploy-label" skinset="gitskin" caption="[@appUrl]" class="deploy-url" onclick="window.open(trDeploy.selected.getAttribute('appUrl'));"/>
+            
+            <a:label skin="deploy-label" skinset="gitskin" class="deploy-bold">Dashboard:</a:label>
+            <a:label skin="deploy-label" skinset="gitskin" caption="https://openshift.redhat.com/app/console/applications/[@appName]" class="deploy-url" onclick="window.open('https://openshift.redhat.com/app/console/applications/' + trDeploy.selected.getAttribute('appName'))"/>
+
+            <a:label skin="deploy-label" skinset="gitskin" class="deploy-bold">Branch:</a:label>
+            <a:label skin="deploy-label" skinset="gitskin" caption="master"/>
+        </a:table>
+
+        <!-- CloudFoundry Table -->
+        <a:table columns="75, *" edge="9 10 0 10" padding="0" class="deploy-table" visible="{[@type] == 'cloudfoundry'}">
+            <a:label skin="deploy-label" skinset="gitskin" class="deploy-bold">App:</a:label>
+            <a:label skin="deploy-label" skinset="gitskin" caption="[@name]"/>
+
+            <a:label skin="deploy-label" skinset="gitskin" class="deploy-bold">Created:</a:label>
+            <a:label skin="deploy-label" skinset="gitskin" caption="[@since]"/>
+
+            <a:label skin="deploy-label" skinset="gitskin" class="deploy-bold">Runtime:</a:label>
+            <a:label skin="deploy-label" skinset="gitskin" caption="[@runtime]"/>
+
+            <a:label skin="deploy-label" skinset="gitskin" class="deploy-bold">App url:</a:label>
+            <a:label skin="deploy-label" skinset="gitskin" caption="{[@appUrl]}" class="deploy-url" onclick="window.open('http://' + trDeploy.selected.getAttribute('appUrl'));"/>
+        </a:table>
+
+        <!-- Azure Sites Table -->
+         <a:table columns="75, *" edge="9 10 0 10" padding="0" class="deploy-table" visible="{[@type] == 'azure-sites'}">
+             <a:label skin="deploy-label" skinset="gitskin" class="deploy-bold">App:</a:label>
+             <a:label skin="deploy-label" skinset="gitskin" caption="[@name]"/>
+    	 	
+             <a:label skin="deploy-label" skinset="gitskin" class="deploy-bold">Created:</a:label>
+             <a:label skin="deploy-label" skinset="gitskin" caption="[@since]"/>
+    	 	
+             <a:label skin="deploy-label" skinset="gitskin" class="deploy-bold">Url:</a:label>
+             <a:label skin="deploy-label" skinset="gitskin" caption="[@appName].azurewebsites.net" class="deploy-url" onclick="window.open('http://' + trDeploy.selected.getAttribute('appName') + '.azurewebsites.net')"/>
+    
+             <a:label skin="deploy-label" skinset="gitskin" class="deploy-bold">App mgt:</a:label>
+             <a:label skin="deploy-label" skinset="gitskin" caption="Open portal" class="deploy-url" onclick="window.open('https://manage.windowsazure.com#Workspaces/WebsiteExtension/Website/' + trDeploy.selected.getAttribute('appName') + '/dashboard')"/>
+         </a:table>
+        
+        <!-- Azure Table -->
+        <a:vbox visible="{[@type] == 'azure'}">
+            <a:table columns="75, *" edge="9 10 0 10" padding="0" class="deploy-table">
+                <a:label skin="deploy-label" skinset="gitskin" class="deploy-bold">Name:</a:label>
+                <a:label skin="deploy-label" skinset="gitskin" caption="[@name]"/>
+
+                <a:label skin="deploy-label" skinset="gitskin" class="deploy-bold">Created:</a:label>
+                <a:label skin="deploy-label" skinset="gitskin" caption="[@since]"/>
+
+                <a:label skin="deploy-label" skinset="gitskin" class="deploy-bold">OS:</a:label>
+                <a:label skin="deploy-label" skinset="gitskin" caption="{window.mdlAzureOS ? mdlAzureOS.data.selectSingleNode('//os[@value=' + [@operatingSystem] + ']/@name').value : ''}"/>
+
+                <a:label skin="deploy-label" skinset="gitskin" class="deploy-bold">Instances:</a:label>
+                <a:label skin="deploy-label" skinset="gitskin" caption="[@instanceCount]"/>
+
+                <a:label skin="deploy-label" skinset="gitskin" class="deploy-bold">Datacenter:</a:label>
+                <a:label skin="deploy-label" skinset="gitskin" caption="[@datacenter]"/>
+
+                <a:label skin="deploy-label" skinset="gitskin" class="deploy-bold">Url:</a:label>
+                <a:label skin="deploy-label" skinset="gitskin" caption="[@name].cloudapp.net" class="deploy-url" onclick="window.open('http://' + trDeploy.selected.getAttribute('name') + '.cloudapp.net')"/>
+
+                <a:label skin="deploy-label" skinset="gitskin" class="deploy-bold">App mgt:</a:label>
+                <a:label skin="deploy-label" skinset="gitskin" caption="Open portal" class="deploy-url" onclick="window.open('https://windows.azure.com')"/>
+            </a:table>
+
+            <a:divider skin="deploy-divider" margin="11 1 0 1"/>
+            <a:vbox margin="8 13"> <!-- onafterchange="apf.xmldb.setAttribute(trDeploy.selected, 'target', this.value);"-->
+                <a:group id="azutargetrbgr" margin="0" padding="0" value="[@target]" disabled="{[@busy]}">
+                    <a:radiobutton group="azutargetrbgr" label="Deploy to Staging" skin="radio_black" value="staging">
+                    </a:radiobutton>
+                    <a:radiobutton group="azutargetrbgr" label="Deploy to Production environment" skin="radio_black" value="production">
+                    </a:radiobutton>
+                </a:group>
+            </a:vbox>
+            <a:button margin="7 10 10 10" height="26" width="{mnuDeploy.width - 10}" skin="button-green-rounded3" disabled="{[@busy]}" class="deploy" onclick="                 trDeploy.selected.getAttribute('target') == 'staging'                     ? require('ext/azure/azure').deployToStage()                     : require('ext/deploy/deploy').doDeploy();             ">DEPLOY</a:button>
+        </a:vbox>
+
+        <a:divider skin="deploy-divider" margin="5 1 0 1" skinset="gitskin" visible="{[@type]=='nodejs'}"/>
+        <a:label skin="deploy-label" margin="8 0 0 10" class="deploy-bold" skinset="gitskin" visible="{[@type]=='nodejs'}">Branch</a:label>
+        <a:dropdown id="ddDeployBranches" skin="deploy-dropdown" value="1" margin="3 10 10 8" skinset="gitskin" model="mdlBranches" each="[branch]" caption="[@name]" eachvalue="[@name]" selected="[branch[@name='nodejs']]" visible="{[@type]=='nodejs'}"/>
+
+        <a:vbox visible="{[@type] != 'azure'}">
+            <a:divider skin="deploy-divider" margin="11 1 0 1"/>
+            <a:button width="{mnuDeploy.width - 10}" margin="13 10 7 10" skin="button-green-rounded3" disabled="{[@busy]}" class="deploy" height="26" onclick="require('ext/deploy/deploy').doDeploy();">DEPLOY</a:button>
+        </a:vbox>
+    </a:menu>
+
+    <a:window id="winConfirmDelDeploy" title="Delete deploy target" icon="" center="true" render="runtime" kbclose="true" skin="bk-window" width="512" draggable="false" class="relative">
+        <a:vbox padding="10" edge="15 20 22">
+            <!--h3 id="winQuestionHeader"></h3-->
+            <div id="winQuestionMsg" class="alertMsg">You want to delete this deploy server. This means your subscription on this server will be canceled. You can still use this server until the end on the subscription period. After that this server will be automatically removed.<br/><br/>Are you sure you want to do this? Deleting a deploy target cannot be undone!</div>
+        </a:vbox>
+
+        <a:hbox pack="end" padding="10" edge="5 10 11">
+            <a:filler/>
+            <a:button default="3" onclick="winConfirmDelDeploy.hide();" skin="btn-default-css3">Cancel</a:button>
+            <a:button class="btn-red" onclick="require('ext/deploy/deploy').cancelDeploy();" skin="btn-default-css3">Delete</a:button>
+        </a:hbox>
+    </a:window>
+
+    <a:window id="winConfirmDelFreeDeploy" title="Delete deploy target" icon="" center="true" render="runtime" kbclose="true" draggable="false" width="512" skin="bk-window" class="relative">
+        <a:vbox padding="10" edge="15 20 22">
+            <div id="winQuestionMsg" class="alertMsg">You want to delete this deploy server.<br/><br/>Are you sure you want to do this? Deleting a deploy target cannot be undone!</div>
+        </a:vbox>
+
+        <a:hbox pack="end" padding="10" edge="5 10 11">
+            <a:filler/>
+            <a:button default="3" onclick="winConfirmDelFreeDeploy.hide();" skin="btn-default-css3">Cancel</a:button>
+            <a:button class="btn-red" onclick="require('ext/deploy/deploy').cancelDeploy();" skin="btn-default-css3">Delete</a:button>
+        </a:hbox>
+    </a:window>
+
+    <a:window id="winDeployNameExists" title="Name exists" icon="" center="true" render="runtime" kbclose="true" width="512" draggable="false" skin="bk-window" class="relative">
+        <a:vbox padding="10" edge="15 20 22">
+            <!--h3 id="winQuestionHeader"></h3-->
+            <div id="winQuestionMsg" class="alertMsg">
+                You already have a deploy target with this name.<br/>
+                Are you sure you want to use this name again?
+            </div>
+        </a:vbox>
+
+        <a:hbox pack="end" padding="10" edge="5 10 11">
+            <a:filler/>
+            <a:button class="btn-red" default="3" onclick="winDeployNameExists.hide();" skin="btn-default-css3">No</a:button>
+            <a:button class="btn-green" skin="btn-default-css3" id="btnDeployNameExistsYes">Yes</a:button>
+        </a:hbox>
+    </a:window>
+</a:application>

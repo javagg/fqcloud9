@@ -1,0 +1,14 @@
+{
+    "name": "ext.highstock",
+    "version": "0.0.1",
+    "main": "highstock-ext.js",
+    "private": true,
+    "plugin": {
+        "provides": [
+            "ext.highstock"
+        ],
+        "consumes": [
+            "client-plugins"
+        ]
+    }
+}

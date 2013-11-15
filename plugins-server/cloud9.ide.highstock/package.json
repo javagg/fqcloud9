@@ -1,0 +1,10 @@
+{
+    "name": "cloud9.ide.highstock",
+    "version": "0.0.1",
+    "main": "highstock-plugin.js",
+    "private": true,
+    "plugin": {
+        "provides": ["highstock"],
+        "consumes": ["static"]
+    }
+}

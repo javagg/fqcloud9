@@ -1,0 +1,14 @@
+{
+    "name": "ext.hellostudio",
+    "version": "0.0.1",
+    "main": "hellostudio.js",
+    "private": true,
+    "plugin": {
+        "provides": [
+            "ext.hellostudio"
+        ],
+        "consumes": [
+            "client-plugins"
+        ]
+    }
+}

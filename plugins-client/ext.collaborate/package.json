@@ -1,0 +1,14 @@
+{
+    "name": "ext.collaborate",
+    "version": "0.0.1",
+    "main": "collaborate-ext.js",
+    "private": true,
+    "plugin": {
+        "provides": [
+            "ext.collaborate"
+        ],
+        "consumes": [
+            "client-plugins"
+        ]
+    }
+}

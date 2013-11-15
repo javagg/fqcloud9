@@ -1,0 +1,14 @@
+{
+    "name": "ext.auth",
+    "version": "0.0.1",
+    "main": "auth-ext.js",
+    "private": true,
+    "plugin": {
+        "provides": [
+            "ext.auth"
+        ],
+        "consumes": [
+            "client-plugins"
+        ]
+    }
+}

@@ -1,0 +1,59 @@
+.heroku-brand {
+    color: #808080;
+    font-size: 11px;
+}
+
+.heroku-signin-deploy {
+    height: 160px;
+}
+
+.heroku-signin-deploy .label {
+    font-size: 12px;
+}
+
+.azure-sites-dark {
+    border-top: 1px solid black;
+    box-shadow: 0px 1px 0px 0px #4a4b4d inset;
+    background: #26282a;
+    padding: 20px;
+    color: #F1F1F1;
+    line-height: 16px;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+@-webkit-keyframes loadingDots { 0%, 19.99%, 100% { background-position: 0 0 } 20%, 39.99% { background-position: -30px 0 } 40%, 59.99% { background-position: -60px 0 } 60%,79.99% { background-position: -90px 0 } 80%, 99.99% { background-position: -120px 0 } }
+@-moz-keyframes loadingDots { 0%, 19.99%, 100% { background-position: 0 0 } 20%, 39.99% { background-position: -30px 0 } 40%, 59.99% { background-position: -60px 0 } 60%,79.99% { background-position: -90px 0 } 80%, 99.99% { background-position: -120px 0 } }
+@keyframes loadingDots { 0%, 19.99%, 100% { background-position: 0 0 } 20%, 39.99% { background-position: -30px 0 } 40%, 59.99% { background-position: -60px 0 } 60%,79.99% { background-position: -90px 0 } 80%, 99.99% { background-position: -120px 0 } }
+
+.dots {
+    background: url(/static/ext/azure-sites/style/images/loading.png) no-repeat;
+        -webkit-animation: loadingDots .7s linear 0s infinite normal;
+           -moz-animation: loadingDots .7s linear 0s infinite normal;
+                animation: loadingDots .7s linear 0s infinite normal;
+
+    min-width: 30px;
+    min-height: 18px;
+    display: inline-block;
+    margin-left: 7px;
+}
+
+.azure-sites-dark .loading {
+    position: absolute;
+    top: 50%;
+    margin-top: -10px;
+    left:0;right: 0;
+    text-align: center;
+
+    color: #c5d7bf;
+    font-size: 12px;
+}
+
+.azure-sites-dark .azureFirstTimeScreenTitle {
+    color: #c5d7bf;
+    font-size: 12px;
+}
+
+.azure-sites-dark ol {
+    padding-left: 15px;
+}

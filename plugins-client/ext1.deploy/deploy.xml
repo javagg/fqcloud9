@@ -1,0 +1,65 @@
+<a:application xmlns:a="http://ajax.org/2005/aml">
+    <a:window id="winDeploy"
+              flex     = "1"
+              skin     = "fm-window"
+              title    = "Deploy"
+              modal    = "false"
+              buttons  = "close"
+              optimize = "true"
+              minwidth = "101">
+        <a:button skin="header-btn" class="c9-header-plus c9-header-divider" />
+        <a:button skin="header-btn" class="c9-header-minus c9-header-divider" />
+        <!--submenu="mnuOpenFilesSettings"-->
+
+        <!--<a:menu id="mnuOpenFilesSettings">-->
+            <!--<a:item id="cbShowFiles"-->
+                    <!--caption = "Show Path"-->
+                    <!--type    = "check"-->
+                    <!--visible = "{lstOpenFiles.visible}"-->
+                    <!--checked = "[{require('ext/settings/settings').model}::auto/openfiles/@showpath]"-->
+                    <!--onclick = "-->
+                    <!--setTimeout(function() {-->
+                        <!--var sel = lstOpenFiles.getSelection();-->
+                        <!--lstOpenFiles.reload();-->
+                        <!--lstOpenFiles.selectList(sel);-->
+                    <!--});-->
+                <!--"-->
+                    <!--/>-->
+        <!--</a:menu>-->
+
+        <!--<a:list id="lstOpenFiles"-->
+                <!--canrename   = "true"-->
+                <!--anchors     = "0 0 0 0"-->
+                <!--model       = "{require('ext/openfiles/openfiles').model}"-->
+                <!--border      = "0"-->
+                <!--scrollbar   = "sbShared 2 2 2"-->
+                <!--class       = "openfile"-->
+                <!--multiselect = "true"-->
+                <!--autoselect  = "false"-->
+                <!--skin        = "tree">-->
+            <!--<a:each match="[file]" sort="[@name]" sort-method="filesort">-->
+                <!--<a:caption match="[@name]" value="{([../@changed] == 1 ? '*' : '') + [.] + (cbShowFiles.checked ? ' - ' + [../@path].split('/').slice(-2).join('/') : '')}" />-->
+                <!--<a:icon match="[folder|project]" value="folder.png" />-->
+                <!--<a:icon match="[file]" value="{require('core/util').getFileIcon(%[.])}" />-->
+            <!--</a:each>-->
+            <!--<a:remove match="[file|folder]" />-->
+        <!--</a:list>-->
+    </a:window>
+
+    <!--<a:window id="winDeploy"-->
+              <!--skin      = "fm-window"-->
+              <!--class     = "unselectable"-->
+              <!--title     = "Deploy"-->
+              <!--flex      = "1"-->
+              <!--minwidth  = "240"-->
+              <!--modal     = "false"-->
+              <!--model     = "{require('ext/deploy/deploy').model}"-->
+              <!--optimize  = "true">-->
+      <!--<a:button skin="header-btn" class="c9-header-minus" submenu="mnuOpenFilesSettings"/>-->
+        <!--<a:bar id="barDeploy" skinset="prefs" anchors ="0 0 0 0" skin="bar-deploy" flex="1" scrollbar="sbShared 2 2 2">-->
+        <!--</a:bar>-->
+
+        <!--<a:bar id="barRunDebug" skinset="prefs" anchors ="0 0 0 0" skin="bar-rundebug" flex="1" scrollbar="sbShared 2 2 2">-->
+        <!--</a:bar>-->
+    <!--</a:window>-->
+</a:application>

@@ -1,0 +1,114 @@
+<a:application xmlns:a="http://ajax.org/2005/aml">
+    <a:tab id="tabCollaborators" skin="docktab" resizable="true" visible="false" buttons="close">
+        <a:page id="collabMembers" name="collabMembers" caption="Members" skinset="collaborate" skin="dockextwin">
+            <a:vbox anchors="0 0 0 0">
+                <a:toolbar>
+                    <a:bar height="34">
+                        <a:hbox edge="5">
+                            <a:textbox id="tbCollabSearch" realtime="true" flex="1" skin="searchbox_textbox" class="small_font" focusselect="true" initial-message="Filter Members" onkeyup="                                 if(event.keyCode == 40) {                                     treeCollaborators.focus();                                     treeCollaborators.select(treeCollaborators.getTraverseNodes(treeCollaborators.getFirstTraverseNode())[0]);                                 }"/>
+                        </a:hbox>
+                    </a:bar>
+                </a:toolbar>
+                <a:hbox class="clist_container" id="clist_container" flex="1">
+                    <a:tree id="treeCollaborators" skin="collaborators-tree" disableremove="true" opencloseaction="onmouseup" onafterchoose="require('ext/collaborate/collaborate').showGroupChat()" onafterselect="                             require('ext/collaborate/collaborate').setAdminButtonStates(this.selected)                         " openadd="false" startcollapsed="false" empty-message="No results" flex="1" anchors="0 0 0 0" scrollbar="sbShared 2 2 2" onkeydown="                         if (event.keyCode == '38' &amp;&amp; treeCollaborators.getTraverseNodes()[0].selectSingleNode(&quot;user[1]&quot;) == treeCollaborators.selected) {                             tbCollabSearch.focus();                             tbCollabSearch.select();                             return false;                         }">
+                        <a:each match="[group[count(./user) != 0]|user]" filter="{tbCollabSearch.value}" filter-groups="group" filter-fields="@caption" sort="[@online]" order="descending">
+                            <a:caption><?lm <div class="openclose"></div>
+                                <div class="status"></div>
+                                var collab = require("ext/collaborate/collaborate");
+                                if ([@type] == "user" && [@pending] == "pending-none") {
+                                    <span class="collaborator_color" style="background-color: [@color]; display: {[@color] == 'false' ? 'none' : 'block'};"></span>
+                                }
+                                [@caption] || [@fullname] || [@name]
+                                if ([@type] == "group") {
+                                    if ([@name] == "pending" || [@name] == "visitors") {
+                                        <span class="num_users"> (#[./user])</span>
+                                    }
+                                    else if ([@name] == "members" || [@name] == "orgteam" || [@name] == "room") {
+                                        <span class="num_users"> (#[./user[@online="1"]]/#[./user])</span>
+                                    }
+                                }
+                                else if ([@type] == "user") {
+                                    var uid = [@uid];
+                                    var isAnon = uid.indexOf("anon_") > -1;
+                                    if (!isAnon && [@pending] == "pending-user") {
+                                        <a href="#" class="txt_subuser cancel" onclick="require('ext/collaborate/access_requests').cancelInvite(event, [@uid])">Cancel</a>
+                                    }
+                                    else if (!isAnon && [@pending] == "pending-admin") {
+                                        <a href="#" class="txt_subuser ok" onclick="require('ext/collaborate/access_requests').acceptReadWrite(event, [@uid])">Allow RW</a>
+                                        <a href="#" class="txt_subuser ok" onclick="require('ext/collaborate/access_requests').acceptRead(event, [@uid])">Allow RO</a>
+                                        <a class="txt_subuser cancel" href="#" onclick="require('ext/collaborate/access_requests').deny(event, [@uid])">Deny</a>
+                                    }
+                                    else {
+                                        var updatePermissions = !isAnon && collab.iAmAdmin == true && [@uid] != collab.myUserId;
+                                        if ([./../@name] == "members" || [./../@name] == "visitors") {
+                                            if (updatePermissions) {
+                                                <span class="clickarea" {updatePermissions ? "onmouseup=\"require('ext/collaborate/collaborate').popupPermissionMenu(event, '[@uid]')\"" : ''}>
+                                                    <span class="collaborator_permissions [@permissions]"></span>
+                                                    <span class="collaborator_permissions_menu"></span>
+                                                </span>
+                                            }
+                                            else {
+                                                <span class="collaborator_permissions [@permissions]"></span>
+                                            }
+                                        }
+                                    }
+                                }
+                            ?>
+                            <a:css match="{[@online] == '1' &amp;&amp; [@idle] != 0}" value="idle"/>
+                            <a:css match="{[@online] == '1'}" value="online"/>
+                            <a:css match="{[@online] == '0'}" value="offline"/>
+                            </a:caption>
+                        </a:each>
+                    </a:tree>
+                </a:hbox>
+                <a:toolbar id="tlbCollabBottomBar" height="27" width="100%" class="collaborateBottomBar">
+                    <a:bar height="27">
+                         <a:button id="btnChatCollaborator" skinset="collaborate" skin="collaboratorbutton" visible="false" class="chat_collaborator" disabled="true" onclick="require('ext/collaborate/collaborate').showGroupChat()" right="5"/>
+                         <a:button id="btnShareProject" skinset="collaborate" skin="collaboratorbutton" class="share_project" disabled2="true" submenu="mnuCtxShare" right="5"/>
+                    </a:bar>
+                </a:toolbar>
+                <a:menu id="mnuCtxPromoteCollab">
+                    <a:item onclick="require('ext/collaborate/access_requests').promote()">Grant Read+Write Access</a:item>
+                </a:menu>
+                <a:menu id="mnuCtxDemoteCollab">
+                    <a:item onclick="collabMembers.parentNode.parentNode.hide();require('ext/collaborate/access_requests').demote()">Revoke Read+Write Access</a:item>
+                </a:menu>
+                <a:menu id="mnuCtxShare" skin="menu-bk" width="240" class="c9-tooltip share-url" margi2="0 0 0 5" ondisplay="require('ext/collaborate/collaborate').setShareUrl('email-project-url')">
+                    <div class="share-url">
+                        Simply share your project URL with the person you wish to add. Once they open your link they will show up here.<br/>
+                        <a id="email-project-url" href="" target="_blank">Mail them the URL</a><br/>
+                        or copy the url from the address bar
+                    </div>
+                </a:menu>
+            </a:vbox>
+        </a:page>
+    </a:tab>
+
+    <a:window id="winPendingRequest" title="Project Request Pending" icon="" center="true" render="runtime" kbclose="true" width="512" draggable="false" skin="bk-window" class="relative">
+        <a:vbox width="100%">
+            <a:hbox edge="15 10 20 10" padding="10">
+                <div class="alertWarn" margin="0 10 0 10"/>
+                <a:vbox flex="1" padding="5">
+                    <div id="winAlertMsg" class="alertMsg">You have already requested access to this project. It is pending approval from the
+                      project administrator.</div>
+                </a:vbox>
+            </a:hbox>
+            <a:hbox edge="6 10 10" pack="end" padding="7">
+                <a:button default="3" class="btn-green" onclick="require('ext/collaborate/access_requests').returnToDashboard()" skin="btn-default-css3">OK</a:button>
+                <a:button onclick="require('ext/collaborate/access_requests').cancelPendingRequest();" skin="btn-default-css3">Cancel Request</a:button>
+            </a:hbox>
+        </a:vbox>
+    </a:window>
+
+    <a:window id="winNoAccessPremiumNeeded" title="" icon="" center="true" render="runtime" width="400" draggable="false" skin="bk-win-noisebg" class="relative">
+        <a:vbox width="100%" align="center" padding="10" edge="0 0 15">
+            <span class="smile-icon"/>
+            <span class="text-header">It's time to upgrade!</span>
+            <span class="text-content">This feature is only available to Premium members.</span>
+            <a:hbox height="42" padding="10" margin="11 0 0">
+                <a:button width="128" default="3" class="large lighterGrey" onclick="require('ext/collaborate/access_requests').returnToDashboard()" skin="button-colorless">No thanks</a:button>
+                <a:button width="202" class="large lightGreen" onclick="require('ext/collaborate/access_requests').returnToDashboard(true)" skin="button-colorless">See plans and Pricing</a:button>
+            </a:hbox>
+        </a:vbox>
+    </a:window>
+</a:application>

@@ -1,0 +1,11 @@
+<a:application xmlns:a="http://ajax.org/2005/aml">
+    <a:bar id="barTerminal" anchors="0 0 0 0" focussable="true" class="c9terminal" model="{require('core/settings').model}" fontfamily="[auto/terminal/@fontfamily]" fontsize="[auto/terminal/@fontsize]" blinking="[auto/terminal/@blinking]" scrollback="[auto/terminal/@scrollback]" contextmenu="mnuTerminal">
+        <div class="c9terminalcontainer">
+            
+        </div>
+    </a:bar>
+    
+    <a:menu id="mnuTerminal">
+        <a:item command="openterminal">New Terminal</a:item>
+    </a:menu>
+</a:application>

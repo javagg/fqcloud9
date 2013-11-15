@@ -1,0 +1,27 @@
+{
+    "name": "freequant-studio",
+    "description": "Freequant Strategy IDE",
+    "version": "0.0.1",
+    "engines": {"node": ">= 0.6.15"},
+    "author": "Alex Lee <lu.lee05@gmail.com>",
+
+    "dependencies": {
+        "cloud9": "https://github.com/ajaxorg/cloud9/tarball/5b62a7c83445ccba9f50592d41a7128b1f1fe868",
+        "architect": "~0.1.10",
+        "optimist": "0.3.4",
+        "connect": "1.8.7",
+        "mkdirp": "0.3.5",
+        "http-proxy": "*",
+        "http-error": "0.0.1",
+        "simple-template": "0.0.1",
+
+        "tty.js": "",
+        "term.js": "",
+        "pty.js": "",
+        "express": "3.1.0",
+        "socket.io": "0.9.13",
+        "engine.io": "0.5.0",
+        "execSync": "~1.0.1-pre"
+    },
+    "readme": "nothing important"
+}

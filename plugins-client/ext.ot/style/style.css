@@ -1,0 +1,435 @@
+/* Chat emoji */
+.emoji {
+  vertical-align: middle;
+}
+
+/* Cursor tooltip end */
+.cool {
+    position: absolute;
+    opacity: 0.9;
+}
+
+.coolsel {
+    opacity: 0.2 !important;
+}
+
+.cool_header {
+    color: black;
+    margin-top: -2px;
+    margin-left: -1px;
+    width: 4px;
+    height: 4px;
+}
+
+.cool_tooltip_cursor {
+    position: absolute;
+    height: 20px;
+    width: auto;
+    background: url([%otStatic%]/tooltip_elements.png) repeat-x 0 -80px !important;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    -moz-box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.65);
+    -webkit-box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.65);
+    box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.65);
+
+    border: 1px solid #000101;
+    vertical-align: middle;
+    line-height: 20px;
+    padding: 0;
+    margin: 0;
+    z-index: 200001;
+}
+
+.cool_tooltip_cursor_arrow {
+    position: absolute;
+    background: url([%otStatic%]/tooltip_elements.png) no-repeat 0 -100px;
+    padding: 0;
+    margin: 0;
+    width: 23px;
+    height: 13px;
+    z-index: 200001;
+}
+
+.cool_tooltip_cursor_caption {
+    height: 20px;
+    margin: 0 8px 0 8px;
+    color: #ccc;
+    cursor: default;
+}
+
+.cool_tooltip_cursor_divider {
+    height: 15px;
+    width: 1px;
+    background: #404040;
+    border-left: #000 1px solid;
+    margin-top: 3px;
+    float: right;
+}
+
+.cool_tooltip_cursor_button {
+    width: 20px;
+    height: 20px;
+    background-image: url([%otStatic%]/tooltip_elements.png);
+    background-repeat: no-repeat;
+    background-position: 0 -40px;
+    float: right;
+    cursor: pointer;
+    cursor: hand;
+}
+
+.cool_tooltip_cursor_button_chat {
+    background-position: 0 -60px !important;
+    margin-right: 4px;
+}
+
+.cool_tooltip_selection {
+    height: 20px;
+    width: auto;
+    background: white !important;
+    border: 1px solid #969696;
+    padding: 0;
+    margin: 0;
+    z-index: 200000;
+}
+
+.cool_tooltip_selection_caption {
+    height: 20px;
+    vertical-align: middle;
+    line-height: 22px;
+    margin: 0 8px 0 8px;
+    font-weight: bold;
+}
+
+.cool_tooltip_selection_button {
+    width: 20px;
+    height: 20px;
+    background-image: url([%otStatic%]/tooltip_elements.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    border-left: 1px solid #969696;
+    float: right;
+    cursor: pointer;
+    cursor: hand;
+}
+
+.cool_tooltip_selection_button_chat {
+    background-position: 0 -20px !important;
+}
+/* Cursor tooltip end */
+
+/* Author gutter tooltip */
+.ace_tooltip {
+    position: fixed;
+    background: #F8F7AC;
+    border: solid 1px rgba(205, 237, 0, 0.81);
+    border-radius: 5px;
+    z-index: 1000000;
+    max-width: 500px;
+    white-space: pre-wrap;
+}
+
+/* Timeslider stuff */
+#timeslider-top {
+    border-bottom: solid rgb(194, 194, 194) 1px;
+    width: 100%;
+    z-index: 10;
+    box-shadow: 0 -5px 10px rgba(22, 64, 80, 0.07) inset;
+}
+
+#timeslider {
+    height: 63px;
+    margin: 0 9px;
+}
+
+#timeslider #timer {
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    left: 7px;
+    position: absolute;
+    text-align: center;
+    top: 8px;
+    width: 122px;
+}
+
+#timeslider #timeslider-slider {
+    height: 61px;
+    left: 0;
+    position: absolute;
+    top: 10px;
+    width: 100%;
+}
+
+#playpause_button, #playpause_button_icon {
+    height: 47px;
+    position: absolute;
+    width: 47px;
+}
+
+#playpause_button {
+    background-image: url([%otStatic%]/play_undepressed.png);
+    left: 10px;
+    top: 9px;
+}
+
+#playpause_button_icon {
+    background-image: url([%otStatic%]/play.png);
+    left: 0;
+    top: 0;
+}
+
+.pause#playpause_button_icon {
+    background-image: url([%otStatic%]/pause.png)
+}
+
+#leftstep, #rightstep {
+    background: url([%otStatic%]/stepper_buttons.png) 0 0 no-repeat;
+    height: 21px;
+    overflow: hidden;
+    position: absolute;
+    top: 30px;
+    width: 30px;
+}
+
+#timeslider-close {
+    cursor: pointer;
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    display: block;
+    right: 5px;
+    top: 4px;
+    background-position: -28px 0;
+    background-image: url([%staticPrefix%]/ext/main/style/images/close_tab_btn.png);
+    background-repeat: no-repeat;
+}
+
+#timeslider-close:hover {
+    background-position: -14px 0;
+}
+
+#leftstep {
+    background-position: 0 -22px;
+    right: 50px;
+}
+
+#rightstep {
+    background-position: -29px -22px;
+    right: 21px;
+}
+
+#timeslider .star {
+    background-image: url([%otStatic%]/star.png);
+    cursor: pointer;
+    height: 16px;
+    position: absolute;
+    top: 22px;
+    width: 15px;
+    z-index: 3;
+}
+
+#revision-info {
+    position: absolute;
+    left: 66px;
+    top: 10px;
+}
+
+#ui-slider-handle {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    width: 9px;
+    z-index: 2;
+    background: rgb(64, 164, 211);
+    height: 28px;
+    border-radius: 4px;
+    box-shadow: 3px 3px 10px rgba(255,255,255,0.3) inset;
+    border: 1px solid rgb(87, 87, 87);
+}
+
+#ui-slider-handle span {
+    display: block;
+    position: absolute;
+    height: 17px;
+    width: 1px;
+    background: rgb(102, 102, 102);
+    top: 5px;
+    left: 4px;
+}
+
+.slider-bar-edge {
+    position: absolute;
+    width: 1px;
+    top: 18px;
+    height: 22px;
+    background-color: black;
+    z-index: 1
+}
+
+#slide-bar-bar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 26px;
+    height: 6px;
+    background-color: rgb(117, 117, 117);
+}
+
+#ui-slider-bar {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    height: 35px;
+    margin-left: 65px;
+    margin-right: 95px;
+    position: relative;
+    top: 2px;
+}
+/* Timeslider end */
+
+/* Chat */
+#chatthrob {
+  display: none;
+  position: absolute;
+  bottom: 40px;
+  font-size: 12px;
+  width: 150px;
+  height: 40px;
+  right: 20px;
+  z-index: 1000;
+  color: white;
+  background-color: #000;
+  background-color: rgba(0,0,0,0.7);
+  padding: 10px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+  opacity: .8;
+}
+.buttonicon-chat {
+  width: 16px;
+  height: 16px;
+  padding-right: 5px;
+  background-image: url([%otStatic%]/chat_icon.png);
+  background-repeat: no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+}
+#chattext p {
+  padding: 3px;
+  -ms-overflow-x: hidden;
+  overflow-x: hidden;
+  word-wrap: break-word
+}
+#chatbox {
+  position: absolute;
+  bottom: 0;
+  right: 175px;
+  width: 20%;
+  height: 300px;
+  z-index: 8000;
+  background-color: #f7f7f7;
+  border-left: 1px solid #999;
+  border-right: 1px solid #999;
+  border-top: 1px solid #999;
+  padding: 3px;
+  padding-bottom: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  display: none;
+}
+#chattext {
+  background-color: white;
+  border: 1px solid white;
+  -ms-overflow-y: scroll;
+  overflow-y: scroll;
+  font-size: 12px;
+  font-weight: 600;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 25px;
+  bottom: 25px;
+  z-index: 1000;
+}
+#chatinputbox {
+  padding: 3px 2px;
+  position: absolute;
+  width: 96%;
+  bottom: 0;
+  right: 2px;
+}
+#chatlabel {
+  font-size: 13px;
+  font-weight: bold;
+  color: #555;
+  text-decoration: none;
+  margin-right: 3px;
+  vertical-align: middle;
+}
+#chatinput {
+  padding: 0;
+  margin: 0;
+  border: 1px solid #BBBBBB;
+  width: 100%;
+  height: 13px;
+  float: right;
+  overflow: hidden;
+  outline: none;
+  resize: none;
+}
+#chaticon {
+  z-index: 1000;
+  position: fixed;
+  bottom: 0;
+  right: 175px;
+  padding: 5px;
+  border-left: 1px solid #999;
+  border-right: 1px solid #999;
+  border-top: 1px solid #999;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+}
+#chaticon a {
+  text-decoration: none
+}
+#chatcounter {
+  color: #777;
+  font-size: 10px;
+  vertical-align: middle;
+}
+#chattitlebar {
+  line-height: 16px;
+  font-weight: bold;
+  color: #555;
+  position: relative;
+  bottom: 2px;
+}
+#chattitle {
+  font-size: 13px;
+  margin: 4px 0 0 4px;
+  position: absolute;
+}
+#chatcross {
+  font-size: 25px;
+  float: right;
+  text-align: right;
+  text-decoration: none;
+  cursor: pointer;
+  color: #555;
+}
+.chattime {
+    font-size: smaller;
+    color: #AAA;
+    float: right;
+}
+/* Chat End */

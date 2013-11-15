@@ -1,0 +1,14 @@
+{
+    "name": "ext.activityping",
+    "version": "0.0.1",
+    "main": "activityping.js",
+    "private": true,
+    "plugin": {
+        "provides": [
+            "ext.activityping"
+        ],
+        "consumes": [
+            "client-plugins"
+        ]
+    }
+}

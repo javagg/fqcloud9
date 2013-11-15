@@ -1,0 +1,14 @@
+{
+    "name": "ext.proxymessage",
+    "version": "0.0.1",
+    "main": "proxymessage-ext.js",
+    "private": true,
+    "plugin": {
+        "provides": [
+            "ext.proxymessage"
+        ],
+        "consumes": [
+            "client-plugins"
+        ]
+    }
+}

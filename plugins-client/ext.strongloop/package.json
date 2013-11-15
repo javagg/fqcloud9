@@ -1,0 +1,14 @@
+{
+    "name": "ext.strongloop",
+    "version": "0.0.1",
+    "main": "strongloop-ext.js",
+    "private": true,
+    "plugin": {
+        "provides": [
+            "ext.strongloop"
+        ],
+        "consumes": [
+            "client-plugins"
+        ]
+    }
+}

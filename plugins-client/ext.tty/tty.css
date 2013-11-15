@@ -1,0 +1,54 @@
+.c9terminal {
+    background-color : #eee;
+    padding : 6px;
+}
+
+.c9terminal .c9terminalcontainer {
+    border-radius : 4px 0 0 0;
+    background-color : black;
+    overflow : hidden;
+    height : 100%;
+}
+
+.c9terminal .c9terminalcontainer .terminal {
+    border-radius : 4px 0 0 0;
+    padding: 3px;
+    font-family : Monaco, Ubuntu Mono, Menlo, Consolas, monospace;
+    font-size : 12px;
+    display: inline-block;
+}
+
+.c9terminal .c9terminalcontainer .terminal>div {
+    white-space: nowrap;
+}
+.c9terminal .c9terminalcontainer .terminal .reverse-video {
+    background-color : black;
+    outline : 1px solid rgba(255,255,255,0.4);
+}
+.c9terminalFocus .c9terminalcontainer .terminal .reverse-video {
+    background-color: #f0f0f0;
+    color: #000;
+    outline: none;
+}
+
+.has_apf .c9terminalconsole {
+    background : none;
+    padding : 0;
+}
+
+.has_apf .c9terminalconsole .c9terminalcontainer {
+    background : none;
+    border-radius : none;
+}
+
+.has_apf .c9terminalconsole .c9terminalcontainer {
+    background : none;
+}
+
+.has_apf .c9terminalconsole .c9terminalcontainer .terminal .reverse-video {
+    background : none;
+}
+
+.has_apf .c9terminalFocus .c9terminalcontainer .terminal .reverse-video {
+    background-color: #f0f0f0;
+}

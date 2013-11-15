@@ -1,0 +1,92 @@
+.deploy-table tr td {
+    vertical-align: top;
+}
+
+.mw-createprj.win-deploy-target {
+    overflow : visible;
+}
+
+.win-deploy-target .prj_creation_blackgb {
+    
+}
+.prj_creation_blackgb {
+    background: url(/static/ext/deploy/style/images/prj_creation_blackgb.png) repeat-x 0 0;
+    height: 106px;
+    margin: 0 0 0 0;
+    color: #ffffff;
+}
+
+.prj_creation_blackgb h4 {
+    font-size: 15px;
+    font-weight: bold;
+}
+.win-deploy-target .joynet_logo {
+    position:relative;
+    width:144px;
+    height:29px;
+    background:url(/static/ext/deploy/style/images/joyent_logo_bigger.png) no-repeat 50% 50%;
+}
+
+.win-deploy-target .legal_line {
+    position:absolute;
+    height:50px;
+    width:350px;
+    text-align:center;
+    font-size:10px;
+    color: #bbbbbb;
+    bottom:-60px;
+    line-height:14px;
+}
+
+.win-deploy-target .legal_line A {
+    color:#ffffff;
+    text-decoration:none;
+    font-size:10px;
+}
+
+.win-deploy-target .legal_line A:hover {
+    text-decoration:underline;
+}
+
+.deploy-spinner {
+    margin     : 4px 0 0 0;
+    height     : 21px;
+    position   : relative;
+    overflow   : hidden;
+    background : url(/static/ext/deploy/style/images/deploy-spinner-inactive.png) no-repeat 50% 0;
+}
+
+.deploy-spinner.active {
+    background-image : url(/static/ext/deploy/style/images/deploy-spinner-active.gif);
+}
+
+.lblprjtype {
+    font-weight: bold;
+    font-size: 12px;
+    color: #505050;
+}
+
+.server-frame {
+    box-shadow: 0px 1px 0px 0px #fff inset;
+    background: linear-gradient(top, #e6e9eb, #f8f8f8);
+    background: -webkit-linear-gradient(top, #e6e9eb, #f8f8f8);
+    background: -moz-linear-gradient(top, #e6e9eb, #f8f8f8);
+    background: -o-linear-gradient(top, #e6e9eb, #f8f8f8);
+    background: -ms-linear-gradient(top, #e6e9eb, #f8f8f8);
+    border-bottom: solid 1px #c3c4c6;
+    clear: both;
+}
+.server-frame em {
+    color: #179439;
+    font-weight: bold;
+    font-style: inherit;
+}
+.server-frame div.hr {
+    height: 2px;
+    background: #b0b2b4;
+    border-bottom: solid 1px #fff;
+}
+    
+.deploy-mnu .rb_black span {
+    color: #949494;
+}

@@ -1,0 +1,54 @@
+#!/bin/bash
+
+#TODO: Need details
+function usage() {
+  echo "usage: $(basename $0) [option]" 1>&2
+}
+
+projectdir=$HOME
+rundir=$projectdir/run
+logdir=$projectdir/log
+ip=localhost
+port=3131
+OUTPUT=`pwd`/cloud9.conf
+
+# Parse arguments
+eval set -- "$(getopt -n "$0" -o "hvw:l:p:o:" -l "help,verbose,output:,ip:,port:,projectdir:,projectname:,logdir:,rundir:,username:,password:" "--" "$@")"
+if [ "$?" -ne 0 ]; then
+  usage
+  exit 1
+fi
+
+for o; do
+  case "$o" in
+    -h|--help) usage; shift;;
+    -v|--verbose) verbose=1; shift;;
+    -l|--ip) shift; ip="${1}"; shift;;
+    -p|--port) shift; port="${1}"; shift;;
+    -w|--projectdir) shift; projectdir="${1}"; shift;;
+    -n|--projectname) shift; projectname="${1}"; shift;;
+    --logdir) shift; logdir="${1}"; shift;;
+    --rundir) shift; rundir="${1}"; shift;;
+    --username) shift; username="${1}"; shift;;
+    --password) shift; password="${1}"; shift;;
+    -o|--output) shift; OUTPUT="${1}"; shift;; 
+    --) shift; break;;
+  esac
+done
+
+# Check which command to execute
+if [ "$#" -ne 0 ]; then
+  usage
+  exit 2
+fi
+
+cat > $OUTPUT << EOF
+PROJECTDIR=$projectdir
+PROJECTNAME=$projectname
+RUNDIR=$rundir
+LOGDIR=$logdir
+PORT=$port
+IP=$ip
+USERNAME=$username
+PASSWORD=$password
+EOF

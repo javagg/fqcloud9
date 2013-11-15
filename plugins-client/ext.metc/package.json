@@ -1,0 +1,14 @@
+{
+    "name": "ext.metc",
+    "version": "0.0.1",
+    "main": "metc.js",
+    "private": true,
+    "plugin": {
+        "provides": [
+            "ext.metc"
+        ],
+        "consumes": [
+            "client-plugins"
+        ]
+    }
+}

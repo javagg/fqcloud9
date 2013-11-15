@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<a:skin xmlns:a="http://ajax.org/2005/aml">
+    <a:modalwindow name="win-auth">
+        <a:style><![CDATA[
+        .win-auth {
+            position : relative;
+            overflow : visible;
+            z-index  : 10000;
+            padding  : 0 0 0 0;
+            
+            -moz-border-radius    : 6px 6px 6px 6px;
+            -webkit-border-radius : 6px 6px 6px 6px;
+            border-radius         : 6px 6px 6px 6px;
+            
+            background: url(images/win-bg.png) repeat-x 0 0;
+        }
+        
+        .win-auth .bk-content {
+            position:absolute;
+            overflow:visible;
+            left : 0;
+            top  : 0;
+            right : 0;
+            bottom : 0;
+        }
+        
+        .win-auth .singintxt {
+            text-indent: -800em;
+            display: block;
+            background: url(images/signbackin.png) no-repeat 0 0;
+            width: 156px;
+            height: 35px;
+            position: absolute;
+            top: -37px;
+            left: 10px;
+        }
+        .win-auth .cloud9-url {
+            text-indent: -800em;
+            display: block;
+            background: url(images/cloud9-url.png) no-repeat 0 0;
+            width: 106px;
+            height: 14px;
+            position: absolute;
+            bottom: -20px;
+            right: 5px;
+        }
+        
+        .win-auth-cover {
+            background:url(images/bg-overlay.png) repeat 0 0;
+            opacity: 1;
+        }
+        
+        .win-auth-cover .header {
+            background: url(images/cover-heaeder.png) repeat-x 0 0;
+            height: 12px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+        }
+        .win-auth-cover .logo {
+            background: url(images/cover-logo.png) no-repeat 0 0;
+            width: 215px;
+            height: 44px;
+            position: absolute;
+            right: 20px;
+            top: 25px;
+        }
+        
+        .signin_options {
+            color: #ffffff;
+            text-shadow   : #000101 0px 1px 0px;
+            font-size: 11px;
+            padding: 0 15px;
+        }
+    ]]>
+        </a:style>
+
+        <a:presentation>
+            <a:main collapsed-height="26" minheight="50" minwidth="50" container="div[1]" drag="div[1]" title="div[1]/text()" icon="div[1]/div[1]" buttons="div[1]">
+                <div class="win-auth">
+                    <div class="bk-content"> </div>
+                    <div class="singintxt">Sign back in?</div>
+                    <a class="cloud9-url" href="http://c9.io/">c9.io</a>
+                </div>
+            </a:main>
+            <a:button>
+                <div/>
+            </a:button>
+            <a:cover>
+                <div class="win-auth-cover" opacity="1">
+                    <div class="header"> </div>
+                    <div class="logo"> </div>
+                </div>
+            </a:cover>
+        </a:presentation>
+    </a:modalwindow>
+    
+    <a:button name="btn-blue-noise">
+        <a:style><![CDATA[
+            .btn-blue-noise {
+                background: url(images/btn-bg-blue.png) repeat-x 0 0;
+
+                -moz-border-radius    : 6px;
+                -webkit-border-radius : 6px;
+                border-radius         : 6px;
+
+                text-shadow   : #216bd0 0px 1px 0px;
+                color: #ffffff;
+                font-weight: bold;
+                font-size: 13px;
+
+                position: relative;
+                -webkit-box-shadow: 0 0px 3px 0 #000000;
+                -moz-box-shadow: 0 0px 3px 0 #000000;
+                box-shadow: 0 0px 3px 0 #000000; 
+            }
+
+            .btn-blue-noiseOver {
+                background-position : 0 -46px;
+            }
+
+            .btn-blue-noiseFocus {
+                
+            }
+
+            .btn-blue-noiseDown {
+                background-position : 0 -92px;
+            }
+
+            .btn-blue-noiseDisable {
+                background-position : 0 0;
+                color               : #33a3d6;
+                text-shadow         : rgba(205, 243, 255, .71) 0px 1px 0px;
+            }
+
+            .btn-blue-noise .caption {
+                padding: 5px 15px 2px;
+
+                cursor: default;
+            }
+
+            .btn-blue-noise.btn-blue-noiseOver .caption {
+            }
+
+            .btn-blue-noise.btn-blue-noiseFocus .caption {
+                
+            }
+            .btn-blue-noise.btn-blue-noiseDown .caption {
+              
+            }
+            .btn-blue-noise.btn-blue-noiseDisable .caption {
+                
+            }
+            /*-----------*/
+
+    ]]>
+        </a:style>
+
+        <a:presentation>
+            <a:main caption="div[1]/text()" background="." icon=".">
+                <div class="btn-blue-noise">
+                    <div class="caption"> </div>
+                </div>
+            </a:main>
+        </a:presentation>
+    </a:button>
+    <a:textbox name="auth-tb">
+        <a:style><![CDATA[
+            .auth-tb {
+                position              : relative;
+                overflow              : hidden;
+                height                : 27px;
+                -moz-border-radius    : 5px;
+                -webkit-border-radius : 5px;
+                border-radius         : 5px;
+                background            : url(images/tb-bg.png) repeat-x 0 0;
+            }
+
+            .auth-tb .auth-tb_fix {
+                position         : relative;
+                overflow         : hidden;
+                height           : 27px;
+                margin           : 0 5px;
+                background-color : transparent;
+            }
+
+            .auth-tb .auth-tb_fix INPUT {
+                border           : 0;
+                position         : relative;
+                overflow         : hidden;
+                display          : block;
+                width            : 100%;
+                height           : 22px;
+                background-color : transparent;
+                font-family      : Arial;
+                font-size        : 11px;
+                color            : #202020;
+                outline          : none;
+                padding-top      : 2px;
+            }
+
+            .auth-tbInitial .auth-tb_fix INPUT {
+                color : #a0a6a8;
+            }
+
+            .auth-tb .initialfix {
+                display: none;
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                color : #a0a6a8;
+                margin-top: 1px;
+                padding-top: 6px;
+                font-size        : 11px;
+                background      : url(images/bg-inp.png) repeat-x 0 0;
+            }
+            .auth-tb.auth-tbInitial .initialfix.initFxEnabled {
+                display: block;
+            }
+
+            .auth-tb.auth-tbError {
+                
+            }
+        ]]>
+        </a:style>
+        <a:presentation>
+            <a:main input="div/input" initialfix="div/div[1]">
+                <div class="auth-tb">
+                    <div class="auth-tb_fix">
+                        <input type="text"/>
+                        <div class="initialfix"> </div>
+                    </div>
+                </div>
+            </a:main>
+        </a:presentation>
+    </a:textbox>
+</a:skin>

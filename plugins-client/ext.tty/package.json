@@ -1,0 +1,16 @@
+{
+    "name": "ext.tty",
+    "version": "0.0.1",
+    "main": "tty.js",
+    "private": true,
+
+    "plugin": {
+        "provides": ["ext.tty"],
+        "consumes": [
+            "client-plugins",
+            "static",
+            "ext.console",
+            "lib.termjs"
+        ]
+    }
+}

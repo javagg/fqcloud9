@@ -1,0 +1,14 @@
+{
+    "name": "ext.permissions",
+    "version": "0.0.1",
+    "main": "permissions-ext.js",
+    "private": true,
+    "plugin": {
+        "provides": [
+            "ext.permissions"
+        ],
+        "consumes": [
+            "client-plugins"
+        ]
+    }
+}

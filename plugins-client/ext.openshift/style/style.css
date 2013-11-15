@@ -1,0 +1,12 @@
+.openshift-brand {
+    color: #808080;
+    font-size: 11px;
+}
+
+.openshift-signin-deploy {
+    height: 160px;
+}
+
+.openshift-signin-deploy .label {
+    font-size: 12px;
+}

@@ -1,0 +1,66 @@
+<a:application xmlns:a="http://ajax.org/2005/aml">
+    <a:window id="winDeployFTP" title="Deploy to (S)FTP" icon="" center="true" resizable="false" buttons="close" modal="false" skin="bk-window" width="450" height="323" kbclose="true" draggable="true">
+        <div class="title-help">press <code>CTRL-ALT-D</code> to deploy again</div>
+        <a:vbox id="formFTPInfo" anchors="0 0 0 0" edge="0 0 11 0">
+            <a:hbox flex="1" edge="20">
+                <a:vbox flex="1" pack="start" margin="0 12 0 0" validgroup="ftpConn" padding="3">
+                    <p margin="0 0 10 0" class="lftp-help">
+                        Deploy your workspace to an FTP or SFTP server. To deploy 
+                        to an SFTP server, prefix the hostname with "sftp://". 
+                        The default protocol is FTP.
+                    </p>
+                    
+                    <a:hbox>
+                        <a:label margin="5 10 0 0" width="80">Hostname</a:label>
+                        <a:textbox id="tbFTPHost" tabindex="100" margin="0 10 0 0" flex="1" required="true" skin="dashboard-textbox" maxlength="255" pattern="/^[^ ,'$`&quot;]+$/" onblur="if (!tbFTPUser.getValue()) tbFTPPort.setValue(this.getValue().match(/^sftp:/) ? '22' : '21')" initial-message="ftp://server.com" invalidmsg="Please enter a valid FTP hostname"/>
+                        <a:label margin="5 10 0 0">Port</a:label>
+                        <a:textbox id="tbFTPPort" tabindex="101" required="true" pattern="/^\d{1,5}$/" width="50" skin="dashboard-textbox" minlength="1" maxlength="5" value="21" invalidmsg="Please enter a valid port"/>
+                    </a:hbox>
+                    <a:hbox edge="5 0 0">
+                        <a:label margin="5 10 0 0" width="80">Username</a:label>
+                        <a:textbox id="tbFTPUser" tabindex="102" flex="1" required="true" type="username" pattern="/^[^, '$`&quot;]+$/" skin="dashboard-textbox" invalidmsg="Please enter a valid username"/>
+                    </a:hbox>
+                    <a:hbox edge="5 0 0">
+                        <a:label margin="5 10 0 0" width="80">Password</a:label>
+                        <a:secret id="tbFTPPass" tabindex="103" flex="1" pattern="/^[^, `&quot;]*$/" invalidmsg="Please enter a valid password" skin="dashboard-textbox"/>
+                    </a:hbox>
+                    <a:hbox edge="5 0 0">
+                        <a:label margin="5 10 0 0" width="80">Local path</a:label>
+                        <a:textbox id="tbFTPLocal" tabindex="104" flex="1" value="" focusselect="true" skin="dashboard-textbox" pattern="/^\/[^'$`&quot;]*$/" invalidmsg="Please enter a valid local path, starting with a /"/>
+                    </a:hbox>
+                    <a:hbox edge="5 0 0">
+                        <a:label margin="5 10 0 0" width="80">Remote path</a:label>
+                        <a:textbox id="tbFTPRemote" tabindex="105" flex="1" value="" focusselect="true" skin="dashboard-textbox" pattern="/^[^'$`&quot;]+$/" invalidmsg="Please enter a valid path"/>
+                    </a:hbox>
+                    <a:hbox edge="5 0 0" visible="false">
+                        <a:label width="100">Synchronize with FTP automatically</a:label>
+                        <a:checkbox id="cbFTPSync"/>
+                    </a:hbox>
+                    <!--
+                    <a:hbox padding="5">
+                        <a:label width="100">Log FTP output</a:label>
+                        <a:checkbox id="cbFTPLog" />
+                    </a:hbox>
+                    -->
+                </a:vbox>
+            </a:hbox>
+            <a:hbox align="right" pack="end">
+                <span flex="1" class="lftp-warning" margin="5 10 0 20">Warning: deploy will overwrite existing files</span>
+                <a:button id="btnConfirmStop" skin="btn-default-css3">Stop</a:button>
+                <a:button id="btnConfirmClose" margin="0 5 0 0" onclick="winDeployFTP.hide()" skin="btn-default-css3">Close</a:button>
+                <a:button id="btnConfirmOk" margin="0 10 0 5" default="3" skin="btn-default-css3" class="btn-green">Deploy</a:button>
+            </a:hbox>
+        </a:vbox>
+        <!--
+        <a:vbox id="progressFTPInfo" padding="10" width="340" height="350">
+            <a:text fill="1" id="txtFTPOutput" scrolldown="true">
+                Log goes here
+            </a:text>
+        </a:vbox>
+        -->
+    </a:window>
+    <a:hbox id="lftpConsoleHbox" anchors="0 0 0 0" visible="false">
+        <a:text id="txtLFTPConsole" margin="3 0 0 0" flex="1" scrolldown="true" textselect="true" focussable="true" class="console_text"/>
+        <a:scrollbar for="txtLFTPConsole" margin="0" skin="console_scrollbar" width="17"/>
+    </a:hbox>
+</a:application>

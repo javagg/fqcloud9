@@ -1,0 +1,14 @@
+{
+    "name": "ext.ganalytics",
+    "version": "0.0.1",
+    "main": "ganalytics-ext.js",
+    "private": true,
+    "plugin": {
+        "provides": [
+            "ext.ganalytics"
+        ],
+        "consumes": [
+            "client-plugins"
+        ]
+    }
+}

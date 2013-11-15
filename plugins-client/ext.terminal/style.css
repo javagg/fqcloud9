@@ -1,0 +1,40 @@
+.c9terminal{
+    background-color : #eee;
+    margin : 6px;
+}
+
+.c9terminal .c9terminalcontainer{
+    border-radius : 4px 0 0 0;
+    background-color : black;
+    overflow : hidden;
+    height : 100%;
+}
+
+.c9terminal .c9terminalcontainer .terminal{
+    border-radius : 4px 0 0 0;
+    padding: 3px;
+    font-family : Monaco, Ubuntu Mono, Menlo, Consolas, monospace;
+    font-size : 12px;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+}
+
+.c9terminal .c9terminalcontainer .terminal > div {
+    white-space: nowrap;
+}
+.c9terminal .c9terminalcontainer .terminal .reverse-video {
+    background-color : black;
+    outline : 1px solid rgba(255,255,255,0.4);
+}
+.c9terminalFocus .c9terminalcontainer .terminal .reverse-video {
+    background-color: #f0f0f0;
+    color: #000;
+    outline: none;
+}
+
+.c9terminal .c9terminalcontainer .terminal .ace_selection {
+    background-color: rgb(81,93,119);
+}
+.terminal .ace_selected-word {
+    border: solid 1px rgb(81,93,119);
+}

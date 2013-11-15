@@ -1,0 +1,107 @@
+<a:application xmlns:a="http://ajax.org/2005/aml">
+    <a:model id="mdlAzureOS"/>
+    <a:model id="mdlAzureDatacenters"/>
+    <a:model id="mdlAzureCreateNewInstance"/>
+    <a:model id="mdlAzureApps"/>
+    
+    <a:model id="mdlAzureUserState">
+        <state loaded="false"/>
+    </a:model>
+    
+    <a:bar id="azureCloudLoadScreen" visible="{[mdlAzureUserState:://state/@loaded] != 'true'}" height="60" margin="0 0 0 0" width="350" class="azure-sites-dark">
+            <div class="loading">Loading<div class="dots" style="width: 30px;"/></div>
+    </a:bar>
+    
+    <a:vbox id="azureGetCert" class="server-frame" height="199" margin="0 0 0 0" visible="{[mdlAzureUserState:://state/@hasCert] == 'false'}">
+        <a:vbox margin="20 17 18 17">
+            <a:hbox margin="0 0 10 0"><em>Step 1. </em><span margin="0 0 0 4">Download your Publish settings:</span></a:hbox>
+            <a:button caption="DOWNLOAD WINDOWS AZURE SETTINGS" onclick="open('https://windows.azure.com/download/publishprofile.aspx?client=nodejs&amp;lang=en')" skin="button-green-rounded3" skinset="gitskin" height="26"/>
+        </a:vbox>
+        <div class="hr"/>
+        <a:vbox margin="18 17 0 17">
+            <a:hbox margin="0 0 10 0"><em>Step 2. </em><span margin="0 0 0 4">Upload your settings. This can take up to a minute.</span></a:hbox>
+            <a:hbox>
+                <input type="file" onchange="this.files.length ? azureUploadCertBtn.enable() : azureUploadCertBtn.disable()" style="width:237px"/>
+                <a:button id="azureUploadCertBtn" caption="UPLOAD" width="79" height="26" skin="button-green-rounded3" disabled="true" skinset="gitskin" onclick="require('ext/azure/azure').uploadCert(); this.disable();"/>
+            </a:hbox>
+        </a:vbox>
+    </a:vbox>
+
+    <a:vbox id="azureListing" visible="{!azureGetCert.visible &amp;&amp; [mdlAzureUserState:://state/@step] == '1'}" height="197" margin="0 0 0 0" width="350">
+        <a:vbox class="server-frame">
+            <a:hbox align="center" margin="8 17 0 17">
+                <div class="lblprjtype">Choose existing deployment:</div>
+                <a:filler/>
+                <a:button icon="add_icon.gif" skinset="gitskin" skin="deploy-toolbutton" onclick="apf.xmldb.setAttribute(mdlAzureUserState.data, 'step', 2)">
+                        Create new
+                </a:button>
+            </a:hbox>
+            <a:hbox class="azure-signin-deploy" margin="5 0 0 0">
+                <a:list id="lstAzureApps" class="heroku" flex="1" skinset="sksetAzure" skin="deploy-apps-list" height="165" model="mdlAzureApps" loading-message="Loading..." empty-message="No apps available" multiselect="false" eachvalue="[@name]" canrename="true" sort="[@name]">
+                    <a:each match="[app]">
+                        <a:caption value="[@name]"/>
+                    </a:each>
+                    <a:actions>
+                    </a:actions>
+                 </a:list>
+                  
+                <a:scrollbar for="lstAzureApps" skin="sbios" margin="0" width="11" overflow="auto"/>
+            </a:hbox>        
+        </a:vbox>        
+    </a:vbox>        
+
+    <a:vbox id="azureCreateNew" class="server-frame azure-signin-deploy" height="259" margin="0 0 0 0" width="350" visible="{!azureGetCert.visible &amp;&amp; [mdlAzureUserState:://state/@step] == '2'}" validgroup="vldAzureCreateInstance">
+        <div style="padding: 12px 17px 0 17px">
+            <a:hbox edge="0 0 2">
+                <a:label style="width:130px">Name:</a:label>
+                <a:textbox id="tbDeployNameAzure" initial-message="Max 30 characters" required="true" pattern="/^[0-9a-z]{1}[0-9a-z-_]{2,49}$/i" invalidmsg="Please provide a valid name using letters (a-z), numbers (0-9), underscore (_) and dashes (-)" onfocus="errorDeployName.hide()" flex="1" onblur="                     if (this.getValue() != '')                         lblDeployTargetUrlAzure.setAttribute('caption', 'http://' + this.getValue() + '.cloudapp.net')                   "/>
+            </a:hbox>
+
+            <a:hbox edge="0 0 7">
+                <a:label style="width:130px"/>
+                <a:label id="lblDeployTargetUrlAzure" flex="1">http://name.cloudapp.net</a:label>
+            </a:hbox>
+
+            <a:hbox edge="0 0 2">
+                <a:label style="width:130px">Number of instances:</a:label>
+                <a:spinner id="spiAzureInstanceCount" min="1" max="8" width="50"/>
+            </a:hbox>
+
+            <a:hbox edge="8 0 2">
+                <a:label style="width:130px">Operating system:</a:label>
+                <a:dropdown id="ddlAzureOS" model="mdlAzureOS" each="[os]" caption="[@name]" value="[@value]"/>
+            </a:hbox>
+            
+            <a:hbox edge="8 0 2">
+                <a:label style="width:130px">Data center:</a:label>
+                <a:dropdown id="ddlAzureDatacenter" model="mdlAzureDatacenters" each="[location]" caption="[@name]"/>
+            </a:hbox>
+            
+            <a:hbox edge="8 0 2">
+                <a:label style="width: 130px">Enable RDP</a:label>
+                <a:checkbox id="cbkAzureEnableRdp" value="1|0"/>
+            </a:hbox>
+            
+            <a:hbox edge="8 0 2" visible="{cbkAzureEnableRdp.value}">
+                <a:label style="width: 130px">RDP username</a:label>
+                <a:textbox id="txtAzureRdpUsername" tabindex="1" required="{cbkAzureEnableRdp.value}" invalidmsg="RDP Username is required"/>        
+            </a:hbox>            
+            
+            <a:hbox edge="8 0 2" visible="{cbkAzureEnableRdp.value}">
+                <a:label style="width: 130px">RDP password</a:label>
+                <a:secret id="txtAzureRdpPassword" tabindex="2" required="{cbkAzureEnableRdp.value}" invalidmsg="RDP Password is required"/>        
+            </a:hbox>
+        </div>
+    </a:vbox>
+    
+    <a:hbox padding="10" edge="10 10 11" align="center" pack="end" id="azureBottomButtons">
+        <a:button visible="[mdlAzureUserState:://state/@hasCert]" skin="btn-default-simple" onclick="require('ext/azure/azure').clearCert();">
+            Clear cert
+        </a:button>        
+        <a:filler/>
+        <a:button id="btnCloseAddDeployAzure" skin="btn-default-simple" margin="3 0 0" onclick="apf.xmldb.setAttribute(mdlAzureUserState.data, 'step', 1); mwDeployTarget.hide();">
+            CANCEL
+        </a:button>
+        <a:button id="btnAddDeployAzure" skin="btn-default-css3" class="btn-green" caption="CREATE" enabled="{(azureListing.visible and lstAzureApps.selected) || (azureCreateNew.visible)}" onclick="             if (azureCreateNew.visible) {                 if (!vldAzureCreateInstance.validate()) {                     return false;                 }                              require('ext/azure/azure').createDeploy(                     tbDeployNameAzure.getValue(),                     spiAzureInstanceCount.getValue(),                     ddlAzureOS.selected.getAttribute('value'),                     ddlAzureDatacenter.getValue(),                     cbkAzureEnableRdp.getValue(),                     txtAzureRdpUsername.getValue(),                     txtAzureRdpPassword.getValue()                 );             }             else {                 require('ext/azure/azure').createDeploy(                     lstAzureApps.selected.getAttribute('name'),                     lstAzureApps.selected.getAttribute('instanceCount'),                     lstAzureApps.selected.getAttribute('operatingSystem'),                     lstAzureApps.selected.getAttribute('datacenter')                 );             }             apf.xmldb.setAttribute(mdlAzureUserState.data, 'step', 1);         "/>
+    </a:hbox>  
+</a:application>

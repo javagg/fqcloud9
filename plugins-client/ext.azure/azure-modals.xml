@@ -1,0 +1,31 @@
+<a:application xmlns:a="http://ajax.org/2005/aml">
+    <a:model id="mdlAzureInstanceSize"/>
+    <a:model id="mdlAzureSubscriptions"/>
+    
+    <a:window id="winAzureCsdef" title="Creating csdef file" icon="" center="true" render="runtime" kbclose="true" skin="bk-window" class="relative" width="512">
+        <a:vbox edge="15 10 20" padding="5">
+            <a:hbox align="center">
+                <a:label margin="0 0 2" width="100">Instance size:</a:label>
+                <a:dropdown width="250" id="ddlAzureInstanceSize" model="mdlAzureInstanceSize" each="[size]" caption="[@name]" value="Extra small (Shared CPU, 768 MB)"/>
+            </a:hbox>
+            </a:vbox>
+        <a:hbox padding="10" pack="end" edge="6 10 10">
+          <a:button onclick="winAzureCsdef.hide()" skin="btn-default-css3">Cancel</a:button>
+          <a:button default="3" class="btn-green" skin="btn-default-css3" onclick="                     require('ext/azure/azure').createCsdef(ddlAzureInstanceSize.selected.getAttribute('value'),                          JSON.parse('{' + (winAzureCsdef.getAttribute('originalmessage') || '' ) + '}'));                                              winAzureCsdef.setAttribute('originalMessage', '');                     winAzureCsdef.hide();                 ">Create</a:button>
+            </a:hbox>
+    </a:window>
+    
+    <a:window id="winAzureChooseSubscription" title="Choose subscription" center="true" render="runtime" kbclose="true" width="400">
+        <a:vbox width="100%">
+            <a:vbox edge="15 10 20 10" padding="10">
+                <a:label margin="0 0 2">There were multiple subscriptions found, which one should we use:</a:label>
+                <a:dropdown id="ddlAzureChooseSubscription" model="mdlAzureSubscriptions" each="[subscription]" caption="[@name]"/>
+            </a:vbox>
+            <a:divider skin="hordivider"/>
+            <a:hbox pack="end" padding="7" edge="0 10 0 10">
+                <a:button onclick="winAzureChooseSubscription.hide()">Cancel</a:button>
+                <a:button default="3" class="ui-btn-green" onclick="                     require('ext/azure/azure').uploadCert(ddlAzureChooseSubscription.selected.getAttribute('id'));                                              winAzureChooseSubscription.hide();                 ">Choose</a:button>
+            </a:hbox>
+        </a:vbox>
+    </a:window>    
+</a:application>

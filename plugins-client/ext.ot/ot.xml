@@ -1,0 +1,65 @@
+<a:application xmlns:a="http://ajax.org/2005/aml">
+    <!-- Timeslider -->
+    <div id="timeslider-top" style="display:none;">
+        <div id="timeslider" class="btnclose" unselectable="on">
+            <span id="revision-info">
+                <strong id="revision_label"/>
+                <span> - </span>
+                <span id="revision_date"/>
+            </span>
+            <div id="timeslider-slider">
+                <div id="ui-slider-handle" title="Revision slider" style="left: 1177px;">
+                    <span/>
+                </div>
+                <div id="ui-slider-bar">
+                    <div class="slider-bar-edge" style="left:0;"/>
+                    <div class="slider-bar-edge" style="right:0;"/>
+                    <div id="slide-bar-bar"/>
+                </div>
+            </div>
+            <div id="playpause_button" title="Playback file history">
+                <div id="playpause_button_icon"/>
+            </div>
+            <div class="stepper" id="leftstep" title="Step revision backward"/>
+            <div class="stepper" id="rightstep" title="Step revision forward"/>
+            <a id="timeslider-close" href="javascript:void(0)" title="Step revision forward"> </a>
+        </div>
+    </div>
+    <!-- Timeslider End -->
+    <!-- Chat -->
+    <div id="chatthrob"/>
+    <audio style="display: none;" id="chat-notif" preload="true" src="{ide.staticPrefix}/ext/ot/sounds/chat_notif.mp3">
+    </audio>
+
+    <div id="chaticon">
+        <span id="chatlabel"/>
+        <span class="buttonicon-chat"/>
+        <span id="chatcounter">0</span>
+    </div>
+
+    <div id="chatbox">
+        <div id="chattitlebar">
+            <span id="chattitle" title="Open Chat">Group Chat - <a href="javascript:void(0)" id="chatmembers" title="Chat Members">See Members</a></span>
+            <a id="chatcross">- </a>
+        </div>
+        <div id="chattext" class="authorColors"/>
+        <div id="chatinputbox">
+            <textarea id="chatinput" rows="1" style="height:1em;"/>
+        </div>
+    </div>
+    <!-- Chat End -->
+
+    <a:window id="winCollabInstall" title="Collaboration Features" icon="" center="true" render="runtime" kbclose="false" width="512" skin="bk-window2" class="relative">
+        <a:vbox padding="10" edge="15 20 25 20">
+            <h3 id="collabInstallTitle"/>
+            <div id="collabInstallMsg" class="alertMsg">
+            </div>
+        </a:vbox>
+
+        <a:hbox padding="8" edge="6 10 10" pack="end">
+            <a:button skin="btn-default-css3" class="btn-blue" onclick="require('ext/ot/ot').destroy(); winCollabInstall.hide();">
+                Disable Collaboration</a:button>
+            <a:button id="btnCollabInstall" skin="btn-default-css3" class="btn-green">Install SQLite with terminal</a:button>
+        </a:hbox>
+    </a:window>
+</a:application>

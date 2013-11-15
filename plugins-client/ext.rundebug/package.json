@@ -1,0 +1,14 @@
+{
+    "name": "ext.rundebug",
+    "version": "0.0.1",
+    "main": "rundebug.js",
+    "private": true,
+    "plugin": {
+        "provides": [
+            "ext.rundebug"
+        ],
+        "consumes": [
+            "client-plugins"
+        ]
+    }
+}

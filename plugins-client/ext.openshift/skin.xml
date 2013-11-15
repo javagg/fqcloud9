@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<a:skin xmlns:a="http://ajax.org/2005/aml">
+    <a:list name="deploy-apps-list">
+        <a:style><![CDATA[
+            .deploy-apps-list {
+                overflow: hidden;
+                position: relative;
+                color: #333333;
+                margin: 0;
+                outline: none;
+                font-family: Tahoma, Arial;
+                font-size: 12px;
+                text-overflow: ellipsis;
+                cursor: default;
+            }
+            .deploy-apps-list > .selected {
+                background-color: rgb(203, 205, 208);
+                color: black;
+            }
+            .deploy-apps-listFocus > .selected {
+                background: -webkit-gradient(linear,left bottom,left top,color-stop(0, rgb(51,124,188)),color-stop(1, rgb(64,145,216)));
+                background: -moz-linear-gradient(center bottom,rgb(51,124,188) 0%,rgb(64,145,216) 100%);
+                color : white;
+            }
+            .deploy-apps-list .empty, .deploy-apps-list .offline, .deploy-apps-list .loading {
+                text-align: center;
+                padding: 8px 0 0 5px;
+                color: #aaa;
+                font-weight : normal;
+            }
+            .deploy-apps-list > div {
+                padding: 2px 6px 0 10px;
+            }
+            /* Heroku icons */
+            .deploy-apps-list.heroku .icon {
+                background: url(images/heroku-app-icon.png) no-repeat;
+                margin-right: 6px;
+                width: 16px;
+                display: inline-block;
+                height: 16px;
+            }
+            .deploy-apps-list.heroku .selected .icon {
+                background-position: 0 -17px;
+            }
+            .deploy-apps-list strong {
+                font-weight: normal;
+                display: inline-block;
+                vertical-align: top;
+            }
+            .deploy-apps-list #txt_rename {
+                padding: 0 6px 0 0;
+                vertical-align: top;
+                font-size: 12px;
+                border: 1px solid #2084d6;
+                background-color:#d7e7f4;
+                color       : #101010;
+                position:relative;
+                overflow:visible;
+                text-decoration:none;
+                white-space: nowrap;
+                word-break: keep-all;
+                cursor: text;
+                outline : none;
+            }
+        ]]></a:style>
+        <a:presentation>
+            <a:main container=".">
+                <div class="deploy-apps-list">
+                </div>
+            </a:main>
+            <a:item class="." container="." caption="strong" select=".">
+                <div><span class="icon"> </span><strong>-</strong></div>
+            </a:item>
+            <a:empty caption=".">
+                <div class="message">-</div>
+            </a:empty>
+        </a:presentation>
+    </a:list>
+</a:skin>

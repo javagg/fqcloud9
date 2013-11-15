@@ -1,0 +1,14 @@
+{
+    "name": "ext.openshift",
+    "version": "0.0.1",
+    "main": "openshift-ext.js",
+    "private": true,
+    "plugin": {
+        "provides": [
+            "ext.openshift"
+        ],
+        "consumes": [
+            "client-plugins"
+        ]
+    }
+}
