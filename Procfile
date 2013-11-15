@@ -1,1 +1,1 @@
-web: node server.js -l 0.0.0.0
+web: node server.js -P -l 0.0.0.0
