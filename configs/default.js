@@ -4,6 +4,10 @@ var fs = require("fs")
 var argv = require('optimist').argv;
 var mkdirp = require('mkdirp');
 
+// FIXME: use openshift envvar
+var port = argv.p || process.env.OPENSHIFT_NODEJS_IP  || process.env.PORT || 3131;
+var host = argv.l || process.env.OPENSHIFT_NODEJS_PORT || process.env.IP || "localhost";
+
 var projectDir = argv.w || process.env["HOME"] || process.cwd();
 var runDir = argv.rundir || path.join(projectDir, ".run")
 var sessionDir =  path.join(runDir, "c9sessions")

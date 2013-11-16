@@ -26,7 +26,7 @@
     },
     "readme": "nothing important",
     "scripts": {
-        "start": "sh ./bin/cloud9",
+        "start": "node server.js $STARTUP_OPTS",
         "postinstall": "make package"
     },
     "repository": {

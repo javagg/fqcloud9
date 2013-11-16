@@ -1,3 +1,2 @@
-plugins = require('../node_modules/cloud9/configs/local.js')
-
+var plugins = require("./default");
 module.exports = plugins

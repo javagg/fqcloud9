@@ -1,5 +1,5 @@
 Install node modules, using
-  node/bin/npm install --no-bin-links
+  npm install --no-bin-links
 
 ===Build
 PATH=`pwd`/node/bin:$PATH make package

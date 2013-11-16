@@ -1,0 +1,541 @@
+{
+  "name": "freequant-studio",
+  "version": "0.0.1",
+  "dependencies": {
+    "cloud9": {
+      "version": "0.7.0",
+      "from": "https://github.com/ajaxorg/cloud9/tarball/5b62a7c83445ccba9f50592d41a7128b1f1fe868",
+      "resolved": "https://github.com/ajaxorg/cloud9/tarball/5b62a7c83445ccba9f50592d41a7128b1f1fe868",
+      "dependencies": {
+        "jsDAV": {
+          "version": "0.2.6",
+          "from": "https://github.com/ajaxorg/jsDAV/tarball/f78c34c94fa915ca1b24975839b78ff88ea851d6",
+          "resolved": "https://github.com/ajaxorg/jsDAV/tarball/f78c34c94fa915ca1b24975839b78ff88ea851d6",
+          "dependencies": {
+            "asyncjs": {
+              "version": "0.0.8",
+              "from": "asyncjs@0.0.8"
+            },
+            "formidable": {
+              "version": "1.0.9",
+              "from": "formidable@1.0.9"
+            },
+            "jsftp": {
+              "version": "0.5.5",
+              "from": "https://github.com/ajaxorg/jsftp/tarball/97d65da1c29f3bc9b1a2363431b87a7bc9520373",
+              "resolved": "https://github.com/ajaxorg/jsftp/tarball/97d65da1c29f3bc9b1a2363431b87a7bc9520373",
+              "dependencies": {
+                "streamer": {
+                  "version": "0.2.1",
+                  "from": "streamer@0.2.x"
+                }
+              }
+            },
+            "node-sftp": {
+              "version": "0.1.1",
+              "from": "node-sftp@0.1.1"
+            },
+            "xmldom": {
+              "version": "0.1.2",
+              "from": "xmldom@0.1.2"
+            },
+            "gnu-tools": {
+              "version": "0.0.8",
+              "from": "gnu-tools@0.0.8"
+            }
+          }
+        },
+        "async": {
+          "version": "0.1.21",
+          "from": "async@0.1.21"
+        },
+        "mappings": {
+          "version": "0.1.5",
+          "from": "mappings@0.1.x"
+        },
+        "amd-loader": {
+          "version": "0.0.4",
+          "from": "amd-loader@0.0.4"
+        },
+        "colors": {
+          "version": "0.6.2",
+          "from": "colors@~0.6.0-1"
+        },
+        "netutil": {
+          "version": "0.0.1",
+          "from": "netutil@0.0.1"
+        },
+        "msgpack-js-browser": {
+          "version": "0.1.4",
+          "from": "msgpack-js-browser@~0.1.3"
+        },
+        "engine.io-client": {
+          "version": "0.5.0",
+          "from": "engine.io-client@0.5.0",
+          "dependencies": {
+            "ws": {
+              "version": "0.4.25",
+              "from": "ws@0.4.25",
+              "dependencies": {
+                "commander": {
+                  "version": "0.6.1",
+                  "from": "commander@~0.6.1"
+                },
+                "tinycolor": {
+                  "version": "0.0.1",
+                  "from": "tinycolor@0.x"
+                },
+                "options": {
+                  "version": "0.0.5",
+                  "from": "options@latest"
+                }
+              }
+            },
+            "xmlhttprequest": {
+              "version": "1.5.0",
+              "from": "xmlhttprequest@1.5.0"
+            },
+            "emitter": {
+              "version": "1.0.0",
+              "from": "emitter@git://github.com/component/emitter#1.0.0",
+              "resolved": "git://github.com/component/emitter#9c5379b4d1985a9a16745abe7bbc31524b8a090e"
+            },
+            "engine.io-parser": {
+              "version": "0.3.0",
+              "from": "engine.io-parser@0.3.0"
+            },
+            "debug": {
+              "version": "0.7.2",
+              "from": "debug@0.7.2",
+              "resolved": "https://registry.npmjs.org/debug/-/debug-0.7.2.tgz"
+            }
+          }
+        },
+        "smith": {
+          "version": "0.1.21",
+          "from": "https://github.com/c9/smith/tarball/d83208007e681c147ebb12c30e09a193fd731391",
+          "resolved": "https://github.com/c9/smith/tarball/d83208007e681c147ebb12c30e09a193fd731391",
+          "dependencies": {
+            "msgpack-js": {
+              "version": "0.1.5",
+              "from": "msgpack-js@~0.1.0"
+            }
+          }
+        },
+        "dryice": {
+          "version": "0.4.10",
+          "from": "dryice@0.4.10",
+          "dependencies": {
+            "uglify-js": {
+              "version": "1.3.5",
+              "from": "uglify-js@~1.3.4"
+            }
+          }
+        },
+        "vfs-architect": {
+          "version": "0.0.2",
+          "from": "vfs-architect@0.0.2",
+          "dependencies": {
+            "vfs-http-adapter": {
+              "version": "0.2.3",
+              "from": "vfs-http-adapter@~0.2.3"
+            },
+            "vfs": {
+              "version": "0.0.2",
+              "from": "vfs@git://github.com/c9/vfs.git#6c7249e96a5cde8b7957fbdf1cb838a9a7959afb",
+              "resolved": "git://github.com/c9/vfs.git#6c7249e96a5cde8b7957fbdf1cb838a9a7959afb",
+              "dependencies": {
+                "simple-mime": {
+                  "version": "0.0.8",
+                  "from": "simple-mime@~0.0.5"
+                },
+                "ws": {
+                  "version": "0.4.31",
+                  "from": "ws@~0.4.20",
+                  "dependencies": {
+                    "commander": {
+                      "version": "0.6.1",
+                      "from": "commander@~0.6.1"
+                    },
+                    "nan": {
+                      "version": "0.3.2",
+                      "from": "nan@~0.3.0"
+                    },
+                    "tinycolor": {
+                      "version": "0.0.1",
+                      "from": "tinycolor@0.x"
+                    },
+                    "options": {
+                      "version": "0.0.5",
+                      "from": "options@latest"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "vfs-nodefs-adapter": {
+          "version": "0.3.0",
+          "from": "vfs-nodefs-adapter@0.3.0"
+        },
+        "vfs-local": {
+          "version": "0.3.11",
+          "from": "https://github.com/c9/vfs-local/tarball/5a95c4a7b313acef3338c31da0001a0d13e9c452",
+          "resolved": "https://github.com/c9/vfs-local/tarball/5a95c4a7b313acef3338c31da0001a0d13e9c452",
+          "dependencies": {
+            "simple-mime": {
+              "version": "0.0.8",
+              "from": "simple-mime@~0.0.7"
+            }
+          }
+        },
+        "connect-architect": {
+          "version": "0.0.6",
+          "from": "connect-architect@0.0.6",
+          "dependencies": {
+            "mime": {
+              "version": "1.2.11",
+              "from": "mime@>= 0.0.1"
+            }
+          }
+        },
+        "architect-agent": {
+          "version": "0.2.2",
+          "from": "architect-agent@0.2.2"
+        },
+        "architect-socket-transport": {
+          "version": "0.3.0",
+          "from": "architect-socket-transport@0.3.0",
+          "dependencies": {
+            "msgpack-js": {
+              "version": "0.1.5",
+              "from": "msgpack-js@~0.1.0"
+            }
+          }
+        },
+        "ace": {
+          "version": "1.0.0",
+          "from": "https://github.com/ajaxorg/ace/tarball/cacd51e2fe911971428dd40d9b09ba3c913a7ed5",
+          "resolved": "https://github.com/ajaxorg/ace/tarball/cacd51e2fe911971428dd40d9b09ba3c913a7ed5",
+          "dependencies": {
+            "mime": {
+              "version": "1.2.11",
+              "from": "mime@1.2.x"
+            }
+          }
+        },
+        "asyncjs": {
+          "version": "0.0.9",
+          "from": "https://github.com/ajaxorg/async.js/tarball/bd936c60bb87c58052bcc0307f4e637bd35c908f",
+          "resolved": "https://github.com/ajaxorg/async.js/tarball/bd936c60bb87c58052bcc0307f4e637bd35c908f"
+        },
+        "v8debug": {
+          "version": "0.1.1",
+          "from": "https://github.com/ajaxorg/lib-v8debug/tarball/d2fac9b09724cb2e75e2807191eace9bc27d3b52",
+          "resolved": "https://github.com/ajaxorg/lib-v8debug/tarball/d2fac9b09724cb2e75e2807191eace9bc27d3b52"
+        },
+        "treehugger": {
+          "version": "0.0.1",
+          "from": "https://github.com/ajaxorg/treehugger/tarball/c6fb8e8c7ad7654577e1f843559fb91e925a3b79",
+          "resolved": "https://github.com/ajaxorg/treehugger/tarball/c6fb8e8c7ad7654577e1f843559fb91e925a3b79"
+        }
+      }
+    },
+    "architect": {
+      "version": "0.1.10",
+      "from": "architect@~0.1.10"
+    },
+    "optimist": {
+      "version": "0.3.4",
+      "from": "optimist@0.3.4",
+      "dependencies": {
+        "wordwrap": {
+          "version": "0.0.2",
+          "from": "wordwrap@~0.0.2"
+        }
+      }
+    },
+    "connect": {
+      "version": "1.8.7",
+      "from": "connect@1.8.7",
+      "dependencies": {
+        "qs": {
+          "version": "0.6.5",
+          "from": "qs@>= 0.4.0"
+        },
+        "mime": {
+          "version": "1.2.11",
+          "from": "mime@>= 0.0.1"
+        },
+        "formidable": {
+          "version": "1.0.14",
+          "from": "formidable@1.0.x"
+        }
+      }
+    },
+    "mkdirp": {
+      "version": "0.3.5",
+      "from": "mkdirp@0.3.5"
+    },
+    "http-proxy": {
+      "version": "0.10.3",
+      "from": "http-proxy@*",
+      "dependencies": {
+        "colors": {
+          "version": "0.6.2",
+          "from": "colors@0.x.x"
+        },
+        "pkginfo": {
+          "version": "0.2.3",
+          "from": "pkginfo@0.2.x"
+        },
+        "utile": {
+          "version": "0.1.7",
+          "from": "utile@~0.1.7",
+          "dependencies": {
+            "async": {
+              "version": "0.1.22",
+              "from": "async@0.1.x"
+            },
+            "deep-equal": {
+              "version": "0.1.0",
+              "from": "deep-equal@*"
+            },
+            "i": {
+              "version": "0.3.2",
+              "from": "i@0.3.x"
+            },
+            "ncp": {
+              "version": "0.2.7",
+              "from": "ncp@0.2.x"
+            },
+            "rimraf": {
+              "version": "1.0.9",
+              "from": "rimraf@1.x.x"
+            }
+          }
+        }
+      }
+    },
+    "http-error": {
+      "version": "0.0.1",
+      "from": "http-error@0.0.1"
+    },
+    "simple-template": {
+      "version": "0.0.1",
+      "from": "simple-template@0.0.1"
+    },
+    "tty.js": {
+      "version": "0.2.13",
+      "from": "tty.js@"
+    },
+    "term.js": {
+      "version": "0.0.3",
+      "from": "term.js@"
+    },
+    "pty.js": {
+      "version": "0.2.3",
+      "from": "pty.js@"
+    },
+    "express": {
+      "version": "3.1.0",
+      "from": "express@3.1.0",
+      "dependencies": {
+        "connect": {
+          "version": "2.7.2",
+          "from": "connect@2.7.2",
+          "dependencies": {
+            "qs": {
+              "version": "0.5.1",
+              "from": "qs@0.5.1"
+            },
+            "formidable": {
+              "version": "1.0.11",
+              "from": "formidable@1.0.11"
+            },
+            "bytes": {
+              "version": "0.1.0",
+              "from": "bytes@0.1.0"
+            },
+            "pause": {
+              "version": "0.0.1",
+              "from": "pause@0.0.1"
+            }
+          }
+        },
+        "commander": {
+          "version": "0.6.1",
+          "from": "commander@0.6.1"
+        },
+        "range-parser": {
+          "version": "0.0.4",
+          "from": "range-parser@0.0.4"
+        },
+        "mkdirp": {
+          "version": "0.3.3",
+          "from": "mkdirp@0.3.3"
+        },
+        "cookie": {
+          "version": "0.0.5",
+          "from": "cookie@0.0.5"
+        },
+        "buffer-crc32": {
+          "version": "0.1.1",
+          "from": "buffer-crc32@0.1.1"
+        },
+        "fresh": {
+          "version": "0.1.0",
+          "from": "fresh@0.1.0"
+        },
+        "methods": {
+          "version": "0.0.1",
+          "from": "methods@0.0.1"
+        },
+        "send": {
+          "version": "0.1.0",
+          "from": "send@0.1.0",
+          "dependencies": {
+            "mime": {
+              "version": "1.2.6",
+              "from": "mime@1.2.6"
+            }
+          }
+        },
+        "cookie-signature": {
+          "version": "0.0.1",
+          "from": "cookie-signature@0.0.1"
+        },
+        "debug": {
+          "version": "0.7.4",
+          "from": "debug@*",
+          "resolved": "https://registry.npmjs.org/debug/-/debug-0.7.4.tgz"
+        }
+      }
+    },
+    "socket.io": {
+      "version": "0.9.13",
+      "from": "socket.io@0.9.13",
+      "resolved": "https://registry.npmjs.org/socket.io/-/socket.io-0.9.13.tgz",
+      "dependencies": {
+        "socket.io-client": {
+          "version": "0.9.11",
+          "from": "socket.io-client@0.9.11",
+          "dependencies": {
+            "uglify-js": {
+              "version": "1.2.5",
+              "from": "uglify-js@1.2.5"
+            },
+            "ws": {
+              "version": "0.4.31",
+              "from": "ws@0.4.x",
+              "dependencies": {
+                "commander": {
+                  "version": "0.6.1",
+                  "from": "commander@~0.6.1"
+                },
+                "nan": {
+                  "version": "0.3.2",
+                  "from": "nan@~0.3.0"
+                },
+                "tinycolor": {
+                  "version": "0.0.1",
+                  "from": "tinycolor@0.x"
+                },
+                "options": {
+                  "version": "0.0.5",
+                  "from": "options@>=0.0.5"
+                }
+              }
+            },
+            "xmlhttprequest": {
+              "version": "1.4.2",
+              "from": "xmlhttprequest@1.4.2"
+            },
+            "active-x-obfuscator": {
+              "version": "0.0.1",
+              "from": "active-x-obfuscator@0.0.1",
+              "dependencies": {
+                "zeparser": {
+                  "version": "0.0.5",
+                  "from": "zeparser@0.0.5"
+                }
+              }
+            }
+          }
+        },
+        "policyfile": {
+          "version": "0.0.4",
+          "from": "policyfile@0.0.4"
+        },
+        "base64id": {
+          "version": "0.1.0",
+          "from": "base64id@0.1.0"
+        },
+        "redis": {
+          "version": "0.7.3",
+          "from": "redis@0.7.3"
+        }
+      }
+    },
+    "engine.io": {
+      "version": "0.5.0",
+      "from": "engine.io@0.5.0",
+      "dependencies": {
+        "debug": {
+          "version": "0.6.0",
+          "from": "debug@0.6.0",
+          "resolved": "https://registry.npmjs.org/debug/-/debug-0.6.0.tgz"
+        },
+        "ws": {
+          "version": "0.4.25",
+          "from": "ws@0.4.25",
+          "dependencies": {
+            "commander": {
+              "version": "0.6.1",
+              "from": "commander@~0.6.1"
+            },
+            "tinycolor": {
+              "version": "0.0.1",
+              "from": "tinycolor@0.x"
+            },
+            "options": {
+              "version": "0.0.5",
+              "from": "options@latest"
+            }
+          }
+        },
+        "engine.io-parser": {
+          "version": "0.3.0",
+          "from": "engine.io-parser@0.3.0"
+        },
+        "base64id": {
+          "version": "0.1.0",
+          "from": "base64id@0.1.0"
+        }
+      }
+    },
+    "execSync": {
+      "version": "1.0.1-pre",
+      "from": "execSync@~1.0.1-pre",
+      "dependencies": {
+        "temp": {
+          "version": "0.5.1",
+          "from": "temp@~0.5.1",
+          "dependencies": {
+            "rimraf": {
+              "version": "2.1.4",
+              "from": "rimraf@~2.1.4",
+              "dependencies": {
+                "graceful-fs": {
+                  "version": "1.2.3",
+                  "from": "graceful-fs@~1"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
