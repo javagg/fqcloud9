@@ -4,6 +4,7 @@
     "version": "0.0.1",
     "engines": {"node": ">= 0.6.15"},
     "author": "Alex Lee <lu.lee05@gmail.com>",
+    "main": "./server.js",
 
     "dependencies": {
         "cloud9": "https://github.com/ajaxorg/cloud9/tarball/5b62a7c83445ccba9f50592d41a7128b1f1fe868",
@@ -23,5 +24,13 @@
         "engine.io": "0.5.0",
         "execSync": "~1.0.1-pre"
     },
-    "readme": "nothing important"
+    "readme": "nothing important",
+    "scripts": {
+        "start": "sh ./bin/cloud9",
+        "postinstall": "make package"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://gitcafe.com/freequant/c9.git"
+    }
 }

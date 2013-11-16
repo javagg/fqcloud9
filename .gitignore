@@ -1,2 +1,7 @@
-node*
+**/.idea
+**/c9.iml
+run
+log
+.c9revisions
 
+node*
