@@ -32,5 +32,6 @@
     "repository": {
         "type": "git",
         "url": "git://gitcafe.com/freequant/c9.git"
-    }
+    },
+  "main": "server.js"
 }
