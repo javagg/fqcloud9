@@ -1,1 +1,1 @@
-web: node server.js -P -l 0.0.0.0
+web: node server.js $STARTUP_OPTS
