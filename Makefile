@@ -55,7 +55,7 @@ backup: package
 	cp node_modules/cloud9/plugins-client/lib.packed/www/c9os.min.js build
 	cp node_modules/cloud9/plugins-client/lib.packed/www/c9os-ext.min.js build
 
-packit:
+packit: worker
 	mkdir -p node_modules/cloud9/plugins-client/lib.packed/www
 	cp build/c9os.min.js node_modules/cloud9/plugins-client/lib.packed/www
 	cp build/c9os-ext.min.js node_modules/cloud9/plugins-client/lib.packed/www
