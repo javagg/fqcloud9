@@ -1,0 +1,14 @@
+---
+applications:
+  .:
+    name: fqcloud9
+    framework:
+      name: node
+      info:
+        mem: 64M
+        description: Node.js Application
+        exec: 
+    infra: aws
+    url: ${name}.${target-base}
+    mem: 256M
+    instances: 1

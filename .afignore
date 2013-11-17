@@ -1,0 +1,6 @@
+node/
+node*/
+.openshift/
+.git/
+.idea/
+*.iml

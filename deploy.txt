@@ -1,0 +1,3 @@
+===AppFog
+user env
+  STARTUP_OPTS
