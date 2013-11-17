@@ -52,7 +52,8 @@ if (debug) {
             "   |,4-  ) )-,_..;\\ (  `'-'\n" +
             "   '---''(_/--'  `-'\\_)  Felix Lee");
 
-        var buildPackage = spawn("make", ["package"]);
+//        var buildPackage = spawn("make", ["package"]);
+        var buildPackage = spawn("make", ["packit"]);
 
         buildPackage.stderr.setEncoding("utf8");
         buildPackage.stderr.on('data', function (data) {

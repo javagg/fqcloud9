@@ -22,8 +22,8 @@ helper_clean:
 	cd node_modules/cloud9; node build/packed_helper.cloud9.js 1
 	
 # packages ext
-ext: 
-	cd node_modules/cloud9; make ext
+ext:
+	cd node_modules/cloud9; make ext #&& cd ../../; cp node_modules/cloud9/plugins-client/lib.packed/www/c9os.min.js build
 	node node_modules/cloud9/build/r.js -o build/app-ext.build.js
 
 worker:
@@ -50,3 +50,12 @@ package: helper c9core ext
 
 test check:
 	cd node_modules/cloud9; make test check;
+
+backup: package
+	cp node_modules/cloud9/plugins-client/lib.packed/www/c9os.min.js build
+	cp node_modules/cloud9/plugins-client/lib.packed/www/c9os-ext.min.js build
+
+packit:
+	mkdir -p node_modules/cloud9/plugins-client/lib.packed/www
+	cp build/c9os.min.js node_modules/cloud9/plugins-client/lib.packed/www
+	cp build/c9os-ext.min.js node_modules/cloud9/plugins-client/lib.packed/www
