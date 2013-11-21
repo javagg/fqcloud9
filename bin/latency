@@ -1,0 +1,7 @@
+#!/bin/bash
+NODE=`which node`
+BASEDIR=`cd $(dirname $0)/../node_modules/engine.io/examples/latency; pwd`
+pushd $BASEDIR > /dev/null
+$NODE index.js
+popd
+
