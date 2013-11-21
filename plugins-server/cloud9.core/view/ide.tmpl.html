@@ -71,6 +71,9 @@
             var path = document.location.pathname.replace(/\/$/, "")
             var smithIo = JSON.parse(<%smithIo%>)
             smithIo.prefix = path + smithIo.prefix
+
+            // use websocket transport only
+            smithIo.transports = ['websocket']
             smithIo = JSON.stringify(smithIo)
             var davPrefix = path + <%davPrefix%>
 
