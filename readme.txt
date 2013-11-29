@@ -5,6 +5,12 @@ Install node modules, using
 make packit
 
 
+===Build rpm 
+on fedora:
+  pkg_script/build_rpm_local
+on rhel/centos
+  scl enable nodejs010 "pkg_script/build_rpm_local"
+
 Note:
 1. "c9 behind proxy"
   i. reset require load path totally, see patch 'cloud9.proxy.static'

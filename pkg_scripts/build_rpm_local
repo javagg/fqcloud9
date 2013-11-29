@@ -11,13 +11,22 @@ _name=`grep "^Name:" $BASE_DIR/cloud9.spec | cut -d : -f 2 | tr -d ' '`
 mkdir -p $BUILD_DIR
 cp $BASE_DIR/cloud9.spec $BUILD_DIR
 pushd $BASE_DIR > /dev/null
-  if [ ! -d ./node_modules ]; then
+  if [ ! -d "node_modules" ]; then
     npm install --no-bin-links
   fi
   make packit
 
   tar -zcf $BUILD_DIR/node_modules.tar.gz node_modules
-  tito build --test --tgz -o $BUILD_DIR
+  
+  # Can't use `tito build --test --tgz` to generate tar ball because 
+  # `tito tag` failed on centos/rhel 6, we emulate by tarring it manully
+  # tito build --test --tgz -o $BUILD_DIR
+  _commit=`git log -n 1 | grep 'commit' | cut -d ' ' -f 2`
+  _last_tag=`git describe $(git rev-list --tags --max-count=1)`
+  _commit_count=`git log --oneline ${_last_tag}.. | wc -l`
+  _commit=${_commit:0:7}
+  _ballname=cloud9-git-${_commit_count}.${_commit}
+  git archive --format=tar --prefix=$_ballname/ HEAD | gzip > $BUILD_DIR/${_ballname}.tar.gz
 popd > /dev/null
 pushd $BUILD_DIR > /dev/null
   outfile=`ls ${_name}-*.tar.gz`
