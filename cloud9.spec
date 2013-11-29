@@ -1,3 +1,8 @@
+%if 0%{?fedora}%{?rhel} <= 6
+  %global scl nodejs010
+  %global scl_prefix nodejs010-
+%endif
+
 %global __jar_repack %{nil}
 %global debug_package %{nil}
 
@@ -13,6 +18,9 @@ Group:         Applications/Internet
 License:       ASL 2.0
 URL:           https://c9.io
 Source0:       %{name}-%{version}.tar.gz
+Source1:       node_modules.tar.gz
+
+Requires:      %{?scl:%scl_prefix}nodejs
 
 %description
 Cloud9 IDE
@@ -21,8 +29,10 @@ Cloud9 IDE
 %setup -q
 
 %build
+tar -zxf %{SOURCE1} -C .
+
 #!!! Don't build! It fails on Centos 6
-#make package
+make packit
 
 %install
 mkdir -p %{buildroot}%{_libdir}/%{name}

@@ -1,0 +1,31 @@
+#!/bin/bash
+
+BASE_DIR=$(cd "`dirname $0`/../" && pwd)
+BUILD_DIR="`dirname $BASE_DIR`/`basename $BASE_DIR`_build"
+
+_name=`grep "^Name:" $BASE_DIR/cloud9.spec | cut -d : -f 2 | tr -d ' '`
+#_ver=`grep "^Version:" $BASE_DIR/cloud9.spec | cut -d : -f 2 | tr -d ' '`
+
+[ -d "$BUILD_DIR" ] && rm -rf $BUILD_DIR
+
+mkdir -p $BUILD_DIR
+cp $BASE_DIR/cloud9.spec $BUILD_DIR
+pushd $BASE_DIR > /dev/null
+  if [ -d ./node_modules ]; then 
+    tar -zcf $BUILD_DIR/node_modules.tar.gz node_modules
+  else
+    npm install --no-bin-links
+  fi   
+  tito build --test --tgz -o $BUILD_DIR
+popd > /dev/null
+pushd $BUILD_DIR > /dev/null
+  outfile=`ls ${_name}-*.tar.gz`
+  commit=$(eval "echo $outfile | sed 's/^${_name}-//' | sed 's/\.tar\.gz$//' | tr - .")
+  eval "sed -i -e 's/^Release:\(.*\)%{?dist}$/Release:\1.${commit}%{?dist}/' cloud9.spec"
+  eval "sed -i -e 's/^Source0:.*$/Source0:${outfile}/' cloud9.spec"
+  # remove .tar.gz
+  outfile="${outfile%.*}"
+  outfile="${outfile%.*}"
+  eval "sed -i -e 's/^%setup.*$/%setup -q -n ${outfile}/' cloud9.spec"
+  rpmbuild -ba cloud9.spec -D "_sourcedir $BUILD_DIR"
+popd > /dev/null
