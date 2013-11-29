@@ -125,6 +125,12 @@ plugins.forEach(function(plugin) {
         if (plugin.packagePath && /\.\/cloud9.sandbox$/.test(plugin.packagePath)) {
             plugin.projectDir = projectDir
         }
+        // FIXME: need batter plan!!!
+//        if (plugin.packagePath && /\.\/cloud9.connect.basic-auth/.test(plugin.packagePath)) {
+//            plugin.username = function(user, pass) {
+//                return 'tj' == user & 'wahoo' == pass;
+//            }
+//        }
     }
 });
 
