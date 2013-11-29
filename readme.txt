@@ -2,7 +2,7 @@ Install node modules, using
   npm install --no-bin-links
 
 ===Build
-PATH=`pwd`/node/bin:$PATH make package
+make packit
 
 
 Note:
