@@ -12,8 +12,10 @@ mkdir -p $BUILD_DIR
 cp $BASE_DIR/cloud9.spec $BUILD_DIR
 pushd $BASE_DIR > /dev/null
   if [ ! -d ./node_modules ]; then
-    npm install --no-bin-links 
-  fi   
+    npm install --no-bin-links
+  fi
+  make packit
+
   tar -zcf $BUILD_DIR/node_modules.tar.gz node_modules
   tito build --test --tgz -o $BUILD_DIR
 popd > /dev/null
