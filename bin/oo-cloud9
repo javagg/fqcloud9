@@ -9,8 +9,8 @@ function rhel {
 }
 
 function context_exec {
-  fedora && "$@"
-  rhel && scl enable nodejs010 "$@"
+  fedora && $@; return
+  rhel && scl enable nodejs010 "$@"; return
 }
 
 ME=`readlink "$0" || echo "$0"`
