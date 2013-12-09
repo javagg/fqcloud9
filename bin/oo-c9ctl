@@ -123,8 +123,7 @@ function start() {
   [ -n "$PROJECTNAME" ] && CMDOPTS="$CMDOPTS --projectname $PROJECTNAME"
   [ -n "$USER" ] && [ -n "$PASSWORD" ] && CMDOPTS="$CMDOPTS --username $USER --password $PASSWORD" 
   EXECCMD="$C9 $CMDOPTS"
-echo  $EXECCMD 
-  $EXECCMD >> $LOGFILE 2>&1 &
+  $EXECCMD > $LOGFILE 2>&1 &
   local ret=$?
   local pid=$!
   if [ $ret -eq 0 ]; then
