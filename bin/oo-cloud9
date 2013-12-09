@@ -1,0 +1,24 @@
+#!/bin/bash
+
+function fedora {
+  [[ "$(cat /etc/redhat-release)" =~ "Fedora" ]] && return 0 || return 1
+}
+
+function rhel {
+  [[ "$(cat /etc/redhat-release)" =~ "CentOS" ]] && return 0 || return 1
+}
+
+function context_exec {
+  fedora && "$@"
+  rhel && scl enable nodejs010 "$@"
+}
+
+ME=`readlink "$0" || echo "$0"`
+C9_HOME=$(cd "`dirname $ME`/../" && pwd)
+
+# Decide which node to use, systemwide node is preferred
+NODE=`context_exec "which node"`
+
+# Don't use exec
+context_exec "$NODE $C9_HOME/server.js $*"
+

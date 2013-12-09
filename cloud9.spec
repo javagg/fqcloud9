@@ -39,17 +39,17 @@ mkdir -p %{buildroot}%{_libdir}/%{name}
 cp -a * %{buildroot}%{_libdir}/%{name}
 mkdir -p %{buildroot}%{_bindir}
 pushd %{buildroot}%{_bindir}
-ln -s %{_libdir}/%{name}/bin/cloud9
-ln -s %{_libdir}/%{name}/bin/c9ctl
-ln -s %{_libdir}/%{name}/bin/c9config
+ln -s %{_libdir}/%{name}/bin/oo-cloud9
+ln -s %{_libdir}/%{name}/bin/oo-c9ctl
+ln -s %{_libdir}/%{name}/bin/oo-c9config
 popd
 
 %files
 %attr(-,root,root)
 %{_libdir}/%{name}
-%{_bindir}/c9ctl
-%{_bindir}/cloud9
-%{_bindir}/c9config
+%{_bindir}/oo-c9ctl
+%{_bindir}/oo-cloud9
+%{_bindir}/oo-c9config
 
 %changelog
 * Mon Aug 05 2013 Alex Lee <lu.lee05@gmail.com> 0.7.0-1

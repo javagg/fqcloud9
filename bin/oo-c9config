@@ -10,7 +10,7 @@ rundir=$projectdir/run
 logdir=$projectdir/log
 ip=localhost
 port=3131
-OUTPUT=`pwd`/cloud9.conf
+OUTPUT=`pwd`/oo-cloud9.conf
 
 # Parse arguments
 eval set -- "$(getopt -n "$0" -o "hvw:l:p:o:" -l "help,verbose,output:,ip:,port:,projectdir:,projectname:,logdir:,rundir:,username:,password:" "--" "$@")"

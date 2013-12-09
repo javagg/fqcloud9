@@ -1,9 +1,9 @@
 #!/bin/bash -eu
 
-C9=/usr/bin/cloud9
+C9=/usr/bin/oo-cloud9
 if [ ! -f $C9 ]; then
   # Resonable guess
-  C9=`cd $(dirname $0) && pwd`/cloud9
+  C9=`cd $(dirname $0) && pwd`/oo-cloud9
 fi
 
 function usage() {
@@ -62,14 +62,14 @@ source $CONFIG
 DEBUG=${debug:-0}
 PACKED=${packed:-0}
 
-LOGFILE=$LOGDIR/cloud9.log
-PIDFILE=$RUNDIR/cloud9.pid
+LOGFILE=$LOGDIR/oo-cloud9.log
+PIDFILE=$RUNDIR/oo-cloud9.pid
 
 function isrunning() {
   if [ -f $PIDFILE ]; then
     local pid=$(cat $PIDFILE 2> /dev/null)
     uid=$(id -u)
-    if `ps --pid $pid 2>&1 | grep cloud9 >/dev/null 2>&1`  ||  `pgrep -x cloud9 -u $uid >/dev/null 2>&1`; then
+    if `ps --pid $pid 2>&1 | grep oo-cloud9 >/dev/null 2>&1`  ||  `pgrep -x oo-cloud9 -u $uid >/dev/null 2>&1`; then
       return 0
     fi
   fi
@@ -114,6 +114,8 @@ function start() {
     return 
   fi
   mkdir -p $LOGDIR
+  mkdir -p $RUNDIR
+
   CMDOPTS=""
   [ $DEBUG == 1 ] && CMDOPTS="$CMDOPTS -d"
   [ $PACKED == 1 ] && CMDOPTS="$CMDOPTS -P"
