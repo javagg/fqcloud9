@@ -1,5 +1,20 @@
 #!/bin/bash
 
+export LOCAL_REPO=~/tmp/local_repo
+mkdir -p $LOCAL_REPO/{x86_64,sources}
+export TMP_BUILD=~/tmp/tito
+rm -rf ~/rpmbuild
+rm -rf $TMP_BUILD
+mkdir -p $TMP_BUILD
+
+function fedora {
+  [[ "$(cat /etc/redhat-release)" =~ "Fedora" ]] && return 0 || return 1
+}
+
+function rhel {
+  [[ "$(cat /etc/redhat-release)" =~ "CentOS" ]] && return 0 || return 1
+}
+
 BASE_DIR=$(cd "`dirname $0`/../" && pwd)
 SPEC_FILE="$BASE_DIR/cloud9.spec"
 BUILD_DIR="/tmp/`basename $BASE_DIR`_build"
@@ -10,14 +25,6 @@ _name=`grep "^Name:" $SPEC_FILE | cut -d : -f 2 | tr -d ' '`
 
 mkdir -p $BUILD_DIR
 cp $SPEC_FILE $BUILD_DIR
-
-function fedora {
-  [[ "$(cat /etc/redhat-release)" =~ "Fedora" ]] && return 0 || return 1
-}
-
-function rhel {
-  [[ "$(cat /etc/redhat-release)" =~ "CentOS" ]] && return 0 || return 1
-}
 
 pushd $BASE_DIR > /dev/null
   if [ ! -d "node_modules" ]; then
@@ -42,3 +49,6 @@ pushd $BUILD_DIR > /dev/null
   eval "sed -i -e 's/^%setup.*$/%setup -q -n ${outfile}/' $SPEC_FILE"
   rpmbuild -ba $SPEC_FILE -D "_sourcedir $BUILD_DIR"
 popd > /dev/null
+
+mv ~/rpmbuild/RPMS/{noarch,x86_64}/* $LOCAL_REPO/x86_64
+mv ~/rpmbuild/SRPMS/* $LOCAL_REPO/sources

@@ -21,19 +21,22 @@ mkdirp.sync(revisionDir)
 
 var excludedSPlugins = [
     "./connect.session.file",
-//    "./cloud9.run.npm",
-//    "./cloud9.run.npmnode",
-//    "./cloud9.run.ruby",
-//    "./cloud9.run.python",
-//    "./cloud9.run.apache",
-//    "./cloud9.run.php",
-//    "./cloud9.ide.run-node",
-//    "./cloud9.ide.run-npm-module",
-//    "./cloud9.ide.run-python",
-//    "./cloud9.ide.run-apache",
-//    "./cloud9.ide.run-ruby",
-//    "./cloud9.ide.run-php",
-//    "./cloud9.ide.npm"
+
+    // runtimes
+    "./cloud9.run.npm",
+    "./cloud9.run.npmnode",
+    "./cloud9.run.ruby",
+    "./cloud9.run.python",
+    "./cloud9.run.apache",
+    "./cloud9.run.php",
+    "./cloud9.ide.run-node",
+    "./cloud9.ide.run-python",
+    "./cloud9.ide.run-apache",
+    "./cloud9.ide.run-ruby",
+    "./cloud9.ide.run-php",
+    "./cloud9.ide.npm",
+
+//    "./cloud9.ide.run-npm-module"
 ]
 
 var excludedCPlugins = [

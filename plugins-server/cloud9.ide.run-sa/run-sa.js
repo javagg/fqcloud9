@@ -73,10 +73,6 @@ util.inherits(SaRuntimePlugin, Plugin);
             case "kill":
                 this.$kill(message.pid, message, client);
                 break;
-//
-//            case "killsa":
-//                this.$killsa(message.pid, message, client);
-//                break;
             default:
                 res = false;
         }
